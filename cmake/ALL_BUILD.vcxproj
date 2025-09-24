@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{336F9F56-5FFA-363A-970C-A1A7165EB233}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\BasicConfigVersion-ExactVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenSSL.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCXXCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeRCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeSystem.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\TargetVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\BasicConfigVersion-ExactVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenSSL.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCXXCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeRCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeSystem.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\TargetVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\BasicConfigVersion-ExactVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenSSL.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCXXCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeRCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeSystem.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\TargetVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.29\Modules\BasicConfigVersion-ExactVersion.cmake.in;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindOpenSSL.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\SelectLibraryConfigurations.cmake;C:\Program Files\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeCXXCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeRCCompiler.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\3.29.0\CMakeSystem.cmake;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\TargetVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\ZERO_CHECK.vcxproj">
+      <Project>{6D9EC4A6-8871-33BC-9E84-71FAFAA9C5D8}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
+      <Project>{46858923-A1DA-3F63-BE0B-83D57EA8ACA2}</Project>
+      <Name>BasicUsageEnvironment</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
+      <Project>{BD201DC7-933F-329D-882D-2412597625ED}</Project>
+      <Name>EpollTaskScheduler</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\MPEG2TransportStreamIndexer.vcxproj">
+      <Project>{6A04D6A2-BA19-3EC1-87BA-E9CFAFBBC977}</Project>
+      <Name>MPEG2TransportStreamIndexer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
+      <Project>{8020F01D-8185-3A90-8B4F-8EDABEAF7DB0}</Project>
+      <Name>UsageEnvironment</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\announceURL.vcxproj">
+      <Project>{BE665866-8AB7-3A52-B946-3279DE13D42D}</Project>
+      <Name>announceURL</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\groupsock\groupsock.vcxproj">
+      <Project>{BFF90A2A-78C3-324F-BEB8-1AFA330B8C9E}</Project>
+      <Name>groupsock</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\hlsProxy\live555HLSProxy.vcxproj">
+      <Project>{5610F66A-EB75-37FD-94E7-69A08AF9F96D}</Project>
+      <Name>live555HLSProxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\mediaServer\live555MediaServer.vcxproj">
+      <Project>{FC536409-19A9-3C9F-B7E1-6DFB82F9161B}</Project>
+      <Name>live555MediaServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\proxyServer\live555ProxyServer.vcxproj">
+      <Project>{3210752F-5F48-3D7E-BB68-B4629E79E0B6}</Project>
+      <Name>live555ProxyServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\liveMedia\liveMedia.vcxproj">
+      <Project>{7843210A-1CD0-33B6-B4A8-60D268404A12}</Project>
+      <Name>liveMedia</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\mikeyParse.vcxproj">
+      <Project>{B500FB0C-6553-344F-A9C3-C65AD703C5C1}</Project>
+      <Name>mikeyParse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\openRTSP.vcxproj">
+      <Project>{8821A7C1-DE05-3789-BD21-9D76F04C660C}</Project>
+      <Name>openRTSP</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\playSIP.vcxproj">
+      <Project>{0E782CB1-1B6C-3F2B-93E8-B761161EB1D5}</Project>
+      <Name>playSIP</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\registerRTSPStream.vcxproj">
+      <Project>{285EABB1-F481-3895-9522-72D919072161}</Project>
+      <Name>registerRTSPStream</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\sapWatch.vcxproj">
+      <Project>{038A8384-3B74-389E-AA80-2B7DBF45A245}</Project>
+      <Name>sapWatch</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testAMRAudioStreamer.vcxproj">
+      <Project>{3BA92FC0-D89D-3FB2-BF9B-65B41639A1FF}</Project>
+      <Name>testAMRAudioStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testDVVideoStreamer.vcxproj">
+      <Project>{0C5D3DCE-4232-3366-937C-2404F7A5567B}</Project>
+      <Name>testDVVideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testH264VideoStreamer.vcxproj">
+      <Project>{7F0D3F75-0616-3902-B02E-CA2FB3AC4AB0}</Project>
+      <Name>testH264VideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testH264VideoToHLSSegments.vcxproj">
+      <Project>{BD894CEC-8BC7-39C9-9C12-B8132C79ED4C}</Project>
+      <Name>testH264VideoToHLSSegments</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testH264VideoToTransportStream.vcxproj">
+      <Project>{5E549761-FE83-3497-8FAA-EA3507BCEE30}</Project>
+      <Name>testH264VideoToTransportStream</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testH265VideoStreamer.vcxproj">
+      <Project>{FC9DBDC6-B523-3785-A023-CF5FD15F20A8}</Project>
+      <Name>testH265VideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testH265VideoToTransportStream.vcxproj">
+      <Project>{039A5687-2C46-3814-9CB3-CBEC54FB59C6}</Project>
+      <Name>testH265VideoToTransportStream</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMKVSplitter.vcxproj">
+      <Project>{3DE872CA-0615-3365-B03A-121F2066791D}</Project>
+      <Name>testMKVSplitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMKVStreamer.vcxproj">
+      <Project>{C79BFDB3-08CB-33CA-8F4B-5915EEE57775}</Project>
+      <Name>testMKVStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMP3Receiver.vcxproj">
+      <Project>{DDBB897A-0D23-3124-9AFB-5077B85598AB}</Project>
+      <Name>testMP3Receiver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMP3Streamer.vcxproj">
+      <Project>{F904D520-0FAA-3E6A-AF45-49F4884843F5}</Project>
+      <Name>testMP3Streamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG1or2AudioVideoStreamer.vcxproj">
+      <Project>{7EC9625B-EFA9-3C71-9D99-F2A0049869CF}</Project>
+      <Name>testMPEG1or2AudioVideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG1or2ProgramToTransportStream.vcxproj">
+      <Project>{52C42B46-449B-327F-B4AF-3782C031B5C5}</Project>
+      <Name>testMPEG1or2ProgramToTransportStream</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG1or2Splitter.vcxproj">
+      <Project>{2F5275F7-F081-355A-9BD3-A9C5E7DBCF17}</Project>
+      <Name>testMPEG1or2Splitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG1or2VideoReceiver.vcxproj">
+      <Project>{5C877059-F5EF-390D-8BAE-1D079B6B780A}</Project>
+      <Name>testMPEG1or2VideoReceiver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG1or2VideoStreamer.vcxproj">
+      <Project>{99D581F4-FD54-3E2A-8E9A-76B39A83DBB6}</Project>
+      <Name>testMPEG1or2VideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG2TransportReceiver.vcxproj">
+      <Project>{54648A63-290E-399B-AFDE-0E8D46A270DC}</Project>
+      <Name>testMPEG2TransportReceiver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG2TransportStreamSplitter.vcxproj">
+      <Project>{5084ABFA-6DB4-3888-A64E-2A0266C7F7B0}</Project>
+      <Name>testMPEG2TransportStreamSplitter</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG2TransportStreamTrickPlay.vcxproj">
+      <Project>{F4444477-7CC2-3275-868F-011886F76A0B}</Project>
+      <Name>testMPEG2TransportStreamTrickPlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG2TransportStreamer.vcxproj">
+      <Project>{A2402B64-EA21-3CBB-9627-15E9138EE9D0}</Project>
+      <Name>testMPEG2TransportStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testMPEG4VideoStreamer.vcxproj">
+      <Project>{D55D8241-5621-302E-BAB1-CF1A67A4D520}</Project>
+      <Name>testMPEG4VideoStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testOggStreamer.vcxproj">
+      <Project>{B6F91E9A-23B7-3DCA-A137-2CA9E673BC97}</Project>
+      <Name>testOggStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testOnDemandRTSPServer.vcxproj">
+      <Project>{6672504F-70E9-3927-B509-0FB62B34FF60}</Project>
+      <Name>testOnDemandRTSPServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testRTSPClient.vcxproj">
+      <Project>{B5A63BA9-0615-30A8-B963-2752C1FE6333}</Project>
+      <Name>testRTSPClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testRelay.vcxproj">
+      <Project>{21CE2BE9-670F-3E2D-A29D-C0CB12017DFF}</Project>
+      <Name>testRelay</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testReplicator.vcxproj">
+      <Project>{E44F388A-3B6B-3421-A636-FDEA92CA8CBD}</Project>
+      <Name>testReplicator</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\testWAVAudioStreamer.vcxproj">
+      <Project>{86925986-0EAA-3D24-971C-2D97ABDD99B7}</Project>
+      <Name>testWAVAudioStreamer</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\vobStreamer.vcxproj">
+      <Project>{2A263746-32CC-3AB8-8C7B-ED9960E8C259}</Project>
+      <Name>vobStreamer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

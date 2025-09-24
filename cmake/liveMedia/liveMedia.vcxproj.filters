@@ -1,0 +1,1104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AC3AudioFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AC3AudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AC3AudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AC3AudioStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ADTSAudioFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ADTSAudioFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ADTSAudioStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AMRAudioSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AVIFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AudioInputDevice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\AudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\Base64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\BasicUDPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\BasicUDPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\BitVector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ByteStreamFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ByteStreamMemoryBufferSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ByteStreamMultiFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DVVideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DVVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DVVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DVVideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DeviceSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\DigestAuthentication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\EBMLNumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\FileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\FileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\FramedFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\FramedFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\FramedSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\GSMAudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\GenericMediaServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H261VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoStreamParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264VideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264or5VideoFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264or5VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264or5VideoStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H264or5VideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H265VideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\HLSSegmenter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\HMAC_SHA1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\InputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\JPEG2000VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\JPEG2000VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\JPEGVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\JPEGVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\JPEGVideoSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\Locale.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADU.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADURTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADURTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADUTranscoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADUdescriptor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADUinterleaving.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3AudioFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3AudioMatroskaFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3FileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3Internals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3InternalsHuffman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3InternalsHuffmanTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3StreamState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3Transcoder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2AudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2AudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2AudioStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2Demux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2DemuxedElementaryStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2DemuxedServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2FileServerDemux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2VideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2VideoStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG1or2VideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2IndexFromTransportStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamAccumulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamDemux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamDemuxedTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamFromESSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamFromPESSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamIndexFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamMultiplexor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamParser_PAT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamParser_PMT.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamParser_STREAM.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamTrickModeFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportUDPServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4ESVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4ESVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4GenericRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4GenericRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4LATMAudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4LATMAudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4VideoFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4VideoStreamDiscreteFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG4VideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEGVideoStreamFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEGVideoStreamParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaDemuxedTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFileParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFileServerDemux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\Media.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MediaSession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MediaSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MediaSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MIKEY.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MultiFramedRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MultiFramedRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggDemuxedTrack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileServerDemux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OnDemandServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OutputFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\PassiveServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ProxyServerMediaSession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\QCELPAudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\QuickTimeFileSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\QuickTimeGenericRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RawVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RawVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTCP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTPInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTSPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTSPCommon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTSPRegisterSender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTSPServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\RTSPServerRegister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\SIPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\SRTPCryptographicContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ServerMediaSession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\SimpleRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\SimpleRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\StreamParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\StreamReplicator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\T140TextRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\TextRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\TheoraVideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\TheoraVideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\TLSState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VP8VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VP8VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VP9VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VP9VideoRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VideoRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VorbisAudioRTPSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\VorbisAudioRTPSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\WAVAudioFileServerMediaSubsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\WAVAudioFileSource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\ourMD5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\rtcp_from_spec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\uLawAudioFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AC3AudioFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AC3AudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AC3AudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AC3AudioStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ADTSAudioFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ADTSAudioFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ADTSAudioStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AMRAudioSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AVIFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AudioInputDevice.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\AudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\Base64.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\BasicUDPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\BasicUDPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\BitVector.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ByteStreamFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ByteStreamMemoryBufferSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ByteStreamMultiFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DVVideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DVVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DVVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DVVideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DeviceSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\DigestAuthentication.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\FileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\FileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\FramedFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\FramedFilter.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\FramedSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\GSMAudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\GenericMediaServer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H261VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H263plusVideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H263plusVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H263plusVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H263plusVideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264VideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264or5VideoFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264or5VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264or5VideoStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H264or5VideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\H265VideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\HLSSegmenter.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\HMAC_hash.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\HMAC_SHA1.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\InputFile.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\JPEG2000VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\JPEG2000VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\JPEGVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\JPEGVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\JPEGVideoSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\Locale.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3ADU.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3ADURTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3ADURTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3ADUTranscoder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3ADUinterleaving.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3AudioFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3FileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MP3Transcoder.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2AudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2AudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2AudioStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2Demux.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2DemuxedElementaryStream.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2DemuxedServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2FileServerDemux.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2VideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2VideoStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG1or2VideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2IndexFromTransportStream.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamAccumulator.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamDemux.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamFromESSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamFromPESSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamIndexFile.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamMultiplexor.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportStreamTrickModeFilter.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG2TransportUDPServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4ESVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4ESVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4GenericRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4GenericRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4LATMAudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4LATMAudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4VideoFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4VideoStreamDiscreteFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEG4VideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MPEGVideoStreamFramer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MatroskaFile.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MatroskaFileServerDemux.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\Media.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MediaSession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MediaSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MediaSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MediaTranscodingTable.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MIKEY.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MultiFramedRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\MultiFramedRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\OggFile.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\OggFileServerDemux.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\OggFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\OnDemandServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\OutputFile.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\PassiveServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ProxyServerMediaSession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\QCELPAudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\QuickTimeFileSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\QuickTimeGenericRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RawVideoFrameParameters.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RawVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RawVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTCP.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTPInterface.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTSPClient.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTSPCommon.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTSPRegisterSender.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\RTSPServer.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\SIPClient.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\SRTPCryptographicContext.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ServerMediaSession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\SimpleRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\SimpleRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\StreamReplicator.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\T140TextRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\TextRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\TheoraVideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\TheoraVideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\TLSState.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VP8VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VP8VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VP9VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VP9VideoRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VideoRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VorbisAudioRTPSink.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\VorbisAudioRTPSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\WAVAudioFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\WAVAudioFileSource.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\liveMedia.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\liveMedia_version.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\ourMD5.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include\uLawAudioFilter.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\EBMLNumber.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\H263plusVideoStreamParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3ADUdescriptor.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3AudioMatroskaFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3Internals.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3InternalsHuffman.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MP3StreamState.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamDemuxedTrack.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEG2TransportStreamParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MPEGVideoStreamParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaDemuxedTrack.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFileParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\MatroskaFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggDemuxedTrack.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\OggFileServerMediaSubsession.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\StreamParser.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\rtcp_from_spec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5A6DCC09-EFB4-36E3-897E-E4885BE93BDE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E512DCD8-9FDE-3B92-A348-AE6DFD20458B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

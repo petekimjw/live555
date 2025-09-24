@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\testDVVideoStreamer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\announceURL.dir\$(Configuration)\announceURL.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{2BFB5055-0606-3FD7-B18A-3DF10844104D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{E512DCD8-9FDE-3B92-A348-AE6DFD20458B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
