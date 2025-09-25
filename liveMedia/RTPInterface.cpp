@@ -220,7 +220,8 @@ void RTPInterface::removeStreamSocket(int sockNum,
 }
 
 void RTPInterface::setServerRequestAlternativeByteHandler(UsageEnvironment& env, int socketNum,
-							  ServerRequestAlternativeByteHandler* handler, void* clientData) {
+							  ServerRequestAlternativeByteHandler* handler, void* clientData) 
+{
   SocketDescriptor* socketDescriptor = lookupSocketDescriptor(env, socketNum, NULL, False);
 
   if (socketDescriptor != NULL) socketDescriptor->setServerRequestAlternativeByteHandler(handler, clientData);

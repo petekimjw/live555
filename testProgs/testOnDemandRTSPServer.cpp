@@ -33,22 +33,14 @@ Boolean reuseFirstSource = False;
 // 다음 "False"를 "True"로 변경합니다.
 Boolean iFramesOnly = False;
 
-#pragma region Digest인증
+#pragma region Digest인증 (ComputeHA1_SHA256)
 
 // ====== Digest SHA-256: 서버 설정 ======
 // 서버 Realm
 static const char* kRealm = "ivx-realm";
-
 // 사용자/비밀번호 예시
 static const char* kUser  = "user1";
 static const char* kPass  = "pass1";
-
-// (옵션) 라이브러리 패치가 'algorithm=SHA-256' 광고를 지원한다면
-// 이 매크로를 켜고 'RTSPServer' 에서 사용하세요.
-#ifndef USE_RTSP_DIGEST_SHA256_ADVERTISEMENT
-#define USE_RTSP_DIGEST_SHA256_ADVERTISEMENT 1
-#endif
-#define ACCESS_CONTROL
 
 // SHA-256(hex) 유틸
 static void toHex(const unsigned char* data, size_t len, char* out /* len*2+1 */)
@@ -135,11 +127,11 @@ int main(int argc, char** argv)
    UserAuthenticationDatabase* authDB = NULL;
 
    #ifdef ACCESS_CONTROL (기본 인증(Basic auth))
-   // To implement client access control to the RTSP server, do the following:
+
+   // RTSP 서버에 대한 클라이언트 액세스 제어를 구현하려면 다음을 수행합니다.
    authDB = new UserAuthenticationDatabase;
-   authDB->addUserRecord("user1", "pass1"); // replace these with real strings
-   // Repeat the above with each <username>, <password> that you wish to allow
-   // access to the server.
+   authDB->addUserRecord("user1", "pass1"); //실제 username/password로 변경
+   
    #endif  
    #pragma endregion
 
@@ -176,7 +168,9 @@ int main(int argc, char** argv)
    #else
    // Serve regular RTSP (over a TCP connection):
    RTSPServer* rtspServer = RTSPServer::createNew(*env, 8554, authDB);
-   rtspServer->setAdvertiseDigestAlgorithmSHA256(True);
+
+   rtspServer->UseSHA256 = true; //algorithm=SHA-256 설정
+
    #endif
 
    if (rtspServer == NULL) {

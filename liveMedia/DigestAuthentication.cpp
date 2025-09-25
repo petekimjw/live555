@@ -1,23 +1,3 @@
-/**********
-This library is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation; either version 3 of the License, or (at your
-option) any later version. (See <http://www.gnu.org/copyleft/lesser.html>.)
-
-This library is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
-**********/
-// "liveMedia"
-// Copyright (c) 1996-2025 Live Networks, Inc.  All rights reserved.
-// A class used for digest authentication.
-// Implementation
-
 #include "DigestAuthentication.hh"
 #include "ourMD5.hh"
 #include <strDup.hh>
@@ -56,6 +36,7 @@ static char const* our_SHA256Data(unsigned char const* input, unsigned inputLen,
    // (이번 요청 환경은 Windows 11 + VS2022)
    return strDup("0000000000000000000000000000000000000000000000000000000000000000"); // placeholder
 #else
+
    BCRYPT_ALG_HANDLE hAlg = NULL;
    BCRYPT_HASH_HANDLE hHash = NULL;
    NTSTATUS st = BCryptOpenAlgorithmProvider(&hAlg, BCRYPT_SHA256_ALGORITHM, NULL, 0);
@@ -80,7 +61,9 @@ static char const* our_SHA256Data(unsigned char const* input, unsigned inputLen,
    char* hex = resultBuffer;
    if (needAlloc) hex = new char[65];
    toHex(out.data(), out.size(), hex);
+
    return hex;
+
 #endif
 }
 
@@ -159,14 +142,13 @@ void Authenticator::setRealmAndRandomNonce(char const* realm) {
   assignRealmAndNonce(realm, nonceBuf);
 }
 
-void Authenticator::setUsernameAndPassword(char const* username,
-					   char const* password,
-					   Boolean passwordIsMD5) {
+void Authenticator::setUsernameAndPassword(char const* username, char const* password, Boolean passwordIsMD5) 
+{
   resetUsernameAndPassword();
   assignUsernameAndPassword(username, password, passwordIsMD5);
 }
 
-// 기존 동작:
+// 기본 동작:
 //   response = H( HA1 : nonce : HA2 )
 //   HA1 = H( username : realm : password )  (또는 fPasswordIsMD5==True면 이미 HA1)
 //   HA2 = H( cmd : url )
@@ -226,7 +208,8 @@ char const* Authenticator::computeDigestResponse(char const* cmd, char const* ur
    return result;
 }
 
-void Authenticator::reclaimDigestResponse(char const* responseStr) const {
+void Authenticator::reclaimDigestResponse(char const* responseStr) const 
+{
   delete[](char*)responseStr;
 }
 

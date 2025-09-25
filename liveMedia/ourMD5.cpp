@@ -1,24 +1,3 @@
-/**********
-This library is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation; either version 3 of the License, or (at your
-option) any later version. (See <http://www.gnu.org/copyleft/lesser.html>.)
-
-This library is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
-**********/
-// "liveMedia"
-// Copyright (c) 1996-2025 Live Networks, Inc.  All rights reserved.
-// Because MD5 may not be implemented (at least, with the same interface) on all systems,
-// we have our own implementation.
-// Implementation
-
 #include "ourMD5.hh"
 #include <NetCommon.h> // for u_int32_t, u_int64_t
 #include <string.h>
@@ -29,7 +8,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 
 // The state of a MD5 computation in progress:
 
-class MD5Context {
+class MD5Context 
+{
 public:
   MD5Context();
   ~MD5Context();

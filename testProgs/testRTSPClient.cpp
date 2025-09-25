@@ -31,166 +31,6 @@ void shutdownStream(RTSPClient* rtspClient, int exitCode = 1);
 
 #pragma endregion
 
-#pragma region Digest 인증
-
-// 전역 Authenticator (간단히 한 개만 사용).
-// 실제 서비스라면 URL별, 세션별로 보관하세요.
-static Authenticator g_auth;
-static std::string g_user, g_pass;
-
-// 소문자 변환
-static std::string ToLower(std::string s)
-{
-   for (char& c : s) c = (char)std::tolower((unsigned char)c);
-   return s;
-}
-
-// 앞뒤 공백 제거
-static std::string Trim(const std::string& s)
-{
-   size_t b = s.find_first_not_of(" \t\r\n");
-   size_t e = s.find_last_not_of(" \t\r\n");
-   if (b == std::string::npos) return std::string();
-   return s.substr(b, e - b + 1);
-}
-
-// WWW-Authenticate 한 줄(or 전체 값)에서 algorithm 파라미터 파싱 → g_auth.setUseSHA256()
-static void ApplyAlgorithmFromWWWAuthenticateLine(const char* wwwAuthLine)
-{
-   if (!wwwAuthLine) return;
-
-   std::string line = wwwAuthLine;
-   // 접두사 제거
-   const std::string key = "www-authenticate:";
-   std::string lowerLine = ToLower(line);
-   size_t pos = lowerLine.find(key);
-   if (pos != std::string::npos)
-   {
-      line = Trim(line.substr(pos + key.size()));
-      lowerLine = ToLower(line);
-   }
-
-   if (lowerLine.find("digest") == std::string::npos)
-   {
-      return;
-   }
-
-   // algorithm= 찾기
-   size_t p = lowerLine.find("algorithm");
-   if (p == std::string::npos)
-   {
-      // 미지정 → MD5
-      g_auth.setUseSHA256(False);
-      return;
-   }
-   size_t eq = lowerLine.find('=', p);
-   if (eq == std::string::npos)
-   {
-      g_auth.setUseSHA256(False);
-      return;
-   }
-
-   size_t i = eq + 1;
-   while (i < line.size() && (line[i] == ' ' || line[i] == '\t')) ++i;
-
-   std::string alg;
-   if (i < line.size() && line[i] == '"')
-   {
-      size_t j = line.find('"', i + 1);
-      if (j == std::string::npos) j = line.size();
-      alg = line.substr(i + 1, j - (i + 1));
-   }
-   else
-   {
-      size_t j = i;
-      while (j < line.size() && line[j] != ',' && line[j] != ' ' && line[j] != '\t' && line[j] != '\r' && line[j] != '\n') ++j;
-      alg = line.substr(i, j - i);
-   }
-
-   std::string algLower = ToLower(Trim(alg));
-   if (algLower.rfind("sha-256", 0) == 0) // "sha-256" 또는 "sha-256-sess"
-   {
-      g_auth.setUseSHA256(True);
-   }
-   else
-   {
-      g_auth.setUseSHA256(False); // MD5, MD5-sess, 미지정
-   }
-}
-
-// 헤더 전체 문자열에서 WWW-Authenticate: Digest ... 줄 찾아 algorithm 적용
-static void ApplyAlgorithmFromAllHeaders(const char* allHeaders)
-{
-   if (!allHeaders) return;
-   const char* p = allHeaders;
-   while (*p)
-   {
-      const char* e = strstr(p, "\r\n");
-      std::string line = (e ? std::string(p, e) : std::string(p));
-      std::string lwr = ToLower(line);
-      if (lwr.find("www-authenticate:") != std::string::npos &&
-         lwr.find("digest") != std::string::npos)
-      {
-         ApplyAlgorithmFromWWWAuthenticateLine(line.c_str());
-         return;
-      }
-      if (!e) break;
-      p = e + 2;
-   }
-}
-
-// realm, nonce 간단 파싱 (따옴표 값 가정)
-static std::string ExtractParamQuoted(const std::string& headers, const std::string& key)
-{
-   std::string L = ToLower(headers);
-   std::string k = ToLower(key);
-   size_t p = L.find(k);
-   if (p == std::string::npos) return std::string();
-   p = L.find('=', p);
-   if (p == std::string::npos) return std::string();
-   ++p;
-   while (p < headers.size() && (headers[p] == ' ' || headers[p] == '\t')) ++p;
-   if (p < headers.size() && headers[p] == '"')
-   {
-      size_t j = headers.find('"', p + 1);
-      if (j == std::string::npos) return std::string();
-      return headers.substr(p + 1, j - (p + 1));
-   }
-   // 비인용 값
-   size_t j = p;
-   while (j < headers.size() && headers[j] != ',' && headers[j] != '\r' && headers[j] != '\n') ++j;
-   return Trim(headers.substr(p, j - p));
-}
-
-// URL에서 user:pass 추출 (rtsp://user:pass@host/...)
-static void ParseUserPassFromURL(const char* rtspURL)
-{
-   g_user.clear(); g_pass.clear();
-   std::string url = rtspURL ? rtspURL : "";
-   const std::string scheme = "rtsp://";
-   if (ToLower(url).rfind(scheme, 0) != 0) return;
-   size_t at = url.find('@');
-   if (at == std::string::npos) return;
-   size_t start = scheme.size();
-   std::string userinfo = url.substr(start, at - start); // user:pass
-   size_t colon = userinfo.find(':');
-   if (colon == std::string::npos)
-   {
-      g_user = userinfo;
-      g_pass.clear();
-   }
-   else
-   {
-      g_user = userinfo.substr(0, colon);
-      g_pass = userinfo.substr(colon + 1);
-   }
-   // Authenticator에 반영
-   g_auth.setUsernameAndPassword(g_user.c_str(), g_pass.c_str(), False /*plain*/);
-}
-
-#pragma endregion
-
-
 #pragma region 메인
 
 // A function that outputs a string that identifies each stream (for debugging output).  Modify this if you wish:
@@ -294,13 +134,15 @@ public:
 
 
 ourRTSPClient* ourRTSPClient::createNew(UsageEnvironment& env, char const* rtspURL,
-   int verbosityLevel, char const* applicationName, portNumBits tunnelOverHTTPPortNum) {
+   int verbosityLevel, char const* applicationName, portNumBits tunnelOverHTTPPortNum) 
+{
    return new ourRTSPClient(env, rtspURL, verbosityLevel, applicationName, tunnelOverHTTPPortNum);
 }
 
 ourRTSPClient::ourRTSPClient(UsageEnvironment& env, char const* rtspURL,
    int verbosityLevel, char const* applicationName, portNumBits tunnelOverHTTPPortNum)
-   : RTSPClient(env, rtspURL, verbosityLevel, applicationName, tunnelOverHTTPPortNum, -1) {
+   : RTSPClient(env, rtspURL, verbosityLevel, applicationName, tunnelOverHTTPPortNum, -1) 
+{
 }
 
 ourRTSPClient::~ourRTSPClient() {
@@ -414,6 +256,8 @@ Boolean DummySink::continuePlaying() {
 
 static unsigned rtspClientCount = 0; // 현재 사용 중인 스트림(즉, "RTSPClient")의 수를 계산합니다.
 
+Authenticator auth("user1", "pass1", false);
+
 //DESCRIBE 명령
 void openURL(UsageEnvironment& env, char const* progName, char const* rtspURL) 
 {
@@ -427,7 +271,10 @@ void openURL(UsageEnvironment& env, char const* progName, char const* rtspURL)
   ++rtspClientCount;
 
   //RTSP "DESCRIBE" 명령을 전송하여 스트림에 대한 SDP 설명을 가져옴. RTSP 응답은 나중에 이벤트 루프 내에서 처리됩니다.
-  rtspClient->sendDescribeCommand(continueAfterDESCRIBE); 
+  
+  rtspClient->sendDescribeCommand(continueAfterDESCRIBE, &auth); //Authenticator객체에서 username/password 설정
+
+  //rtspClient->sendDescribeCommand(continueAfterDESCRIBE); //url에서 username/password 설정. 예) rtsp://user1:pass1@172.16.15.143:8554/h264ESVideoTest
 }
 
 //DESCRIBE 명령에 대한 응답을 처리
@@ -443,32 +290,6 @@ void continueAfterDESCRIBE(RTSPClient* rtspClient, int resultCode, char* resultS
          // 401 Unauthorized 인 경우, 헤더에서 algorithm/realm/nonce를 추출하여 재시도
          std::string msg = resultString ? resultString : "";
          env << *rtspClient << "Failed to get a SDP description: " << resultString << "\n";
-
-         // 일부 서버/빌드에선 resultString에 전체 헤더가 포함되지 않을 수 있습니다.
-         // 가능한 경우를 대비해 여기서 파싱을 시도합니다.
-         if (!scs.retriedWithAuth && (msg.find("401") != std::string::npos || msg.find("WWW-Authenticate") != std::string::npos))
-         {
-            // algorithm 자동 결정
-            ApplyAlgorithmFromAllHeaders(msg.c_str());
-
-            // realm, nonce 추출(따옴표 값 가정)
-            std::string realm = ExtractParamQuoted(msg, "realm");
-            std::string nonce = ExtractParamQuoted(msg, "nonce");
-            if (!realm.empty() && !nonce.empty())
-            {
-               g_auth.setRealmAndNonce(realm.c_str(), nonce.c_str());
-            }
-
-            // user/pass 가 있는 경우 재시도
-            if (!g_user.empty())
-            {
-               env << *rtspClient << "Retry DESCRIBE with Digest (SHA-256=" << (g_auth.useSHA256() ? "on" : "off") << ")\n";
-               scs.retriedWithAuth = true;
-               rtspClient->sendDescribeCommand(continueAfterDESCRIBE, &g_auth);
-               delete[] resultString;
-               return; // 재시도
-            }
-         }
 
          delete[] resultString;
          break;

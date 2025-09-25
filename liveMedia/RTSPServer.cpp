@@ -1,84 +1,15 @@
-#include <ctype.h>
-/**********
-This library is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation; either version 3 of the License, or (at your
-option) any later version. (See <http://www.gnu.org/copyleft/lesser.html>.)
-
-This library is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for
-more details.
-
-You should have received a copy of the GNU Lesser General Public License
-along with this library; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
-**********/
-// "liveMedia"
-// Copyright (c) 1996-2025 Live Networks, Inc.  All rights reserved.
-// A RTSP server
-// Implementation
-
 #include "RTSPServer.hh"
 #include "RTSPCommon.hh"
 #include "RTSPRegisterSender.hh"
 #include "Base64.hh"
 #include <GroupsockHelper.hh>
 #include <string>
-
-// --- Helper: extract algorithm=... from Authorization header (case-insensitive) ---
-static char* extractAuthAlgorithm(char const* fullRequestStr) {
-   if (fullRequestStr == NULL) return NULL;
-
-   char const* p = fullRequestStr;
-   while (*p) {
-      const char* lineEnd = strstr(p, "\r\n");
-      size_t len = lineEnd ? (size_t)(lineEnd - p) : strlen(p);
-
-      if (len >= 14 && _strncasecmp(p, "Authorization:", 14) == 0) {
-         std::string line(p, len);
-         std::string lower = line;
-         for (size_t i = 0; i < lower.size(); ++i) lower[i] = (char)tolower((unsigned char)lower[i]);
-         size_t pos = lower.find("algorithm=");
-         if (pos != std::string::npos) {
-            size_t valStart = pos + 10;
-            while (valStart < line.size() && (line[valStart] == ' ' || line[valStart] == '\t' || line[valStart] == '=')) ++valStart;
-            char quote = 0;
-            if (valStart < line.size() && (line[valStart] == '"' || line[valStart] == '\'')) { quote = line[valStart]; ++valStart; }
-            size_t valEnd = valStart;
-            while (valEnd < line.size()) {
-               char ch = line[valEnd];
-               if ((quote && ch == quote) || (!quote && (ch == ',' || ch == ' ' || ch == '\t'))) break;
-               ++valEnd;
-            }
-            size_t vLen = (valEnd > valStart) ? (valEnd - valStart) : 0;
-            char* out = new char[vLen + 1];
-            if (vLen) memcpy(out, line.data() + valStart, vLen);
-            out[vLen] = '\0';
-            return out;
-         }
-         break;
-      }
-
-      if (!lineEnd) break;
-      p = lineEnd + 2;
-   }
-   return NULL;
-}
+#include <ctype.h>
 
 
-////////// RTSPServer implementation //////////
+#pragma region RTSPServer 구현
 
-// RTSPServer.cpp (includes 아래 아무 위치)
-static Boolean gAdvertiseDigestSHA256 = False;  // ← 전역 토글
-
-void RTSPServer::setAdvertiseDigestAlgorithmSHA256(Boolean enable)  // ← 구현
-{
-   gAdvertiseDigestSHA256 = enable;
-}
-
-RTSPServer*
-RTSPServer::createNew(UsageEnvironment& env, Port ourPort,
+RTSPServer* RTSPServer::createNew(UsageEnvironment& env, Port ourPort,
    UserAuthenticationDatabase* authDatabase,
    unsigned reclamationSeconds) {
    int ourSocketIPv4 = setUpOurSocket(env, ourPort, AF_INET);
@@ -105,8 +36,7 @@ Boolean RTSPServer::lookupByName(UsageEnvironment& env,
    return True;
 }
 
-char* RTSPServer
-::rtspURL(ServerMediaSession const* serverMediaSession,
+char* RTSPServer::rtspURL(ServerMediaSession const* serverMediaSession,
    int clientSocket, Boolean useIPv6) const {
    char* urlPrefix = rtspURLPrefix(clientSocket, useIPv6);
    char const* sessionName = serverMediaSession->streamName();
@@ -187,8 +117,7 @@ portNumBits RTSPServer::httpServerPortNum() const {
    return ntohs(fHTTPServerPort.num());
 }
 
-void RTSPServer
-::setTLSState(char const* certFileName, char const* privKeyFileName,
+void RTSPServer::setTLSState(char const* certFileName, char const* privKeyFileName,
    Boolean weServeSRTP, Boolean weEncryptSRTP) {
    setTLSFileNames(certFileName, privKeyFileName);
    fOurConnectionsUseTLS = True;
@@ -223,17 +152,13 @@ Boolean RTSPServer::specialClientUserAccessCheck(int /*clientSocket*/,
    return True;
 }
 
-void RTSPServer
-::specialHandlingOfAuthenticationFailure(int /*clientSocket*/,
+void RTSPServer::specialHandlingOfAuthenticationFailure(int /*clientSocket*/,
    struct sockaddr_storage const& /*clientAddr*/,
    char const* /*urlSuffix*/) {
    // default implementation: do nothing
 }
 
-RTSPServer::RTSPServer(UsageEnvironment& env,
-   int ourSocketIPv4, int ourSocketIPv6, Port ourPort,
-   UserAuthenticationDatabase* authDatabase,
-   unsigned reclamationSeconds)
+RTSPServer::RTSPServer(UsageEnvironment& env, int ourSocketIPv4, int ourSocketIPv6, Port ourPort, UserAuthenticationDatabase* authDatabase, unsigned reclamationSeconds)
    : GenericMediaServer(env, ourSocketIPv4, ourSocketIPv6, ourPort, reclamationSeconds),
    fHTTPServerSocketIPv4(-1), fHTTPServerSocketIPv6(-1), fHTTPServerPort(0),
    fClientConnectionsForHTTPTunneling(NULL), // will get created if needed
@@ -244,9 +169,12 @@ RTSPServer::RTSPServer(UsageEnvironment& env,
    fOurConnectionsUseTLS(False), fWeServeSRTP(False) {
 }
 
-// A data structure that is used to implement "fTCPStreamingDatabase"
-// (and the "noteTCPStreamingOnSocket()" and "stopTCPStreamingOnSocket()" member functions):
-class streamingOverTCPRecord {
+#pragma region streamingOverTCPRecord 클래스
+
+// "fTCPStreamingDatabase"를 구현하는 데 사용되는 데이터 구조체
+// (및 "noteTCPStreamingOnSocket()" 및 "stopTCPStreamingOnSocket()" 멤버 함수):
+class streamingOverTCPRecord
+{
 public:
    streamingOverTCPRecord(u_int32_t sessionId, unsigned trackNum, streamingOverTCPRecord* next)
       : fNext(next), fSessionId(sessionId), fTrackNum(trackNum) {
@@ -259,6 +187,9 @@ public:
    u_int32_t fSessionId;
    unsigned fTrackNum;
 };
+
+#pragma endregion
+
 
 RTSPServer::~RTSPServer() {
    // Turn off background HTTP read handling (if any):
@@ -301,19 +232,21 @@ void RTSPServer::incomingConnectionHandlerHTTPIPv4(void* instance, int /*mask*/)
    RTSPServer* server = (RTSPServer*)instance;
    server->incomingConnectionHandlerHTTPIPv4();
 }
+
 void RTSPServer::incomingConnectionHandlerHTTPIPv4() {
    incomingConnectionHandlerOnSocket(fHTTPServerSocketIPv4);
 }
+
 void RTSPServer::incomingConnectionHandlerHTTPIPv6(void* instance, int /*mask*/) {
    RTSPServer* server = (RTSPServer*)instance;
    server->incomingConnectionHandlerHTTPIPv6();
 }
+
 void RTSPServer::incomingConnectionHandlerHTTPIPv6() {
    incomingConnectionHandlerOnSocket(fHTTPServerSocketIPv6);
 }
 
-void RTSPServer
-::noteTCPStreamingOnSocket(int socketNum, RTSPClientSession* clientSession, unsigned trackNum) {
+void RTSPServer::noteTCPStreamingOnSocket(int socketNum, RTSPClientSession* clientSession, unsigned trackNum) {
    streamingOverTCPRecord* sotcpCur
       = (streamingOverTCPRecord*)fTCPStreamingDatabase->Lookup((char const*)socketNum);
    streamingOverTCPRecord* sotcpNew
@@ -321,8 +254,7 @@ void RTSPServer
    fTCPStreamingDatabase->Add((char const*)socketNum, sotcpNew);
 }
 
-void RTSPServer
-::unnoteTCPStreamingOnSocket(int socketNum, RTSPClientSession* clientSession, unsigned trackNum) {
+void RTSPServer::unnoteTCPStreamingOnSocket(int socketNum, RTSPClientSession* clientSession, unsigned trackNum) {
    if (socketNum < 0) return;
    streamingOverTCPRecord* sotcpHead
       = (streamingOverTCPRecord*)fTCPStreamingDatabase->Lookup((char const*)socketNum);
@@ -382,11 +314,99 @@ void RTSPServer::stopTCPStreamingOnSocket(int socketNum) {
    RTPInterface::clearServerRequestAlternativeByteHandler(envir(), socketNum);
 }
 
+#pragma endregion
 
-////////// RTSPServer::RTSPClientConnection implementation //////////
 
-RTSPServer::RTSPClientConnection
-::RTSPClientConnection(RTSPServer& ourServer,
+
+
+#pragma region handleCmd_DESCRIBE
+
+void RTSPServer::RTSPClientConnection::handleCmd_DESCRIBE(char const* urlPreSuffix, char const* urlSuffix, char const* fullRequestStr) 
+{
+   char urlTotalSuffix[2*RTSP_PARAM_STRING_MAX];
+   // enough space for urlPreSuffix/urlSuffix'\0'
+   urlTotalSuffix[0] = '\0';
+   if (urlPreSuffix[0] != '\0') {
+      strcat(urlTotalSuffix, urlPreSuffix);
+      strcat(urlTotalSuffix, "/");
+   }
+   strcat(urlTotalSuffix, urlSuffix);
+
+   if (!authenticationOK("DESCRIBE", urlTotalSuffix, fullRequestStr)) return;
+
+   // 요청에 "Accept:"가 포함되어 있는지 확인해야 합니다. #####
+   // "application/sdp"에 대한 응답이므로, #####
+
+   // 먼저 지정된 "urlTotalSuffix"에 대한 "ServerMediaSession" 객체를 찾습니다.
+   fOurServer.lookupServerMediaSession(urlTotalSuffix, DESCRIBELookupCompletionFunction, this);
+}
+
+void RTSPServer::RTSPClientConnection::DESCRIBELookupCompletionFunction(void* clientData, ServerMediaSession* sessionLookedUp) 
+{
+   RTSPServer::RTSPClientConnection* connection = (RTSPServer::RTSPClientConnection*)clientData;
+   connection->handleCmd_DESCRIBE_afterLookup(sessionLookedUp);
+}
+
+void RTSPServer::RTSPClientConnection::handleCmd_DESCRIBE_afterLookup(ServerMediaSession* session) 
+{
+   char* sdpDescription = NULL;
+   char* rtspURL = NULL;
+   do {
+      if (session == NULL) {
+         handleCmd_notFound();
+         break;
+      }
+
+      // "ServerMediaSession" 객체의 참조 카운트를 증가시킵니다.
+      // 사용 중에 누군가 해당 객체를 제거할 경우를 대비하여:
+      session->incrementReferenceCount();
+
+      // 그런 다음 이 세션에 대한 SDP 설명을 조립합니다.
+      sdpDescription = session->generateSDPDescription(fAddressFamily);
+      if (sdpDescription == NULL) 
+      {
+         // 이는 일반적으로 "ServerMediaSubsession"에 지정된 파일 이름이 존재하지 않음을 의미합니다.
+         setRTSPResponse("404 File Not Found, Or In Incorrect Format");
+         break;
+      }
+      unsigned sdpDescriptionSize = strlen(sdpDescription);
+
+      // 또한 "Content-Base:" 헤더에 대한 RTSP URL을 생성합니다.
+      // (이는 이후 "SETUP" 요청에서 올바른 URL이 사용되도록 하는 데 필요합니다.)
+      rtspURL = fOurRTSPServer.rtspURL(session, fClientInputSocket);
+
+      snprintf((char*)fResponseBuffer, sizeof fResponseBuffer,
+         "RTSP/1.0 200 OK\r\nCSeq: %s\r\n"
+         "%s"
+         "Content-Base: %s/\r\n"
+         "Content-Type: application/sdp\r\n"
+         "Content-Length: %d\r\n\r\n"
+         "%s",
+         fCurrentCSeq,
+         dateHeader(),
+         rtspURL,
+         sdpDescriptionSize,
+         sdpDescription);
+   } while (0);
+
+   if (session != NULL) 
+   {
+      // 이제 사용이 끝났으므로 참조 카운트를 감소시킵니다.
+      session->decrementReferenceCount();
+      if (session->referenceCount() == 0 && session->deleteWhenUnreferenced()) {
+         fOurServer.removeServerMediaSession(session);
+      }
+   }
+
+   delete[] sdpDescription;
+   delete[] rtspURL;
+}
+
+#pragma endregion
+
+#pragma region RTSPServer::RTSPClientConnection 구현 (handleCmd_OPTIONS, DESCRIBE, SETUP, PLAY, TEARDOWN, GET_PARAMETER, SET_PARAMETER)
+
+RTSPServer::RTSPClientConnection::RTSPClientConnection(RTSPServer& ourServer,
    int clientSocket, struct sockaddr_storage const& clientAddr,
    Boolean useTLS)
    : GenericMediaServer::ClientConnection(ourServer, clientSocket, clientAddr, useTLS),
@@ -415,101 +435,21 @@ void RTSPServer::RTSPClientConnection::handleCmd_OPTIONS() {
       fCurrentCSeq, dateHeader(), fOurRTSPServer.allowedCommandNames());
 }
 
-void RTSPServer::RTSPClientConnection
-::handleCmd_GET_PARAMETER(char const* /*fullRequestStr*/) {
+void RTSPServer::RTSPClientConnection::handleCmd_GET_PARAMETER(char const* /*fullRequestStr*/) {
    // By default, we implement "GET_PARAMETER" (on the entire server) just as a 'no op', and send back a dummy response.
    // (If you want to handle this type of "GET_PARAMETER" differently, you can do so by defining a subclass of "RTSPServer"
    // and "RTSPServer::RTSPClientConnection", and then reimplement this virtual function in your subclass.)
    setRTSPResponse("200 OK", LIVEMEDIA_LIBRARY_VERSION_STRING);
 }
 
-void RTSPServer::RTSPClientConnection
-::handleCmd_SET_PARAMETER(char const* /*fullRequestStr*/) {
+void RTSPServer::RTSPClientConnection::handleCmd_SET_PARAMETER(char const* /*fullRequestStr*/) {
    // By default, we implement "SET_PARAMETER" (on the entire server) just as a 'no op', and send back an empty response.
    // (If you want to handle this type of "SET_PARAMETER" differently, you can do so by defining a subclass of "RTSPServer"
    // and "RTSPServer::RTSPClientConnection", and then reimplement this virtual function in your subclass.)
    setRTSPResponse("200 OK");
 }
 
-void RTSPServer::RTSPClientConnection
-::handleCmd_DESCRIBE(char const* urlPreSuffix, char const* urlSuffix, char const* fullRequestStr) {
-   char urlTotalSuffix[2*RTSP_PARAM_STRING_MAX];
-   // enough space for urlPreSuffix/urlSuffix'\0'
-   urlTotalSuffix[0] = '\0';
-   if (urlPreSuffix[0] != '\0') {
-      strcat(urlTotalSuffix, urlPreSuffix);
-      strcat(urlTotalSuffix, "/");
-   }
-   strcat(urlTotalSuffix, urlSuffix);
 
-   if (!authenticationOK("DESCRIBE", urlTotalSuffix, fullRequestStr)) return;
-
-   // We should really check that the request contains an "Accept:" #####
-   // for "application/sdp", because that's what we're sending back #####
-
-   // Begin by looking up the "ServerMediaSession" object for the specified "urlTotalSuffix":
-   fOurServer.lookupServerMediaSession(urlTotalSuffix, DESCRIBELookupCompletionFunction, this);
-}
-
-void RTSPServer::RTSPClientConnection
-::DESCRIBELookupCompletionFunction(void* clientData, ServerMediaSession* sessionLookedUp) {
-   RTSPServer::RTSPClientConnection* connection = (RTSPServer::RTSPClientConnection*)clientData;
-   connection->handleCmd_DESCRIBE_afterLookup(sessionLookedUp);
-}
-
-void RTSPServer::RTSPClientConnection
-::handleCmd_DESCRIBE_afterLookup(ServerMediaSession* session) {
-   char* sdpDescription = NULL;
-   char* rtspURL = NULL;
-   do {
-      if (session == NULL) {
-         handleCmd_notFound();
-         break;
-      }
-
-      // Increment the "ServerMediaSession" object's reference count, in case someone removes it
-      // while we're using it:
-      session->incrementReferenceCount();
-
-      // Then, assemble a SDP description for this session:
-      sdpDescription = session->generateSDPDescription(fAddressFamily);
-      if (sdpDescription == NULL) {
-         // This usually means that a file name that was specified for a
-         // "ServerMediaSubsession" does not exist.
-         setRTSPResponse("404 File Not Found, Or In Incorrect Format");
-         break;
-      }
-      unsigned sdpDescriptionSize = strlen(sdpDescription);
-
-      // Also, generate our RTSP URL, for the "Content-Base:" header
-      // (which is necessary to ensure that the correct URL gets used in subsequent "SETUP" requests).
-      rtspURL = fOurRTSPServer.rtspURL(session, fClientInputSocket);
-
-      snprintf((char*)fResponseBuffer, sizeof fResponseBuffer,
-         "RTSP/1.0 200 OK\r\nCSeq: %s\r\n"
-         "%s"
-         "Content-Base: %s/\r\n"
-         "Content-Type: application/sdp\r\n"
-         "Content-Length: %d\r\n\r\n"
-         "%s",
-         fCurrentCSeq,
-         dateHeader(),
-         rtspURL,
-         sdpDescriptionSize,
-         sdpDescription);
-   } while (0);
-
-   if (session != NULL) {
-      // Decrement its reference count, now that we're done using it:
-      session->decrementReferenceCount();
-      if (session->referenceCount() == 0 && session->deleteWhenUnreferenced()) {
-         fOurServer.removeServerMediaSession(session);
-      }
-   }
-
-   delete[] sdpDescription;
-   delete[] rtspURL;
-}
 
 static void lookForHeader(char const* headerName, char const* source, unsigned sourceLen, char* resultStr, unsigned resultMaxSize) {
    resultStr[0] = '\0';  // by default, return an empty string
@@ -574,7 +514,8 @@ void RTSPServer::RTSPClientConnection::handleCmd_unsupportedTransport() {
 Boolean RTSPServer::RTSPClientConnection::parseHTTPRequestString(char* resultCmdName, unsigned resultCmdNameMaxSize,
    char* urlSuffix, unsigned urlSuffixMaxSize,
    char* sessionCookie, unsigned sessionCookieMaxSize,
-   char* acceptStr, unsigned acceptStrMaxSize) {
+   char* acceptStr, unsigned acceptStrMaxSize) 
+{
    // Check for the limited HTTP requests that we expect for specifying RTSP-over-HTTP tunneling.
    // This parser is currently rather dumb; it should be made smarter #####
    char const* reqStr = (char const*)fRequestBuffer;
@@ -675,8 +616,7 @@ void RTSPServer::RTSPClientConnection::handleHTTPCmd_TunnelingGET(char const* se
       dateHeader());
 }
 
-Boolean RTSPServer::RTSPClientConnection
-::handleHTTPCmd_TunnelingPOST(char const* sessionCookie, unsigned char const* extraData, unsigned extraDataSize) {
+Boolean RTSPServer::RTSPClientConnection::handleHTTPCmd_TunnelingPOST(char const* sessionCookie, unsigned char const* extraData, unsigned extraDataSize) {
    // Use the "sessionCookie" string to look up the separate "RTSPClientConnection" object that should have been used to handle
    // an earlier HTTP "GET" request:
    if (fOurRTSPServer.fClientConnectionsForHTTPTunneling == NULL) {
@@ -1074,11 +1014,8 @@ void RTSPServer::RTSPClientConnection::handleRequestBytes(int newBytesRead) {
 
 #define SKIP_WHITESPACE while (*fields != '\0' && (*fields == ' ' || *fields == '\t')) ++fields
 
-static Boolean parseAuthorizationHeader(char const* buf,
-   char const*& username,
-   char const*& realm,
-   char const*& nonce, char const*& uri,
-   char const*& response) {
+//username, realm, nonce, uri, response 파싱
+static Boolean parseAuthorizationHeader(char const* buf, char const*& username, char const*& realm, char const*& nonce, char const*& uri, char const*& response) {
    // Initialize the result parameters to default values:
    username = realm = nonce = uri = response = NULL;
 
@@ -1132,13 +1069,14 @@ static Boolean parseAuthorizationHeader(char const* buf,
    return success;
 }
 
-Boolean RTSPServer::RTSPClientConnection::authenticationOK(char const* cmdName, char const* urlSuffix, char const* fullRequestStr) {
+Boolean RTSPServer::RTSPClientConnection::authenticationOK(char const* cmdName, char const* urlSuffix, char const* fullRequestStr) 
+{
    if (!fOurRTSPServer.specialClientAccessCheck(fClientInputSocket, fClientAddr, urlSuffix)) {
       setRTSPResponse("401 Unauthorized");
       return False;
    }
 
-   // If we weren't set up with an authentication database, we're OK:
+   // 인증 데이터베이스가 설정되지 않은 경우에는 문제가 없습니다.
    UserAuthenticationDatabase* authDB = fOurRTSPServer.getAuthenticationDatabaseForCommand(cmdName);
    if (authDB == NULL) return True;
 
@@ -1146,16 +1084,15 @@ Boolean RTSPServer::RTSPClientConnection::authenticationOK(char const* cmdName, 
    char const* uri = NULL; char const* response = NULL;
    Boolean success = False;
 
-   do {
-      // To authenticate, we first need to have a nonce set up
-      // from a previous attempt:
+   do 
+   {
+      // 인증을 위해서는 먼저 이전 시도에서 얻은 nonce를 설정해야 합니다.
       if (fCurrentAuthenticator.nonce() == NULL) break;
 
-      // Next, the request needs to contain an "Authorization:" header,
-      // containing a username, (our) realm, (our) nonce, uri,
-      // and response string:
-      if (!parseAuthorizationHeader(fullRequestStr,
-         username, realm, nonce, uri, response)
+      // 다음으로, 요청에는 "Authorization:" 헤더가 포함되어야 합니다.
+      // 여기에는 사용자 이름, (우리의) 영역, (우리의) nonce, uri,
+      // 그리고 응답 문자열이 포함됩니다.
+      if (!parseAuthorizationHeader(fullRequestStr, username, realm, nonce, uri, response)
          || username == NULL
          || realm == NULL || strcmp(realm, fCurrentAuthenticator.realm()) != 0
          || nonce == NULL || strcmp(nonce, fCurrentAuthenticator.nonce()) != 0
@@ -1163,44 +1100,56 @@ Boolean RTSPServer::RTSPClientConnection::authenticationOK(char const* cmdName, 
          break;
       }
 
-      // Next, the username has to be known to us:
+      // 다음으로, 사용자 이름을 알아야 합니다.
       char const* password = authDB->lookupPassword(username);
+
 #ifdef DEBUG
       fprintf(stderr, "lookupPassword(%s) returned password %s\n", username, password);
 #endif
-      if (password == NULL) break;
-      fCurrentAuthenticator.setUsernameAndPassword(username, password, authDB->passwordsAreMD5());
 
-      // Finally, compute a digest response from the information that we have,
-      // and compare it to the one that we were given:
-      char const* ourResponse
-         = fCurrentAuthenticator.computeDigestResponse(cmdName, uri);
+      if (password == NULL) break;
+
+      fCurrentAuthenticator.setUsernameAndPassword(username, password, authDB->passwordsAreMD5());
+      if(fOurRTSPServer.UseSHA256)
+         fCurrentAuthenticator.setUseSHA256(true);
+
+      // 마지막으로, 우리가 가지고 있는 정보로부터 다이제스트 응답을 계산하고
+      // 이를 우리가 받은 응답과 비교합니다.
+      char const* ourResponse = fCurrentAuthenticator.computeDigestResponse(cmdName, uri);
       success = (strcmp(ourResponse, response) == 0);
       fCurrentAuthenticator.reclaimDigestResponse(ourResponse);
+
    } while (0);
 
    delete[] (char*)realm; delete[] (char*)nonce;
    delete[] (char*)uri; delete[] (char*)response;
 
-   if (success) {
-      // The user has been authenticated.
-      // Now allow subclasses a chance to validate the user against the IP address and/or URL suffix.
-      if (!fOurRTSPServer.specialClientUserAccessCheck(fClientInputSocket, fClientAddr, urlSuffix, username)) {
-         // Note: We don't return a "WWW-Authenticate" header here, because the user is valid,
-         // even though the server has decided that they should not have access.
+   if (success) 
+   {
+      #pragma region 인증성공
+
+      // 사용자가 인증되었습니다.
+      // 이제 하위 클래스가 IP 주소 및/또는 URL 접미사를 사용하여 사용자를 검증할 수 있도록 허용합니다.
+      if (!fOurRTSPServer.specialClientUserAccessCheck(fClientInputSocket, fClientAddr, urlSuffix, username))
+      {
+         // 참고: 여기서는 "WWW-Authenticate" 헤더를 반환하지 않습니다. 사용자가 유효하기 때문입니다.
+         // 서버에서 해당 사용자에게 접근 권한이 없다고 결정한 경우에도 마찬가지입니다.
          setRTSPResponse("401 Unauthorized");
-         delete[] (char*)username;
+         delete[](char*)username;
          return False;
       }
+      #pragma endregion
    }
    delete[] (char*)username;
    if (success) return True;
 
-   // If we get here, we failed to authenticate the user.
-   // Send back a "401 Unauthorized" response, with a new random nonce:
+   #pragma region 인증실패(401 Unauthorized)
+
+   // 여기까지 오면 사용자 인증에 실패한 것입니다.
+   // 새로운 난수 값과 함께 "401 Unauthorized" 응답을 반환합니다.
    Boolean isInitial401 = fCurrentAuthenticator.nonce() == NULL;
    fCurrentAuthenticator.setRealmAndRandomNonce(authDB->realm());
-   const char* algoPart = gAdvertiseDigestSHA256 ? ", algorithm=SHA-256" : "";  // ← 추가
+   const char* algoPart = fOurRTSPServer.UseSHA256 ? ", algorithm=\"SHA-256\"" : "";
 
    snprintf((char*)fResponseBuffer, sizeof fResponseBuffer,
       "RTSP/1.0 401 Unauthorized\r\n"
@@ -1210,14 +1159,19 @@ Boolean RTSPServer::RTSPClientConnection::authenticationOK(char const* cmdName, 
       fCurrentCSeq,
       dateHeader(),
       fCurrentAuthenticator.realm(), fCurrentAuthenticator.nonce(), algoPart);
-   if (!isInitial401) { // this is an actual authentication failure
+   
+   if (!isInitial401) 
+   { // this is an actual authentication failure
       fOurRTSPServer.specialHandlingOfAuthenticationFailure(fClientInputSocket, fClientAddr, urlSuffix);
    }
+   
+   #pragma endregion
+
    return False;
 }
 
-void RTSPServer::RTSPClientConnection
-::setRTSPResponse(char const* responseStr) {
+void RTSPServer::RTSPClientConnection::setRTSPResponse(char const* responseStr) 
+{
    snprintf((char*)fResponseBuffer, sizeof fResponseBuffer,
       "RTSP/1.0 %s\r\n"
       "CSeq: %s\r\n"
@@ -1227,8 +1181,8 @@ void RTSPServer::RTSPClientConnection
       dateHeader());
 }
 
-void RTSPServer::RTSPClientConnection
-::setRTSPResponse(char const* responseStr, u_int32_t sessionId) {
+void RTSPServer::RTSPClientConnection::setRTSPResponse(char const* responseStr, u_int32_t sessionId) 
+{
    snprintf((char*)fResponseBuffer, sizeof fResponseBuffer,
       "RTSP/1.0 %s\r\n"
       "CSeq: %s\r\n"
@@ -1240,8 +1194,8 @@ void RTSPServer::RTSPClientConnection
       sessionId);
 }
 
-void RTSPServer::RTSPClientConnection
-::setRTSPResponse(char const* responseStr, char const* contentStr) {
+void RTSPServer::RTSPClientConnection::setRTSPResponse(char const* responseStr, char const* contentStr) 
+{
    if (contentStr == NULL) contentStr = "";
    unsigned const contentLen = strlen(contentStr);
 
@@ -1258,8 +1212,8 @@ void RTSPServer::RTSPClientConnection
       contentStr);
 }
 
-void RTSPServer::RTSPClientConnection
-::setRTSPResponse(char const* responseStr, u_int32_t sessionId, char const* contentStr) {
+void RTSPServer::RTSPClientConnection::setRTSPResponse(char const* responseStr, u_int32_t sessionId, char const* contentStr) 
+{
    if (contentStr == NULL) contentStr = "";
    unsigned const contentLen = strlen(contentStr);
 
@@ -1278,9 +1232,9 @@ void RTSPServer::RTSPClientConnection
       contentStr);
 }
 
-void RTSPServer::RTSPClientConnection
-::changeClientInputSocket(int newSocketNum, ServerTLSState const* newTLSState,
-   unsigned char const* extraData, unsigned extraDataSize) {
+void RTSPServer::RTSPClientConnection::changeClientInputSocket(int newSocketNum, ServerTLSState const* newTLSState,
+   unsigned char const* extraData, unsigned extraDataSize) 
+{
    // Change the socket number:
    envir().taskScheduler().disableBackgroundHandling(fClientInputSocket);
    fClientInputSocket = newSocketNum;
@@ -1301,8 +1255,11 @@ void RTSPServer::RTSPClientConnection
    }
 }
 
+#pragma endregion
 
-////////// RTSPServer::RTSPClientSession implementation //////////
+
+
+#pragma region RTSPServer::RTSPClientSession 구현
 
 RTSPServer::RTSPClientSession
 ::RTSPClientSession(RTSPServer& ourServer, u_int32_t sessionId)
@@ -1359,7 +1316,8 @@ static void parseTransportHeader(char const* buf,
    portNumBits& clientRTCPPortNum, // if UDP
    unsigned char& rtpChannelId, // if TCP
    unsigned char& rtcpChannelId // if TCP
-) {
+) 
+   {
    // Initialize the result parameters to default values:
    streamingMode = RTP_UDP;
    streamingModeString = NULL;
@@ -1425,8 +1383,7 @@ static Boolean parsePlayNowHeader(char const* buf) {
    return True;
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_SETUP(RTSPServer::RTSPClientConnection* ourClientConnection,
+void RTSPServer::RTSPClientSession::handleCmd_SETUP(RTSPServer::RTSPClientConnection* ourClientConnection,
    char const* urlPreSuffix, char const* urlSuffix, char const* fullRequestStr) {
    // Normally, "urlPreSuffix" should be the session (stream) name, and "urlSuffix" should be the subsession (track) name.
    // However (being "liberal in what we accept"), we also handle 'aggregate' SETUP requests (i.e., without a track name),
@@ -1443,14 +1400,13 @@ void RTSPServer::RTSPClientSession
       fOurServerMediaSession == NULL);
 }
 
-void RTSPServer::RTSPClientSession
-::SETUPLookupCompletionFunction1(void* clientData, ServerMediaSession* sessionLookedUp) {
+void RTSPServer::RTSPClientSession::SETUPLookupCompletionFunction1(void* clientData, ServerMediaSession* sessionLookedUp) {
    RTSPServer::RTSPClientSession* session = (RTSPServer::RTSPClientSession*)clientData;
    session->handleCmd_SETUP_afterLookup1(sessionLookedUp);
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_SETUP_afterLookup1(ServerMediaSession* sms) {
+void RTSPServer::RTSPClientSession::handleCmd_SETUP_afterLookup1(ServerMediaSession* sms) 
+{
    if (sms != NULL) {
       // The lookup succeeded; continue working with the returned "ServerMediaSession":
       handleCmd_SETUP_afterLookup2(sms);
@@ -1476,14 +1432,12 @@ void RTSPServer::RTSPClientSession
    delete[] concatenatedStreamName;
 }
 
-void RTSPServer::RTSPClientSession
-::SETUPLookupCompletionFunction2(void* clientData, ServerMediaSession* sessionLookedUp) {
+void RTSPServer::RTSPClientSession::SETUPLookupCompletionFunction2(void* clientData, ServerMediaSession* sessionLookedUp) {
    RTSPServer::RTSPClientSession* session = (RTSPServer::RTSPClientSession*)clientData;
    session->handleCmd_SETUP_afterLookup2(sessionLookedUp);
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_SETUP_afterLookup2(ServerMediaSession* sms) {
+void RTSPServer::RTSPClientSession::handleCmd_SETUP_afterLookup2(ServerMediaSession* sms) {
    do {
       if (sms == NULL) {
          if (fOurServerMediaSession == NULL) {
@@ -1740,8 +1694,7 @@ void RTSPServer::RTSPClientSession
    } while (0);
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_withinSession(RTSPServer::RTSPClientConnection* ourClientConnection,
+void RTSPServer::RTSPClientSession::handleCmd_withinSession(RTSPServer::RTSPClientConnection* ourClientConnection,
    char const* cmdName,
    char const* urlPreSuffix, char const* urlSuffix,
    char const* fullRequestStr) {
@@ -1801,9 +1754,8 @@ void RTSPServer::RTSPClientSession
    }
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_TEARDOWN(RTSPServer::RTSPClientConnection* ourClientConnection,
-   ServerMediaSubsession* subsession) {
+void RTSPServer::RTSPClientSession::handleCmd_TEARDOWN(RTSPServer::RTSPClientConnection* ourClientConnection, ServerMediaSubsession* subsession) 
+{
    unsigned i;
    for (i = 0; i < fNumStreamStates; ++i) {
       if (subsession == NULL /* means: aggregated operation */
@@ -1830,9 +1782,8 @@ void RTSPServer::RTSPClientSession
    if (noSubsessionsRemain) delete this;
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_PLAY(RTSPServer::RTSPClientConnection* ourClientConnection,
-   ServerMediaSubsession* subsession, char const* fullRequestStr) {
+void RTSPServer::RTSPClientSession::handleCmd_PLAY(RTSPServer::RTSPClientConnection* ourClientConnection, ServerMediaSubsession* subsession, char const* fullRequestStr) 
+{
    char* rtspURL
       = fOurRTSPServer.rtspURL(fOurServerMediaSession, ourClientConnection->fClientInputSocket);
    unsigned rtspURLSize = strlen(rtspURL);
@@ -2048,9 +1999,8 @@ void RTSPServer::RTSPClientSession
    delete[] scaleHeader; delete[] rtspURL;
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_PAUSE(RTSPServer::RTSPClientConnection* ourClientConnection,
-   ServerMediaSubsession* subsession) {
+void RTSPServer::RTSPClientSession::handleCmd_PAUSE(RTSPServer::RTSPClientConnection* ourClientConnection, ServerMediaSubsession* subsession) 
+{
    for (unsigned i = 0; i < fNumStreamStates; ++i) {
       if (subsession == NULL /* means: aggregated operation */
          || subsession == fStreamStates[i].subsession) {
@@ -2063,30 +2013,33 @@ void RTSPServer::RTSPClientSession
    setRTSPResponse(ourClientConnection, "200 OK", fOurSessionId);
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_GET_PARAMETER(RTSPServer::RTSPClientConnection* ourClientConnection,
-   ServerMediaSubsession* /*subsession*/, char const* /*fullRequestStr*/) {
+void RTSPServer::RTSPClientSession::handleCmd_GET_PARAMETER(RTSPServer::RTSPClientConnection* ourClientConnection,
+   ServerMediaSubsession* /*subsession*/, char const* /*fullRequestStr*/) 
+{
    // By default, we implement "GET_PARAMETER" just as a 'keep alive', and send back a dummy response.
    // (If you want to handle "GET_PARAMETER" properly, you can do so by defining a subclass of "RTSPServer"
    // and "RTSPServer::RTSPClientSession", and then reimplement this virtual function in your subclass.)
    setRTSPResponse(ourClientConnection, "200 OK", fOurSessionId, LIVEMEDIA_LIBRARY_VERSION_STRING);
 }
 
-void RTSPServer::RTSPClientSession
-::handleCmd_SET_PARAMETER(RTSPServer::RTSPClientConnection* ourClientConnection,
-   ServerMediaSubsession* /*subsession*/, char const* /*fullRequestStr*/) {
+void RTSPServer::RTSPClientSession::handleCmd_SET_PARAMETER(RTSPServer::RTSPClientConnection* ourClientConnection,
+   ServerMediaSubsession* /*subsession*/, char const* /*fullRequestStr*/) 
+{
    // By default, we implement "SET_PARAMETER" just as a 'keep alive', and send back an empty response.
    // (If you want to handle "SET_PARAMETER" properly, you can do so by defining a subclass of "RTSPServer"
    // and "RTSPServer::RTSPClientSession", and then reimplement this virtual function in your subclass.)
    setRTSPResponse(ourClientConnection, "200 OK", fOurSessionId);
 }
 
-GenericMediaServer::ClientConnection*
-RTSPServer::createNewClientConnection(int clientSocket, struct sockaddr_storage const& clientAddr) {
+#pragma endregion
+
+GenericMediaServer::ClientConnection* RTSPServer::createNewClientConnection(int clientSocket, struct sockaddr_storage const& clientAddr) 
+{
    return new RTSPClientConnection(*this, clientSocket, clientAddr, fOurConnectionsUseTLS);
 }
 
-GenericMediaServer::ClientSession*
-RTSPServer::createNewClientSession(u_int32_t sessionId) {
+GenericMediaServer::ClientSession* RTSPServer::createNewClientSession(u_int32_t sessionId) 
+{
    return new RTSPClientSession(*this, sessionId);
 }
+
