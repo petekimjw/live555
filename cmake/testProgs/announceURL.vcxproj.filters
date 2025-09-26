@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\announceURL.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\testProgs\announceURL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\announceURL.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="\testProgs\announceURL.hh" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\CMakeLists.txt" />
+    <CustomBuild Include="\testProgs\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\cmake\testProgs\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testMPEG2TransportStreamer.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testMPEG2TransportStreamer</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\cmake\testProgs\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testMPEG2TransportStreamer.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testMPEG2TransportStreamer</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">\cmake\testProgs\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testMPEG2TransportStreamer.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testMPEG2TransportStreamer</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">\cmake\testProgs\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testMPEG2TransportStreamer.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testMPEG2TransportStreamer</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\liveMedia\include;..\..\UsageEnvironment\include;..\..\groupsock\include;..\..\BasicUsageEnvironment\include;..\..\liveMedia\liveMedia\include;..\..\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/OpenSSL-Win64/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -106,10 +106,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;WIN32_WINNT=0x10.0.26100;LIVEMEDIA_API=;BUILD_SHARED_LIBS=0;LOCALE_NOT_USED;SOCKLEN_T=int;HAVE_EPOLL_SCHEDULER;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/OpenSSL-Win64/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -152,10 +152,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_WINNT=0x10.0.26100;LIVEMEDIA_API=;BUILD_SHARED_LIBS=0;LOCALE_NOT_USED;SOCKLEN_T=int;HAVE_EPOLL_SCHEDULER;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -178,7 +178,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/OpenSSL-Win64/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -198,10 +198,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_WINNT=0x10.0.26100;LIVEMEDIA_API=;BUILD_SHARED_LIBS=0;LOCALE_NOT_USED;SOCKLEN_T=int;HAVE_EPOLL_SCHEDULER;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -224,7 +224,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Program Files/OpenSSL-Win64/include"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -243,10 +243,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;WIN32_WINNT=0x10.0.26100;LIVEMEDIA_API=;BUILD_SHARED_LIBS=0;LOCALE_NOT_USED;SOCKLEN_T=int;HAVE_EPOLL_SCHEDULER;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\UsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\groupsock\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\liveMedia\liveMedia\include;D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>\liveMedia\include;\UsageEnvironment\include;\groupsock\include;\BasicUsageEnvironment\include;\liveMedia\liveMedia\include;\EpollTaskScheduler\include;C:\Program Files\OpenSSL-Win64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -268,7 +268,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\CMakeLists.txt">
+    <CustomBuild Include="\testProgs\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
@@ -281,7 +281,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
@@ -294,7 +294,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
@@ -307,7 +307,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
@@ -320,37 +320,37 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\testProgs\testMPEG2TransportStreamer.cpp" />
+    <ClCompile Include="..\..\testProgs\testMPEG2TransportStreamer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\ZERO_CHECK.vcxproj">
+    <ProjectReference Include="\cmake\ZERO_CHECK.vcxproj">
       <Project>{6D9EC4A6-8871-33BC-9E84-71FAFAA9C5D8}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
+    <ProjectReference Include="\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
       <Project>{46858923-A1DA-3F63-BE0B-83D57EA8ACA2}</Project>
       <Name>BasicUsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
+    <ProjectReference Include="\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
       <Project>{BD201DC7-933F-329D-882D-2412597625ED}</Project>
       <Name>EpollTaskScheduler</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
+    <ProjectReference Include="\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
       <Project>{8020F01D-8185-3A90-8B4F-8EDABEAF7DB0}</Project>
       <Name>UsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\groupsock\groupsock.vcxproj">
+    <ProjectReference Include="\cmake\groupsock\groupsock.vcxproj">
       <Project>{BFF90A2A-78C3-324F-BEB8-1AFA330B8C9E}</Project>
       <Name>groupsock</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\cmake\liveMedia\liveMedia.vcxproj">
+    <ProjectReference Include="\cmake\liveMedia\liveMedia.vcxproj">
       <Project>{7843210A-1CD0-33B6-B4A8-60D268404A12}</Project>
       <Name>liveMedia</Name>
     </ProjectReference>

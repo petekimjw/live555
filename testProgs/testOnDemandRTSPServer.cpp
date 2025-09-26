@@ -1,7 +1,7 @@
 ﻿//#define SERVER_USE_TLS
 //#define PATHNAME_TO_CERTIFICATE_FILE "localhost-100y.cert"
 //#define PATHNAME_TO_PRIVATE_KEY_FILE "localhost-100y.key"
-
+//#include "..\liveMedia\include\liveMedia.hh"
 #include "liveMedia.hh"
 
 #include "BasicUsageEnvironment.hh"
