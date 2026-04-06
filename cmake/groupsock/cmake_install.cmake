@@ -1,4 +1,4 @@
-# Install script for directory: D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock
+# Install script for directory: E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,26 +34,26 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Debug" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/Debug/groupsock.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Debug" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/Debug/groupsock.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Release" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/Release/groupsock.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Release" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/Release/groupsock.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/MinSizeRel" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/MinSizeRel/groupsock.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/MinSizeRel" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/MinSizeRel/groupsock.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/RelWithDebInfo" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/RelWithDebInfo/groupsock.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/RelWithDebInfo" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/groupsock/RelWithDebInfo/groupsock.lib")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/groupsock" TYPE FILE FILES
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/GroupEId.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/Groupsock.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/GroupsockHelper.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/IOHandlers.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetAddress.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetCommon.h"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetInterface.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/groupsock_version.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/GroupEId.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/Groupsock.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/GroupsockHelper.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/IOHandlers.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetAddress.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetCommon.h"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/NetInterface.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/groupsock/include/groupsock_version.hh"
     )
 endif()
 

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\cmake\testProgs\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\cmake\testProgs\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testMPEG1or2VideoReceiver.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">testMPEG1or2VideoReceiver</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\cmake\testProgs\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\cmake\testProgs\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testMPEG1or2VideoReceiver.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">testMPEG1or2VideoReceiver</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">\cmake\testProgs\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\cmake\testProgs\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testMPEG1or2VideoReceiver.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">testMPEG1or2VideoReceiver</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">\cmake\testProgs\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\cmake\testProgs\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testMPEG1or2VideoReceiver.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">testMPEG1or2VideoReceiver</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -117,13 +117,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\liveMedia\Debug\liveMedia.lib;..\groupsock\Debug\groupsock.lib;ws2_32.lib;mswsock.lib;..\EpollTaskScheduler\Debug\EpollTaskScheduler.lib;..\BasicUsageEnvironment\Debug\BasicUsageEnvironment.lib;..\UsageEnvironment\Debug\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\cmake\liveMedia\Debug\liveMedia.lib;..\..\cmake\groupsock\Debug\groupsock.lib;ws2_32.lib;mswsock.lib;..\..\cmake\EpollTaskScheduler\Debug\EpollTaskScheduler.lib;..\..\cmake\BasicUsageEnvironment\Debug\BasicUsageEnvironment.lib;..\..\cmake\UsageEnvironment\Debug\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/Debug/testMPEG1or2VideoReceiver.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/Debug/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../cmake/testProgs/Debug/testMPEG1or2VideoReceiver.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../cmake/testProgs/Debug/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -163,13 +163,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\liveMedia\Release\liveMedia.lib;..\groupsock\Release\groupsock.lib;ws2_32.lib;mswsock.lib;..\EpollTaskScheduler\Release\EpollTaskScheduler.lib;..\BasicUsageEnvironment\Release\BasicUsageEnvironment.lib;..\UsageEnvironment\Release\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\cmake\liveMedia\Release\liveMedia.lib;..\..\cmake\groupsock\Release\groupsock.lib;ws2_32.lib;mswsock.lib;..\..\cmake\EpollTaskScheduler\Release\EpollTaskScheduler.lib;..\..\cmake\BasicUsageEnvironment\Release\BasicUsageEnvironment.lib;..\..\cmake\UsageEnvironment\Release\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/Release/testMPEG1or2VideoReceiver.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/Release/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../cmake/testProgs/Release/testMPEG1or2VideoReceiver.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../cmake/testProgs/Release/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -209,13 +209,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\liveMedia\MinSizeRel\liveMedia.lib;..\groupsock\MinSizeRel\groupsock.lib;ws2_32.lib;mswsock.lib;..\EpollTaskScheduler\MinSizeRel\EpollTaskScheduler.lib;..\BasicUsageEnvironment\MinSizeRel\BasicUsageEnvironment.lib;..\UsageEnvironment\MinSizeRel\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\cmake\liveMedia\MinSizeRel\liveMedia.lib;..\..\cmake\groupsock\MinSizeRel\groupsock.lib;ws2_32.lib;mswsock.lib;..\..\cmake\EpollTaskScheduler\MinSizeRel\EpollTaskScheduler.lib;..\..\cmake\BasicUsageEnvironment\MinSizeRel\BasicUsageEnvironment.lib;..\..\cmake\UsageEnvironment\MinSizeRel\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/MinSizeRel/testMPEG1or2VideoReceiver.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/MinSizeRel/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../cmake/testProgs/MinSizeRel/testMPEG1or2VideoReceiver.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../cmake/testProgs/MinSizeRel/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -254,13 +254,13 @@
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
     <Link>
-      <AdditionalDependencies>..\liveMedia\RelWithDebInfo\liveMedia.lib;..\groupsock\RelWithDebInfo\groupsock.lib;ws2_32.lib;mswsock.lib;..\EpollTaskScheduler\RelWithDebInfo\EpollTaskScheduler.lib;..\BasicUsageEnvironment\RelWithDebInfo\BasicUsageEnvironment.lib;..\UsageEnvironment\RelWithDebInfo\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalDependencies>..\..\cmake\liveMedia\RelWithDebInfo\liveMedia.lib;..\..\cmake\groupsock\RelWithDebInfo\groupsock.lib;ws2_32.lib;mswsock.lib;..\..\cmake\EpollTaskScheduler\RelWithDebInfo\EpollTaskScheduler.lib;..\..\cmake\BasicUsageEnvironment\RelWithDebInfo\BasicUsageEnvironment.lib;..\..\cmake\UsageEnvironment\RelWithDebInfo\UsageEnvironment.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libssl.lib;C:\Program Files\OpenSSL-Win64\lib\VC\x64\MD\libcrypto.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/RelWithDebInfo/testMPEG1or2VideoReceiver.lib</ImportLibrary>
-      <ProgramDataBaseFile>D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/RelWithDebInfo/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
+      <ImportLibrary>../../cmake/testProgs/RelWithDebInfo/testMPEG1or2VideoReceiver.lib</ImportLibrary>
+      <ProgramDataBaseFile>../../cmake/testProgs/RelWithDebInfo/testMPEG1or2VideoReceiver.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -268,11 +268,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="\testProgs\CMakeLists.txt">
+    <CustomBuild Include="..\..\testProgs\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -281,11 +281,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -294,11 +294,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -307,11 +307,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -320,7 +320,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
@@ -328,29 +328,29 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="..\..\testProgs\testMPEG1or2VideoReceiver.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="\cmake\ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\..\cmake\ZERO_CHECK.vcxproj">
       <Project>{6D9EC4A6-8871-33BC-9E84-71FAFAA9C5D8}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
+    <ProjectReference Include="..\..\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
       <Project>{46858923-A1DA-3F63-BE0B-83D57EA8ACA2}</Project>
       <Name>BasicUsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
+    <ProjectReference Include="..\..\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
       <Project>{BD201DC7-933F-329D-882D-2412597625ED}</Project>
       <Name>EpollTaskScheduler</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
+    <ProjectReference Include="..\..\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
       <Project>{8020F01D-8185-3A90-8B4F-8EDABEAF7DB0}</Project>
       <Name>UsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\groupsock\groupsock.vcxproj">
+    <ProjectReference Include="..\..\cmake\groupsock\groupsock.vcxproj">
       <Project>{BFF90A2A-78C3-324F-BEB8-1AFA330B8C9E}</Project>
       <Name>groupsock</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\liveMedia\liveMedia.vcxproj">
+    <ProjectReference Include="..\..\cmake\liveMedia\liveMedia.vcxproj">
       <Project>{7843210A-1CD0-33B6-B4A8-60D268404A12}</Project>
       <Name>liveMedia</Name>
     </ProjectReference>

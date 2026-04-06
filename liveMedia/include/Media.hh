@@ -1,4 +1,4 @@
-/**********
+﻿/**********
 This library is free software; you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the
 Free Software Foundation; either version 3 of the License, or (at your
@@ -47,7 +47,15 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 
 #define mediumNameMaxLen 30
 
-class LIVEMEDIA_API Medium {
+//liveMedia 계층의 루트(base) 클래스. 대부분의 미디어 관련 클래스(MediaSource, MediaSink, MediaSession, RTCPInstance, RTSPClient/Server 등)가 Medium을 상속
+//1. 환경 보관: UsageEnvironment& envir()
+//2. 이름 보관: char const* name() const — 등록된 미디엄 이름을 반환합니다(fMediumName). 
+//3. 생성자/소멸자 둘 다 protected → 직접 생성/삭제가 아닌 서브클래스의 createNew() 및 **Medium::close()**로 수명 관리
+//4. 이름 기반 조회: lookupByName. 환경 내 등록 테이블에서 이름으로 객체 검색
+//5. 타입 질의(가벼운 RTTI): isSource(), isMediaSession(), isRTCPInstance() 등
+//6. 스케줄링 훅: TaskToken& nextTask() — 이벤트 루프 스케줄링에서 사용
+class LIVEMEDIA_API Medium 
+{
 public:
   static Boolean lookupByName(UsageEnvironment& env,
 			      char const* mediumName,
@@ -85,10 +93,10 @@ private:
 };
 
 
-// A data structure for looking up a Medium by its string name.
-// (It is used only to implement "Medium", but we make it visible here, in case developers want to use it to iterate over
-//  the whole set of "Medium" objects that we've created.)
-class LIVEMEDIA_API MediaLookupTable {
+// 문자열 이름으로 매체를 조회하는 데이터 구조입니다.
+// ("Medium"을 구현하는 데만 사용되지만, 개발자가 생성한 "Medium" 객체 전체를 반복하는 데 사용할 수 있도록 여기에 표시합니다.)
+class LIVEMEDIA_API MediaLookupTable 
+{
 public:
   static MediaLookupTable* ourMedia(UsageEnvironment& env);
   HashTable const& getTable() { return *fTable; }

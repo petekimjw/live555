@@ -20,9 +20,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include "BasicUsageEnvironment0.hh"
 #include "HandlerSet.hh"
 
-////////// A subclass of DelayQueueEntry,
-//////////     used to implement BasicTaskScheduler0::scheduleDelayedTask()
-
+////////// DelayQueueEntry의 하위 클래스로,
+////////// BasicTaskScheduler0::scheduleDelayedTask()를 구현하는 데 사용됩니다.
 class AlarmHandler: public DelayQueueEntry {
 public:
   AlarmHandler(TaskFunc* proc, void* clientData, DelayInterval timeToDelay, intptr_t token)

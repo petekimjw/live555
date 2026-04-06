@@ -1,7 +1,6 @@
 ﻿//#define SERVER_USE_TLS
-//#define PATHNAME_TO_CERTIFICATE_FILE "localhost-100y.cert"
-//#define PATHNAME_TO_PRIVATE_KEY_FILE "localhost-100y.key"
-//#include "..\liveMedia\include\liveMedia.hh"
+#define PATHNAME_TO_CERTIFICATE_FILE "localhost-100y.cert"
+#define PATHNAME_TO_PRIVATE_KEY_FILE "localhost-100y.key"
 #include "liveMedia.hh"
 
 #include "BasicUsageEnvironment.hh"
@@ -34,13 +33,6 @@ Boolean reuseFirstSource = False;
 Boolean iFramesOnly = False;
 
 #pragma region Digest인증 (ComputeHA1_SHA256)
-
-// ====== Digest SHA-256: 서버 설정 ======
-// 서버 Realm
-static const char* kRealm = "ivx-realm";
-// 사용자/비밀번호 예시
-static const char* kUser  = "user1";
-static const char* kPass  = "pass1";
 
 // SHA-256(hex) 유틸
 static void toHex(const unsigned char* data, size_t len, char* out /* len*2+1 */)
@@ -116,13 +108,13 @@ int main(int argc, char** argv)
    fs::path cwd = fs::current_path();
    std::cout << "현재 디렉토리: " << cwd << std::endl;
 
-   #pragma region BasicUsageEnvironment 스케줄러, 인증
- 
    //TaskScheduler: 소켓/타이머 등록과 콜백 실행을 담당하는 이벤트 루프 엔진
    //UsageEnvironment: 그 스케줄러를 품고, 로그/에러 메시지·헬퍼를 제공하는 상위 컨텍스트
 
    TaskScheduler* scheduler = BasicTaskScheduler::createNew();
    env = BasicUsageEnvironment::createNew(*scheduler);
+
+   #pragma region 기본 인증(Basic auth)
 
    UserAuthenticationDatabase* authDB = NULL;
 
@@ -135,13 +127,20 @@ int main(int argc, char** argv)
    #endif  
    #pragma endregion
 
-   #pragma region Digest
+   #pragma region Digest 인증(SHA-256)
 
    // === Digest 인증 활성화 ===
    // 1) UserAuthenticationDatabase 를 생성할 때 realm을 지정
    // 2) passwordIsMD5=True 로 설정하면 addUserRecord()에 'HA1'을 넣을 수 있습니다.
    //    (본 프로젝트에서는 'HA1'을 SHA-256로 계산 — 라이브러리 패치가 필요)
+   #ifdef SERVER_USE_TLS
    {
+      // 서버 Realm
+      static const char* kRealm = "ivx-realm";
+      // 사용자/비밀번호 예시
+      static const char* kUser  = "user1";
+      static const char* kPass  = "pass1";
+
       authDB = new UserAuthenticationDatabase(kRealm, True /*passwordsAreMD5 - 여기선 '이미 해시된 HA1' 의미*/);
 
       // SHA-256 HA1 계산 후 등록
@@ -157,21 +156,24 @@ int main(int argc, char** argv)
          authDB->addUserRecord(kUser, kPass);
       }
    }
+   #endif
 
    #pragma endregion
 
    #pragma region RTSP server생성 (RTSP or RTSPs)
 
    #ifdef SERVER_USE_TLS
+
    // Serve RTSPS: RTSP over a TLS connection:
    RTSPServer* rtspServer = RTSPServer::createNew(*env, 322, authDB);
+
    #else
+
    // Serve regular RTSP (over a TCP connection):
    RTSPServer* rtspServer = RTSPServer::createNew(*env, 8554, authDB);
 
-   rtspServer->UseSHA256 = true; //algorithm=SHA-256 설정
-
    #endif
+   rtspServer->UseSHA256 = true; //algorithm=SHA-256 설정
 
    if (rtspServer == NULL) {
       *env << "Failed to create RTSP server: " << env->getResultMsg() << "\n";
@@ -180,9 +182,8 @@ int main(int argc, char** argv)
 
    #ifdef SERVER_USE_TLS
    #ifndef STREAM_USING_SRTP
-   #define STREAM_USING_SRTP True
+   #define STREAM_USING_SRTP false
    #endif
-   
    rtspServer->setTLSState(PATHNAME_TO_CERTIFICATE_FILE, PATHNAME_TO_PRIVATE_KEY_FILE, STREAM_USING_SRTP);
    #endif  
    

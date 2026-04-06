@@ -1,4 +1,4 @@
-# Install script for directory: D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment
+# Install script for directory: E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,23 +34,23 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Dd][Ee][Bb][Uu][Gg])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Debug" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/Debug/UsageEnvironment.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Debug" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/Debug/UsageEnvironment.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Release" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/Release/UsageEnvironment.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/Release" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/Release/UsageEnvironment.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Mm][Ii][Nn][Ss][Ii][Zz][Ee][Rr][Ee][Ll])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/MinSizeRel" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/MinSizeRel/UsageEnvironment.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/MinSizeRel" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/MinSizeRel/UsageEnvironment.lib")
   elseif(CMAKE_INSTALL_CONFIG_NAME MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/RelWithDebInfo" TYPE STATIC_LIBRARY FILES "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/RelWithDebInfo/UsageEnvironment.lib")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/RelWithDebInfo" TYPE STATIC_LIBRARY FILES "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/UsageEnvironment/RelWithDebInfo/UsageEnvironment.lib")
   endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/UsageEnvironment" TYPE FILE FILES
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/Boolean.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/HashTable.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/UsageEnvironment.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/UsageEnvironment_version.hh"
-    "D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/strDup.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/Boolean.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/HashTable.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/UsageEnvironment.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/UsageEnvironment_version.hh"
+    "E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/UsageEnvironment/include/strDup.hh"
     )
 endif()
 

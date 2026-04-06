@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -108,12 +108,12 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="\cmake\CMakeFiles\63f7ad212c39944205cf0e2e9b145492\generate.stamp.rule">
+    <CustomBuild Include="..\cmake\CMakeFiles\63f7ad212c39944205cf0e2e9b145492\generate.stamp.rule">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/live555.sln
+"C:\Program Files\CMake\bin\cmake.exe" -S.. -B../cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file ../cmake/live555.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,7 +127,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/live555.sln
+"C:\Program Files\CMake\bin\cmake.exe" -S.. -B../cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file ../cmake/live555.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -141,7 +141,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/live555.sln
+"C:\Program Files\CMake\bin\cmake.exe" -S.. -B../cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file ../cmake/live555.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -155,7 +155,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/live555.sln
+"C:\Program Files\CMake\bin\cmake.exe" -S.. -B../cmake --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file ../cmake/live555.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

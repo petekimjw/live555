@@ -100,60 +100,64 @@ public:
       char const* absStartTime, char const* absEndTime = NULL, float scale = 1.0f,
       Authenticator* authenticator = NULL);
 
+   // "session"에 대해 집계 RTSP "PAUSE" 명령을 실행한 다음, 명령에 사용된 "CSeq" 시퀀스 번호를 반환합니다.
+   // ("responseHandler" 및 "authenticator" 매개변수는 "sendDescribeCommand"에서 설명한 것과 같습니다.)
    unsigned sendPauseCommand(MediaSession& session, responseHandler* responseHandler, Authenticator* authenticator = NULL);
-   // Issues an aggregate RTSP "PAUSE" command on "session", then returns the "CSeq" sequence number that was used in the command.
-   // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
-   unsigned sendPauseCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
-   // Issues a RTSP "PAUSE" command on "subsession", then returns the "CSeq" sequence number that was used in the command.
-   // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
 
-   unsigned sendRecordCommand(MediaSession& session, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+   // "subsession"에서 RTSP "PAUSE" 명령을 실행한 다음, 명령에 사용된 "CSeq" 시퀀스 번호를 반환합니다.
+   // ("responseHandler" 및 "authenticator" 매개변수는 "sendDescribeCommand"에서 설명한 것과 같습니다.)
+   unsigned sendPauseCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+
    // Issues an aggregate RTSP "RECORD" command on "session", then returns the "CSeq" sequence number that was used in the command.
    // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
-   unsigned sendRecordCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+   unsigned sendRecordCommand(MediaSession& session, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+   
    // Issues a RTSP "RECORD" command on "subsession", then returns the "CSeq" sequence number that was used in the command.
    // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
+   unsigned sendRecordCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
 
-   unsigned sendTeardownCommand(MediaSession& session, responseHandler* responseHandler, Authenticator* authenticator = NULL);
    // Issues an aggregate RTSP "TEARDOWN" command on "session", then returns the "CSeq" sequence number that was used in the command.
    // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
-   unsigned sendTeardownCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+   unsigned sendTeardownCommand(MediaSession& session, responseHandler* responseHandler, Authenticator* authenticator = NULL);
+
    // Issues a RTSP "TEARDOWN" command on "subsession", then returns the "CSeq" sequence number that was used in the command.
    // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
+   unsigned sendTeardownCommand(MediaSubsession& subsession, responseHandler* responseHandler, Authenticator* authenticator = NULL);
 
+   // Issues an aggregate RTSP "SET_PARAMETER" command on "session", then returns the "CSeq" sequence number that was used in the command.
+   // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
    unsigned sendSetParameterCommand(MediaSession& session, responseHandler* responseHandler,
       char const* parameterName, char const* parameterValue,
       Authenticator* authenticator = NULL);
-   // Issues an aggregate RTSP "SET_PARAMETER" command on "session", then returns the "CSeq" sequence number that was used in the command.
-   // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
 
+   // "session"에 대해 집계 RTSP "GET_PARAMETER" 명령을 실행한 다음, 명령에 사용된 "CSeq" 시퀀스 번호를 반환합니다.
+   // ("responseHandler" 및 "authenticator" 매개변수는 "sendDescribeCommand"에서 설명한 것과 같습니다.)
    unsigned sendGetParameterCommand(MediaSession& session, responseHandler* responseHandler, char const* parameterName,
       Authenticator* authenticator = NULL);
-   // Issues an aggregate RTSP "GET_PARAMETER" command on "session", then returns the "CSeq" sequence number that was used in the command.
-   // (The "responseHandler" and "authenticator" parameters are as described for "sendDescribeCommand".)
 
+   // 후속 RTSP 명령에 포함될 "Require:" 헤더 값으로 사용할 문자열을 설정합니다. 
+   // "setRequireValue()"를 다시 호출합니다(매개변수 없이). 
+   // 이를 해제하여 후속 명령에 "Require:" 헤더가 포함되지 않도록 합니다.
    void setRequireValue(char const* requireValue = NULL);
-   // Sets a string to be used as the value of a "Require:" header to be included in
-   // subsequent RTSP commands.  Call "setRequireValue()" again (i.e., with no parameter)
-   // to clear this (and so stop "Require:" headers from being included in subsequent cmds).
 
    void sendDummyUDPPackets(MediaSession& session, unsigned numDummyPackets = 2);
+
+   // 짧은 '더미'(즉, RTP 또는 RTCP가 아닌) UDP 패킷을 서버로 전송하여
+   // NAT 뒤에 있을 때 서버에서 보내는 RTP/RTCP 패킷이 도달할 가능성을 높입니다.
+   // (RTP-over-TCP 스트리밍을 요청한 경우 이 함수는 효과가 없습니다.)
+   // 저희 구현에서는 각 "PLAY" 명령을 전송하기 직전에 이 작업을 자동으로 수행합니다.
+   // 무엇을 해야 할지 모르는 경우 이 함수를 직접 호출하지 마세요.
    void sendDummyUDPPackets(MediaSubsession& subsession, unsigned numDummyPackets = 2);
-   // Sends short 'dummy' (i.e., non-RTP or RTCP) UDP packets towards the server, to increase
-   // the likelihood of RTP/RTCP packets from the server reaching us if we're behind a NAT.
-   // (If we requested RTP-over-TCP streaming, then these functions have no effect.)
-   // Our implementation automatically does this just prior to sending each "PLAY" command;
-   // You should not call these functions yourself unless you know what you're doing.
 
+   // '재생' 명령의 '속도:' 옵션을 사용하여 더 빠른 다운로드를 지원하기 위해 (녹화된) 미디어 다운로드 속도를 주어진 값으로 설정합니다.
+   //
    void setSpeed(MediaSession& session, float speed = 1.0f);
-   // Set (recorded) media download speed to given value to support faster download using 'Speed:'
-   // option on 'PLAY' command.
 
+   // 이전에 수행된 명령(해당 작업이 "cseq"를 반환함)에 대한 응답 처리기를 변경합니다.
+   // (명령에 대한 응답 처리를 끄려면 "newResponseHandler" 값을 NULL로 설정합니다. 이는
+   // 예를 들어 명령에 대한 '시간 초과 처리기' 구현의 일부로 수행될 수 있습니다.)
+   // 이 함수는 "cseq"가 이전에 수행된 유효한 명령(해당 명령의 응답이 아직 처리되지 않음)에 대한 것이면 True를 반환합니다.
    Boolean changeResponseHandler(unsigned cseq, responseHandler* newResponseHandler);
-   // Changes the response handler for the previously-performed command (whose operation returned "cseq").
-   // (To turn off any response handling for the command, use a "newResponseHandler" value of NULL.  This might be done as part
-   //  of an implementation of a 'timeout handler' on the command, for example.)
-   // This function returns True iff "cseq" was for a valid previously-performed command (whose response is still unhandled).
 
    int socketNum() const { return fInputSocketNum; }
 
@@ -166,12 +170,12 @@ public:
    Boolean parseRTSPURL(char const* url,
       char*& username, char*& password, NetAddress& address, portNumBits& portNum, char const** urlSuffix = NULL);
 
-   void setUserAgentString(char const* userAgentName);
    // sets an alternative string to be used in RTSP "User-Agent:" headers
+   void setUserAgentString(char const* userAgentName);
 
-   void disallowBasicAuthentication() { fAllowBasicAuthentication = False; }
    // call this if you don't want the server to request 'Basic' authentication
    // (which would cause the client to send usernames and passwords over the net).
+   void disallowBasicAuthentication() { fAllowBasicAuthentication = False; }
 
    unsigned sessionTimeoutParameter() const { return fSessionTimeoutParameter; }
 
@@ -182,18 +186,19 @@ public:
 public: 
    #pragma region RequestRecord 클래스
 
-   // Some compilers complain if this is "private:"
-   // The state of a request-in-progress:
+   // 일부 컴파일러는 이것이 "private"인 경우 다음과 같이 오류를 표시합니다.
+   // 진행 중인 요청의 상태:
    class LIVEMEDIA_API RequestRecord 
    {
    public:
       RequestRecord(unsigned cseq, char const* commandName, responseHandler* handler,
          MediaSession* session = NULL, MediaSubsession* subsession = NULL, u_int32_t booleanFlags = 0,
          double start = 0.0f, double end = -1.0f, float scale = 1.0f, char const* contentStr = NULL);
+
+      // '절대' 시간 값을 포함하는 "PLAY" 요청을 생성하기 위한 대체 생성자
       RequestRecord(unsigned cseq, responseHandler* handler,
          char const* absStartTime, char const* absEndTime = NULL, float scale = 1.0f,
          MediaSession* session = NULL, MediaSubsession* subsession = NULL);
-      // alternative constructor for creating "PLAY" requests that include 'absolute' time values
       virtual ~RequestRecord();
 
       RequestRecord*& next() { return fNext; }
@@ -240,8 +245,8 @@ protected:
       char*& cmdURL, Boolean& cmdURLWasAllocated,
       char const*& protocolStr,
       char*& extraHeaders, Boolean& extraHeadersWereAllocated);
-   // used to implement "sendRequest()"; subclasses may reimplement this (e.g., when implementing a new command name)
-   virtual int connectToServer(int socketNum, portNumBits remotePortNum); // used to implement "openConnection()"; result values: -1: failure; 0: pending; 1: success
+   // "sendRequest()"를 구현하는 데 사용됩니다. 하위 클래스는 이를 다시 구현할 수 있습니다(예: 새 명령 이름을 구현할 때)
+   virtual int connectToServer(int socketNum, portNumBits remotePortNum); // "openConnection()"을 구현하는 데 사용됨; 결과 값: -1: 실패; 0: 보류; 1: 성공
 
 private: // redefined virtual functions
    virtual Boolean isRTSPClient() const;
@@ -280,7 +285,9 @@ private:
    void handleRequestError(RequestRecord* request);
    Boolean parseResponseCode(char const* line, unsigned& responseCode, char const*& responseString);
    void handleIncomingRequest();
+   //문자열(line)이 헤더명(headerName)으로 시작하는지 확인하고, 맞다면 헤더값(headerParams) 반환
    static Boolean checkForHeader(char const* line, char const* headerName, unsigned headerNameLength, char const*& headerParams);
+
    Boolean parseTransportParams(char const* paramsStr,
       char*& serverAddressStr, portNumBits& serverPortNum,
       unsigned char& rtpChannelId, unsigned char& rtcpChannelId);

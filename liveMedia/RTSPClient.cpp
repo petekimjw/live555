@@ -1,11 +1,11 @@
-#include "RTSPClient.hh"
+ï»¿#include "RTSPClient.hh"
 #include "RTSPCommon.hh"
 #include "Base64.hh"
 #include "Locale.hh"
 #include <GroupsockHelper.hh>
 #include "ourMD5.hh"
 
-#pragma region ÃÊ±âÈ­
+#pragma region ì´ˆê¸°í™”
 
 RTSPClient* RTSPClient::createNew(UsageEnvironment& env, char const* rtspURL,
    int verbosityLevel,
@@ -100,7 +100,7 @@ int RTSPClient::grabSocket()
 
 #pragma endregion
 
-#pragma region Send (Describe, Option, Play, Pause, Record, Teardown, Parameter µî)
+#pragma region Send (Describe, Option, Play, Pause, Record, Teardown, Parameter ë“±)
 
 unsigned RTSPClient::sendDescribeCommand(responseHandler* responseHandler, Authenticator* authenticator) 
 {
@@ -487,7 +487,7 @@ static char* createSessionString(char const* sessionId)
    return sessionStr;
 }
 
-// PLAYÀÇ "¼Óµµ:" ¿É¼ÇÀ» »ç¿ëÇÏ¿© ´õ ºü¸¥ ´Ù¿î·Îµå Áö¿ø Ãß°¡
+// PLAYì˜ "ì†ë„:" ì˜µì…˜ì„ ì‚¬ìš©í•˜ì—¬ ë” ë¹ ë¥¸ ë‹¤ìš´ë¡œë“œ ì§€ì› ì¶”ê°€
 static char* createSpeedString(float speed) 
 {
    char buf[100];
@@ -565,7 +565,7 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
    {
       Boolean connectionIsPending = False;
       if (!fRequestsAwaitingConnection.isEmpty()) {
-         // ¿¬°áÀÌ ÇöÀç º¸·ù ÁßÀÔ´Ï´Ù(ÃÖ¼Ò ÇÏ³ªÀÇ ¿äÃ»ÀÌ ´ë±â ÁßÀÔ´Ï´Ù). ´ÙÀ½ ¿äÃ»µµ ´ë±â¿­¿¡ Ãß°¡ÇÏ¼¼¿ä.
+         // ì—°ê²°ì´ í˜„ì¬ ë³´ë¥˜ ì¤‘ì…ë‹ˆë‹¤(ìµœì†Œ í•˜ë‚˜ì˜ ìš”ì²­ì´ ëŒ€ê¸° ì¤‘ì…ë‹ˆë‹¤). ë‹¤ìŒ ìš”ì²­ë„ ëŒ€ê¸°ì—´ì— ì¶”ê°€í•˜ì„¸ìš”.
          connectionIsPending = True;
       }
       else if (fInputSocketNum < 0) 
@@ -583,7 +583,7 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
          return request->cseq();
       }
 
-      // ¿äÃ»ÀÌ ÀÖ´Â °æ¿ì(¾ÆÁ÷ ¼öÇà ÁßÀÌ ¾Æ´Ï°Å³ª ¼öÇàÇÑ ÀûÀÌ ¾ø´Â °æ¿ì), RTSP-over-HTTP ÅÍ³Î¸µÀ» À§ÇÑ Æ¯¼ö ÇÁ·ÎÅäÄİÀ» ¼³Á¤ÇÕ´Ï´Ù.
+      // ìš”ì²­ì´ ìˆëŠ” ê²½ìš°(ì•„ì§ ìˆ˜í–‰ ì¤‘ì´ ì•„ë‹ˆê±°ë‚˜ ìˆ˜í–‰í•œ ì ì´ ì—†ëŠ” ê²½ìš°), RTSP-over-HTTP í„°ë„ë§ì„ ìœ„í•œ íŠ¹ìˆ˜ í”„ë¡œí† ì½œì„ ì„¤ì •í•©ë‹ˆë‹¤.
       if (fTunnelOverHTTPPortNum != 0 && strcmp(request->commandName(), "GET") != 0 && fOutputSocketNum == fInputSocketNum) 
       {
          if (!setupHTTPTunneling1()) break;
@@ -591,7 +591,7 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
          return request->cseq();
       }
 
-      #pragma region ¸í·Éº° Çì´õ ±¸¼º(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt µî)
+      #pragma region ëª…ë ¹ë³„ í—¤ë” êµ¬ì„±(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt ë“±)
 
       char* cmdURL = fBaseURL; // by default
       Boolean cmdURLWasAllocated = False;
@@ -604,7 +604,7 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
       char* contentLengthHeader = (char*)""; // by default
       Boolean contentLengthHeaderWasAllocated = False;
 
-      //Send¸í·ÉÀÇ ÇÊµå¸¦ ¼³Á¤(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt µî)
+      //Sendëª…ë ¹ì˜ í•„ë“œë¥¼ ì„¤ì •(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt ë“±)
       if (!setRequestFields(request, cmdURL, cmdURLWasAllocated, protocolStr,
          extraHeaders, extraHeadersWereAllocated))
       {
@@ -668,8 +668,8 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
 
       if (fTunnelOverHTTPPortNum != 0 && strcmp(request->commandName(), "GET") != 0 && strcmp(request->commandName(), "POST") != 0) 
       {
-         // RTSP-over-HTTP ÅÍ³Î¸µÀ» ¼öÇàÇÒ ¶§, ¿äÃ»À» Àü¼ÛÇÏ±â Àü¿¡ Base-64 ÀÎÄÚµùÀ» ¼öÇàÇÕ´Ï´Ù.
-         // (´Ü, ÅÍ³Î ¼³Á¤¿¡ »ç¿ëÇÏ´Â HTTP "GET" ¹× "POST" ¸í·É¿¡´Â ÀÌ ÀÛ¾÷À» ¼öÇàÇÏÁö ¾Ê½À´Ï´Ù.)
+         // RTSP-over-HTTP í„°ë„ë§ì„ ìˆ˜í–‰í•  ë•Œ, ìš”ì²­ì„ ì „ì†¡í•˜ê¸° ì „ì— Base-64 ì¸ì½”ë”©ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
+         // (ë‹¨, í„°ë„ ì„¤ì •ì— ì‚¬ìš©í•˜ëŠ” HTTP "GET" ë° "POST" ëª…ë ¹ì—ëŠ” ì´ ì‘ì—…ì„ ìˆ˜í–‰í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)
          char* origCmd = cmd;
          cmd = base64Encode(origCmd, strlen(cmd));
          if (fVerbosityLevel >= 1) envir() << "\tThe request was base-64 encoded to: " << cmd << "\n\n";
@@ -687,8 +687,8 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
          break;
       }
 
-      // ¸í·É Àü¼ÛÀÌ ¼º°øÇßÀ¸¹Ç·Î ¿äÃ» ·¹ÄÚµå¸¦ Å¥¿¡ Ãß°¡ÇÏ¿© ÀÀ´ä(¿À·ù ¹ß»ı ½Ã)À» Ã³¸®ÇÒ ¼ö ÀÖµµ·Ï ÇÕ´Ï´Ù.
-      // ÇÏÁö¸¸ RTSP-over-HTTP¸¦ »ç¿ëÇÏ´Â POST ¸í·É¿¡ ´ëÇÑ ÀÀ´äÀº ¿¹»óÇÏÁö ¾ÊÀ¸¹Ç·Î Å¥¿¡ Ãß°¡ÇÏÁö ¸¶¼¼¿ä.
+      // ëª…ë ¹ ì „ì†¡ì´ ì„±ê³µí–ˆìœ¼ë¯€ë¡œ ìš”ì²­ ë ˆì½”ë“œë¥¼ íì— ì¶”ê°€í•˜ì—¬ ì‘ë‹µ(ì˜¤ë¥˜ ë°œìƒ ì‹œ)ì„ ì²˜ë¦¬í•  ìˆ˜ ìˆë„ë¡ í•©ë‹ˆë‹¤.
+      // í•˜ì§€ë§Œ RTSP-over-HTTPë¥¼ ì‚¬ìš©í•˜ëŠ” POST ëª…ë ¹ì— ëŒ€í•œ ì‘ë‹µì€ ì˜ˆìƒí•˜ì§€ ì•Šìœ¼ë¯€ë¡œ íì— ì¶”ê°€í•˜ì§€ ë§ˆì„¸ìš”.
       int cseq = request->cseq();
 
       if (fTunnelOverHTTPPortNum == 0 || strcmp(request->commandName(), "POST") != 0) {
@@ -702,14 +702,14 @@ unsigned RTSPClient::sendRequest(RequestRecord* request)
       return cseq;
    } while (0);
 
-   // ¿À·ù°¡ ¹ß»ıÇßÀ¸¹Ç·Î ÀÀ´ä ÇÚµé·¯¸¦ Áï½Ã È£ÃâÇÕ´Ï´Ù(¿À·ù¸¦ ³ªÅ¸³¿):
+   // ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìœ¼ë¯€ë¡œ ì‘ë‹µ í•¸ë“¤ëŸ¬ë¥¼ ì¦‰ì‹œ í˜¸ì¶œí•©ë‹ˆë‹¤(ì˜¤ë¥˜ë¥¼ ë‚˜íƒ€ëƒ„):
    delete[] cmd;
    handleRequestError(request);
    delete request;
    return 0;
 }
 
-//Send¸í·ÉÀÇ ÇÊµå¸¦ ¼³Á¤(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt µî)
+//Sendëª…ë ¹ì˜ í•„ë“œë¥¼ ì„¤ì •(Accept, Content-Type, Transport, Session, Blocksize, KeyMgmt ë“±)
 Boolean RTSPClient::setRequestFields(RequestRecord* request, char*& cmdURL, Boolean& cmdURLWasAllocated,
    char const*& protocolStr, char*& extraHeaders, Boolean& extraHeadersWereAllocated) 
 {
@@ -718,8 +718,8 @@ Boolean RTSPClient::setRequestFields(RequestRecord* request, char*& cmdURL, Bool
       extraHeaders = (char*)"Accept: application/sdp\r\n";
    }
    else if (strcmp(request->commandName(), "OPTIONS") == 0) {
-      // ÇöÀç ¼¼¼Ç¿¡ Âü¿© ÁßÀÌ¶ó¸é "Session:" Çì´õ¸¦ »ı¼ºÇÕ´Ï´Ù
-      // (¼­¹ö°¡ Å¬¶óÀÌ¾ğÆ®ÀÇ 'È°¼º »óÅÂ'¸¦ ³ªÅ¸³»±æ ¿øÇÒ °æ¿ì). ÀÌ´Â 'Ãß°¡ Çì´õ'¸¦ ±¸¼ºÇÕ´Ï´Ù.
+      // í˜„ì¬ ì„¸ì…˜ì— ì°¸ì—¬ ì¤‘ì´ë¼ë©´ "Session:" í—¤ë”ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+      // (ì„œë²„ê°€ í´ë¼ì´ì–¸íŠ¸ì˜ 'í™œì„± ìƒíƒœ'ë¥¼ ë‚˜íƒ€ë‚´ê¸¸ ì›í•  ê²½ìš°). ì´ëŠ” 'ì¶”ê°€ í—¤ë”'ë¥¼ êµ¬ì„±í•©ë‹ˆë‹¤.
       extraHeaders = createSessionString(fLastSessionId);
       extraHeadersWereAllocated = True;
    }
@@ -1028,7 +1028,7 @@ int RTSPClient::connectToServer(int socketNum, portNumBits remotePortNum) {
    return 1;
 }
 
-//fCurrentAuthenticator ÀÌ¿ëÇÏ¿© ÀÎÁõ¹®ÀÚ¿­ »ı¼º (Digest or Basic)
+//fCurrentAuthenticator ì´ìš©í•˜ì—¬ ì¸ì¦ë¬¸ìì—´ ìƒì„± (Digest or Basic)
 char* RTSPClient::createAuthenticatorString(char const* cmd, char const* url)
 {
    Authenticator& auth = fCurrentAuthenticator; // alias, for brevity
@@ -1232,7 +1232,7 @@ void RTSPClient::handleAlternativeRequestByte1(u_int8_t requestByte)
 #pragma endregion
 
 
-#pragma region handle (RequestError, SetupResponse, PlayResponse, handleResponseBytes µî)
+#pragma region handle (RequestError, SetupResponse, PlayResponse, handleResponseBytes ë“±)
 
 void RTSPClient::handleRequestError(RequestRecord* request) 
 {
@@ -1250,15 +1250,15 @@ void RTSPClient::handleRequestError(RequestRecord* request)
 
 
 
-//Çì´õ ¸Å°³º¯¼ö¸¦ ¹İÈ¯
+//ë¬¸ìì—´(line)ì´ í—¤ë”ëª…(headerName)ìœ¼ë¡œ ì‹œì‘í•˜ëŠ”ì§€ í™•ì¸í•˜ê³ , ë§ë‹¤ë©´ í—¤ë”ê°’(headerParams) ë°˜í™˜
 Boolean RTSPClient::checkForHeader(char const* line, char const* headerName, unsigned headerNameLength, char const*& headerParams)
 {
    if (_strncasecmp(line, headerName, headerNameLength) != 0) return False;
 
-   // ÇØ´ç ÁÙÀº ¿øÇÏ´Â Çì´õ ÀÌ¸§À¸·Î ½ÃÀÛÇÕ´Ï´Ù. °ø¹éÀ» Á¦°ÅÇÏ°í Çì´õ ¸Å°³º¯¼ö¸¦ ¹İÈ¯ÇÕ´Ï´Ù.
+   // í•´ë‹¹ ì¤„ì€ ì›í•˜ëŠ” í—¤ë” ì´ë¦„ìœ¼ë¡œ ì‹œì‘í•©ë‹ˆë‹¤. ê³µë°±ì„ ì œê±°í•˜ê³  í—¤ë” ë§¤ê°œë³€ìˆ˜ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤.
    unsigned paramIndex = headerNameLength;
    while (line[paramIndex] != '\0' && (line[paramIndex] == ' ' || line[paramIndex] == '\t')) ++paramIndex;
-   if (line[paramIndex] == '\0') return False; // ¸Å°³º¯¼ö°¡ ¾øÀ¸¸é Çì´õ°¡ Àß¸øµÈ °ÍÀ¸·Î °£ÁÖµË´Ï´Ù.
+   if (line[paramIndex] == '\0') return False; // ë§¤ê°œë³€ìˆ˜ê°€ ì—†ìœ¼ë©´ í—¤ë”ê°€ ì˜ëª»ëœ ê²ƒìœ¼ë¡œ ê°„ì£¼ë©ë‹ˆë‹¤.
 
    headerParams = &line[paramIndex];
    return True;
@@ -1513,10 +1513,10 @@ Boolean RTSPClient::handleGET_PARAMETERResponse(char const* parameterName, char*
    return False;
 }
 
-//"WWW-Authenticate:" Çì´õ¿¡¼­ fCurrentAuthenticator °´Ã¼ÆÄ½Ì -> Àç½ÃµµÇÏ·Á¸é True, ÀÎÁõ½ÇÆĞ¸é False ¹İÈ¯
+//"WWW-Authenticate:" í—¤ë”ì—ì„œ fCurrentAuthenticator ê°ì²´íŒŒì‹± -> ì¬ì‹œë„í•˜ë ¤ë©´ True, ì¸ì¦ì‹¤íŒ¨ë©´ False ë°˜í™˜
 Boolean RTSPClient::handleAuthenticationFailure(char const* paramsStr)
 {
-   if (paramsStr == NULL) return False; //"WWW-Authenticate:" Çì´õ¾øÀ½
+   if (paramsStr == NULL) return False; //"WWW-Authenticate:" í—¤ë”ì—†ìŒ
 
    Boolean realmHasChanged = False; // by default
    Boolean isStale = False; // by default
@@ -1564,9 +1564,9 @@ Boolean RTSPClient::handleAuthenticationFailure(char const* paramsStr)
    if (success)
    {
       if ((!realmHasChanged && !isStale) || fCurrentAuthenticator.username() == NULL || fCurrentAuthenticator.password() == NULL) {
-         // ÀÌ¹Ì µ¿ÀÏÇÑ ¿µ¿ª(±×¸®°í ¿À·¡µÈ nonce°¡ ¾Æ´Ñ)À¸·Î ½ÃµµÇß°Å³ª,
-         // »ç¿ëÀÚ ÀÌ¸§ ¹×/¶Ç´Â ºñ¹Ğ¹øÈ£°¡ ¾ø´Â °æ¿ì, »õ·Î¿î "WWW-Authenticate:" Çì´õ
-         // Á¤º¸´Â µµ¿òÀÌ µÇÁö ¾Ê½À´Ï´Ù. ÀÎÁõµÇÁö ¾ÊÀº »óÅÂ·Î À¯ÁöµË´Ï´Ù.
+         // ì´ë¯¸ ë™ì¼í•œ ì˜ì—­(ê·¸ë¦¬ê³  ì˜¤ë˜ëœ nonceê°€ ì•„ë‹Œ)ìœ¼ë¡œ ì‹œë„í–ˆê±°ë‚˜,
+         // ì‚¬ìš©ì ì´ë¦„ ë°/ë˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì—†ëŠ” ê²½ìš°, ìƒˆë¡œìš´ "WWW-Authenticate:" í—¤ë”
+         // ì •ë³´ëŠ” ë„ì›€ì´ ë˜ì§€ ì•ŠìŠµë‹ˆë‹¤. ì¸ì¦ë˜ì§€ ì•Šì€ ìƒíƒœë¡œ ìœ ì§€ë©ë‹ˆë‹¤.
          success = False;
       }
    }
@@ -1633,19 +1633,19 @@ void RTSPClient::constructSubsessionURL(MediaSubsession const& subsession, char 
 
 #pragma endregion
 
-#pragma region HTTP ÅÍ³Î¸µ
+#pragma region HTTP í„°ë„ë§
 
 //send the HTTP "GET"
 Boolean RTSPClient::setupHTTPTunneling1() 
 {
-   // Set up RTSP-over-HTTP tunneling, as described in
-   //     http://mirror.informatimago.com/next/developer.apple.com/quicktime/icefloe/dispatch028.html
-   // and http://images.apple.com/br/quicktime/pdf/QTSS_Modules.pdf
+   // ë‹¤ìŒ ì„¤ëª…ì— ë”°ë¼ RTSP-over-HTTP í„°ë„ë§ì„ ì„¤ì •í•©ë‹ˆë‹¤.
+   // http://mirror.informatimago.com/next/developer.apple.com/quicktime/icefloe/dispatch028.html
+   // ë° http://images.apple.com/br/quicktime/pdf/QTSS_Modules.pdf
    if (fVerbosityLevel >= 1) {
       envir() << "Requesting RTSP-over-HTTP tunneling (on port " << fTunnelOverHTTPPortNum << ")\n\n";
    }
 
-   // Begin by sending a HTTP "GET", to set up the server->client link.  Continue when we handle the response:
+   // HTTP "GET"ì„ ì „ì†¡í•˜ì—¬ ì„œë²„->í´ë¼ì´ì–¸íŠ¸ ì—°ê²°ì„ ì„¤ì •í•©ë‹ˆë‹¤. ì‘ë‹µì„ ì²˜ë¦¬í•  ë•Œ ë‹¤ìŒ ë‹¨ê³„ë¥¼ ê³„ì†í•©ë‹ˆë‹¤.
    return sendRequest(new RequestRecord(1, "GET", responseHandlerForHTTP_GET)) != 0;
 }
 
@@ -1653,7 +1653,8 @@ void RTSPClient::responseHandlerForHTTP_GET(RTSPClient* rtspClient, int response
    if (rtspClient != NULL) rtspClient->responseHandlerForHTTP_GET1(responseCode, responseString);
 }
 
-void RTSPClient::responseHandlerForHTTP_GET1(int responseCode, char* responseString) {
+void RTSPClient::responseHandlerForHTTP_GET1(int responseCode, char* responseString) 
+{
    RequestRecord* request;
    do {
       delete[] responseString; // we don't need it (but are responsible for deleting it)
@@ -1721,47 +1722,54 @@ Boolean RTSPClient::setupHTTPTunneling2()
 
 #pragma endregion
 
-#pragma region ¿¬°áÃ³¸® (connectionHandler)
+#pragma region ì—°ê²°ì²˜ë¦¬ (connectionHandler)
 
+//TCP ì—°ê²° ì™„ë£Œ ì‹œì ì— ìˆ˜í–‰í•˜ëŠ” í›„ì²˜ë¦¬ í•¸ë“¤ëŸ¬.
+//ì—°ê²° ìƒíƒœë¥¼ í™•ì¸í•´ ì„±ê³µì´ë©´ ëŒ€ê¸° ì¤‘ì´ë˜ RTSP ìš”ì²­ë“¤ì„ ì „ì†¡ ì¬ê°œí•˜ê³ , ì‹¤íŒ¨ë©´ ëª¨ë‘ ì˜¤ë¥˜ë¡œ ë§ˆë¬´ë¦¬
 void RTSPClient::connectionHandler(void* instance, int /*mask*/) 
 {
    RTSPClient* client = (RTSPClient*)instance;
    client->connectionHandler1();
 }
 
+//TCP ì—°ê²° ì™„ë£Œ ì‹œì ì— ìˆ˜í–‰í•˜ëŠ” í›„ì²˜ë¦¬ í•¸ë“¤ëŸ¬.
+//ì—°ê²° ìƒíƒœë¥¼ í™•ì¸í•´ ì„±ê³µì´ë©´ ëŒ€ê¸° ì¤‘ì´ë˜ RTSP ìš”ì²­ë“¤ì„ ì „ì†¡ ì¬ê°œí•˜ê³ , ì‹¤íŒ¨ë©´ ëª¨ë‘ ì˜¤ë¥˜ë¡œ ë§ˆë¬´ë¦¬
 void RTSPClient::connectionHandler1() 
 {
-   // Restore normal handling on our sockets:
+   //ì†Œì¼“ì´ ì¤€ë¹„ë˜ë©´ ë™ì‘í•˜ëŠ” í•¸ë“¤ëŸ¬ ë“±ë¡ (incomingDataHandler)
    envir().taskScheduler().disableBackgroundHandling(fOutputSocketNum);
    envir().taskScheduler().setBackgroundHandling(fInputSocketNum, SOCKET_READABLE | SOCKET_EXCEPTION,
       (TaskScheduler::BackgroundHandlerProc*)&incomingDataHandler, this);
 
-   // Move all requests awaiting connection into a new, temporary queue, to clear "fRequestsAwaitingConnection"
-   // (so that "sendRequest()" doesn't get confused by "fRequestsAwaitingConnection" being nonempty, and enqueue them all over again).
+   // ì—°ê²°ì„ ê¸°ë‹¤ë¦¬ëŠ” ëª¨ë“  ìš”ì²­ì„ ìƒˆë¡œìš´ ì„ì‹œ íë¡œ ì˜®ê²¨ "fRequestsAwaitingConnection"ì„ ë¹„ì›ë‹ˆë‹¤.
+   // ("fRequestsAwaitingConnection"ì´ ë¹„ì–´ ìˆì§€ ì•Šì•„ "sendRequest()"ê°€ í˜¼ë™ë˜ì–´ ë‹¤ì‹œ íì— ë„£ì§€ ì•Šë„ë¡ í•©ë‹ˆë‹¤.)
    RequestQueue tmpRequestQueue(fRequestsAwaitingConnection);
    RequestRecord* request;
 
-   // Find out whether the connection succeeded or failed:
+   // ì—°ê²°ì´ ì„±ê³µí–ˆëŠ”ì§€ ì‹¤íŒ¨í–ˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤.
    do {
       int err = 0;
       SOCKLEN_T len = sizeof err;
-      // Note: Normally "fOutputSocketNum" == "fInputSocketNum" here, except when we're connecting
-      // to the second (i.e., "POST") connection when doing RTSP-over-HTTP:
-      if (getsockopt(fOutputSocketNum, SOL_SOCKET, SO_ERROR, (char*)&err, &len) < 0 || err != 0) {
+
+      // ì°¸ê³ : ì¼ë°˜ì ìœ¼ë¡œ "fOutputSocketNum" == "fInputSocketNum"ì…ë‹ˆë‹¤. ë‹¨, RTSP-over-HTTPë¥¼ ìˆ˜í–‰í•  ë•Œ ë‘ ë²ˆì§¸(ì¦‰, "POST") ì—°ê²°ì— ì—°ê²°í•  ë•ŒëŠ” ì˜ˆì™¸ì…ë‹ˆë‹¤.
+      //getsockopt(SO_ERROR)ë¡œ ì»¤ë„¥ì…˜ ì—ëŸ¬ í™•ì¸
+      if (getsockopt(fOutputSocketNum, SOL_SOCKET, SO_ERROR, (char*)&err, &len) < 0 || err != 0) 
+      {
          envir().setResultErrMsg("Connection to server failed: ", err);
          if (fVerbosityLevel >= 1) envir() << "..." << envir().getResultMsg() << "\n";
          break;
       }
 
-      // Note: Normally "fOutputTLS" == "fInputTLS" here, except when we're connecting
-      // to the second (i.e., "POST") connection when doing RTSP-over-HTTP:
-      if (fOutputTLS->isNeeded) {
-         // We need to complete an additional TLS connection:
+      // ì°¸ê³ : ì¼ë°˜ì ìœ¼ë¡œ "fOutputTLS" == "fInputTLS"ì…ë‹ˆë‹¤. ë‹¨, RTSP-over-HTTPë¥¼ ì‚¬ìš©í•  ë•Œ ë‘ ë²ˆì§¸(ì¦‰, "POST") ì—°ê²°ì— ì—°ê²°í•  ë•ŒëŠ” ì˜ˆì™¸ì…ë‹ˆë‹¤.
+      if (fOutputTLS->isNeeded) 
+      {
+         // ì¶”ê°€ TLS ì—°ê²°ì„ ì™„ë£Œí•´ì•¼ í•©ë‹ˆë‹¤.
          int tlsConnectResult = fOutputTLS->connect(fOutputSocketNum);
+
          if (tlsConnectResult < 0) break; // error in TLS connection
          if (tlsConnectResult > 0 && fVerbosityLevel >= 1) envir() << "...TLS connection completed\n";
          if (tlsConnectResult == 0) {
-            // The connection is still pending.  Continue deferring...
+            // ì—°ê²°ì´ ì•„ì§ ë³´ë¥˜ ì¤‘ì…ë‹ˆë‹¤. ê³„ì† ì§€ì—°í•©ë‹ˆë‹¤...
             while ((request = tmpRequestQueue.dequeue()) != NULL) {
                fRequestsAwaitingConnection.enqueue(request);
             }
@@ -1769,10 +1777,10 @@ void RTSPClient::connectionHandler1()
          }
       }
 
-      // The connection succeeded.  If the connection came about from an attempt to set up RTSP-over-HTTP, finish this now:
+      // ì—°ê²°ì´ ì„±ê³µí–ˆìŠµë‹ˆë‹¤. RTSP-over-HTTP ì„¤ì • ì‹œë„ë¡œ ì—°ê²°ì´ ì´ë£¨ì–´ì§„ ê²½ìš°, ì§€ê¸ˆ ë‹¤ìŒ ì‘ì—…ì„ ì™„ë£Œí•˜ì„¸ìš”.
       if (fHTTPTunnelingConnectionIsPending && !setupHTTPTunneling2()) break;
 
-      // The connection is complete.  Resume sending all pending requests:
+      // ì—°ê²°ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë³´ë¥˜ ì¤‘ì¸ ëª¨ë“  ìš”ì²­ ì „ì†¡ì„ ì¬ê°œí•©ë‹ˆë‹¤.
       if (fVerbosityLevel >= 1) envir() << "...remote connection opened\n";
       while ((request = tmpRequestQueue.dequeue()) != NULL) {
          sendRequest(request);
@@ -1780,8 +1788,9 @@ void RTSPClient::connectionHandler1()
       return;
    } while (0);
 
-   // An error occurred.  Tell all pending requests about the error:
-   resetTCPSockets(); // do this now, in case an error handler deletes "this"
+   // ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë³´ë¥˜ ì¤‘ì¸ ëª¨ë“  ìš”ì²­ì— â€‹â€‹ì˜¤ë¥˜ë¥¼ ì•Œë¦½ë‹ˆë‹¤.
+   resetTCPSockets(); // ì˜¤ë¥˜ ì²˜ë¦¬ê¸°ê°€ "this"ë¥¼ ì‚­ì œí•˜ëŠ” ê²½ìš°ë¥¼ ëŒ€ë¹„í•´ ì§€ê¸ˆ ì´ ì‘ì—…ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.
+
    while ((request = tmpRequestQueue.dequeue()) != NULL) {
       handleRequestError(request);
       delete request;
@@ -1790,7 +1799,7 @@ void RTSPClient::connectionHandler1()
 
 #pragma endregion
 
-#pragma region ¼ö½ÅÃ³¸® (incomingDataHandler, handleResponseBytes)
+#pragma region ìˆ˜ì‹ ì²˜ë¦¬ (incomingDataHandler, handleResponseBytes)
 
 static char* getLine(char* startOfLine) {
    // returns the start of the next line, or NULL if none.  Note that this modifies the input string to add '\0' characters.
@@ -1812,12 +1821,22 @@ static char* getLine(char* startOfLine) {
    return NULL;
 }
 
+//RTSP ì‘ë‹µíŒŒì‹±í›„ í•´ë‹¹ ëª…ë ¹(DESCRIBE, SETUP, PLAY ë“±)ì— ë§ëŠ” ì½œë°±ì„ í˜¸ì¶œ
+//1. fResponseBuffer(ì‘ë‹µ ëˆ„ì  ë²„í¼) : RTSP TCP ì†Œì¼“ìœ¼ë¡œë¶€í„° ìƒˆë¡œ ë°›ì€ ë°”ì´íŠ¸ ë°°ì—´ ëˆ„ì 
+//2. í—¤ë”íŒŒì‹±(CSeq, Content-Base, Session, Transport, Scale, WWW-Authenticate ë“±)
+//3. RTSP ì‘ë‹µì½”ë“œì— ë”°ë¼ ì ì ˆí•œ í•¸ë“¤ëŸ¬ í˜¸ì¶œ(SetupResponse, PlayResponse, handleRequestError ë“±)
+//4. ì‘ë‹µì— ëŒ€í•œ Handler ì½œë°±í˜¸ì¶œ (foundRequest->handler())
 void RTSPClient::incomingDataHandler(void* instance, int /*mask*/) 
 {
    RTSPClient* client = (RTSPClient*)instance;
    client->incomingDataHandler1();
 }
 
+//RTSP ì‘ë‹µíŒŒì‹±í›„ í•´ë‹¹ ëª…ë ¹(DESCRIBE, SETUP, PLAY ë“±)ì— ë§ëŠ” ì½œë°±ì„ í˜¸ì¶œ
+//1. fResponseBuffer(ì‘ë‹µ ëˆ„ì  ë²„í¼) : RTSP TCP ì†Œì¼“ìœ¼ë¡œë¶€í„° ìƒˆë¡œ ë°›ì€ ë°”ì´íŠ¸ ë°°ì—´ ëˆ„ì 
+//2. í—¤ë”íŒŒì‹±(CSeq, Content-Base, Session, Transport, Scale, WWW-Authenticate ë“±)
+//3. RTSP ì‘ë‹µì½”ë“œì— ë”°ë¼ ì ì ˆí•œ í•¸ë“¤ëŸ¬ í˜¸ì¶œ(SetupResponse, PlayResponse, handleRequestError ë“±)
+//4. ì‘ë‹µì— ëŒ€í•œ Handler ì½œë°±í˜¸ì¶œ (foundRequest->handler())
 void RTSPClient::incomingDataHandler1() 
 {
    int bytesRead = read((u_int8_t*)&fResponseBuffer[fResponseBytesAlreadySeen], fResponseBufferBytesLeft);
@@ -1825,20 +1844,25 @@ void RTSPClient::incomingDataHandler1()
 }
 
 
-
+//RTSP ì‘ë‹µíŒŒì‹±í›„ í•´ë‹¹ ëª…ë ¹(DESCRIBE, SETUP, PLAY ë“±)ì— ë§ëŠ” ì½œë°±ì„ í˜¸ì¶œ
+//1. fResponseBuffer(ì‘ë‹µ ëˆ„ì  ë²„í¼) : RTSP TCP ì†Œì¼“ìœ¼ë¡œë¶€í„° ìƒˆë¡œ ë°›ì€ ë°”ì´íŠ¸ ë°°ì—´ ëˆ„ì 
+//2. í—¤ë”íŒŒì‹±(CSeq, Content-Base, Session, Transport, Scale, WWW-Authenticate ë“±)
+//3. RTSP ì‘ë‹µì½”ë“œì— ë”°ë¼ ì ì ˆí•œ í•¸ë“¤ëŸ¬ í˜¸ì¶œ(SetupResponse, PlayResponse, handleRequestError ë“±)
+//4. ì‘ë‹µì— ëŒ€í•œ Handler ì½œë°±í˜¸ì¶œ (foundRequest->handler())
 void RTSPClient::handleResponseBytes(int newBytesRead)
 {
+   #pragma region ìˆ˜ì‹ ì‹œ ì—ëŸ¬ì²˜ë¦¬
    do
    {
       if (newBytesRead >= 0 && (unsigned)newBytesRead < fResponseBufferBytesLeft) break; // data was read OK; process it below
 
       if (newBytesRead >= (int)fResponseBufferBytesLeft) {
-         // ÀÀ´ä ¹öÆÛ°¡ °¡µæ Ã¡½À´Ï´Ù. (Ã¹ ¹øÂ° ÀÀ´ä ÇÚµé·¯¿¡ ´ëÇÑ) ¿À·ù·Î Ã³¸®ÇÕ´Ï´Ù.
+         // ì‘ë‹µ ë²„í¼ê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤. (ì²« ë²ˆì§¸ ì‘ë‹µ í•¸ë“¤ëŸ¬ì— ëŒ€í•œ) ì˜¤ë¥˜ë¡œ ì²˜ë¦¬í•©ë‹ˆë‹¤.
          envir().setResultMsg("RTSP response was truncated. Increase \"RTSPClient::responseBufferSize\"");
       }
 
-      // TCP ¼ÒÄÏÀ» ÀĞ´Â Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. º¸·ù ÁßÀÎ ¸ğµç ÀÀ´ä ÇÚµé·¯¸¦ È£ÃâÇÏ¿© ÀÌ ¿À·ù¸¦ Ç¥½ÃÇÕ´Ï´Ù.
-      // (´Ü, "RTSP ÀÀ´äÀÌ Àß·È½À´Ï´Ù" ¿À·ù´Â Ã¹ ¹øÂ° ÀÀ´ä ÇÚµé·¯¿¡¸¸ Àû¿ëµË´Ï´Ù.)
+      // TCP ì†Œì¼“ì„ ì½ëŠ” ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤. ë³´ë¥˜ ì¤‘ì¸ ëª¨ë“  ì‘ë‹µ í•¸ë“¤ëŸ¬ë¥¼ í˜¸ì¶œí•˜ì—¬ ì´ ì˜¤ë¥˜ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
+      // (ë‹¨, "RTSP ì‘ë‹µì´ ì˜ë ¸ìŠµë‹ˆë‹¤" ì˜¤ë¥˜ëŠ” ì²« ë²ˆì§¸ ì‘ë‹µ í•¸ë“¤ëŸ¬ì—ë§Œ ì ìš©ë©ë‹ˆë‹¤.)
       resetResponseBuffer();
       RequestRecord* request;
       if (newBytesRead > 0) { // The "RTSP response was truncated" error
@@ -1858,6 +1882,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
       }
       return;
    } while (0);
+   #pragma endregion
 
    fResponseBufferBytesLeft -= newBytesRead;
    fResponseBytesAlreadySeen += newBytesRead;
@@ -1868,8 +1893,8 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
    Boolean responseSuccess = False; // by default
    do
    {
-      // µ¥ÀÌÅÍ ÀĞ±â°¡ Á¤»óÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù. Áö±İ±îÁö ÀĞÀº µ¥ÀÌÅÍ¸¦ °ËÅäÇÏ¿© <CR><LF><CR><LF>°¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö È®ÀÎÇÏ¼¼¿ä.
-      // (Æ÷ÇÔµÇ¾î ÀÖÁö ¾ÊÀ¸¸é Ãß°¡ µ¥ÀÌÅÍ°¡ µµÂøÇÒ ¶§±îÁö ±â´Ù¸®¼¼¿ä.)
+      #pragma region ì½ì€ ë°ì´í„° ì•ˆì— <CR><LF><CR><LF>ê°€ í¬í•¨í™•ì¸, í¬í•¨ë˜ì–´ ìˆì§€ ì•Šìœ¼ë©´ ì¶”ê°€ ë°ì´í„°ê°€ ëŒ€ê¸°
+
       Boolean endOfHeaders = False;
       char const* ptr = fResponseBuffer;
       if (fResponseBytesAlreadySeen > 3) {
@@ -1882,12 +1907,13 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             }
          }
       }
+      #pragma endregion
 
-      if (!endOfHeaders) return; // ¿ÏÀüÇÑ ÀÀ´äÀ» ¾òÀ¸·Á¸é ÈÄ¼Ó ÀĞ±â°¡ ÇÊ¿äÇÕ´Ï´Ù.
+      if (!endOfHeaders) return; // ì™„ì „í•œ ì‘ë‹µì„ ì–»ìœ¼ë ¤ë©´ í›„ì† ì½ê¸°ê°€ í•„ìš”í•©ë‹ˆë‹¤.
 
-      // ÀÌÁ¦ ¿ÏÀüÇÑ ÀÀ´ä Çì´õ(<CR><LF><CR><LF>·Î ³¡³²)¸¦ ¾ò¾úÀ¸¹Ç·Î, ÀÀ´ä ÄÚµå, CSeq,
-      // ¹× ±âÅ¸ ´Ù¾çÇÑ Çì´õ ¸Å°³º¯¼ö¸¦ ¾ò±â À§ÇØ ÆÄ½ÌÇÕ´Ï´Ù. ÀÌ¸¦ À§ÇØ ¸ÕÀú ¼ö½ÅµÈ Çì´õ µ¥ÀÌÅÍÀÇ º¹»çº»À» ¸¸µì´Ï´Ù.
-      // '\0' ¹ÙÀÌÆ®¸¦ Ãß°¡ÇÏ¿© ¼öÁ¤ÇÒ °ÍÀÌ±â ¶§¹®ÀÔ´Ï´Ù.
+      // ì´ì œ ì™„ì „í•œ ì‘ë‹µ í—¤ë”(<CR><LF><CR><LF>ë¡œ ëë‚¨)ë¥¼ ì–»ì—ˆìœ¼ë¯€ë¡œ, 
+      // ì‘ë‹µ ì½”ë“œ, CSeq ë° ê¸°íƒ€ í—¤ë” íŒŒì‹±
+      #pragma region í—¤ë” ë°ì´í„°ì˜ ë³µì‚¬ë³¸ ì‚¬ìš©('\0' ë°”ì´íŠ¸ë¥¼ ì¶”ê°€í•˜ì—¬ ìˆ˜ì •)
       char* headerDataCopy;
       unsigned responseCode = 200;
       char const* responseStr = NULL;
@@ -1903,9 +1929,12 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
       char* bodyStart = NULL;
       unsigned numBodyBytes = 0;
       responseSuccess = False;
+      #pragma endregion
 
       do
       {
+         #pragma region í•œì¤„ ì½ê¸°(lineStart)
+
          headerDataCopy = new char[responseBufferSize];
          strncpy(headerDataCopy, fResponseBuffer, fResponseBytesAlreadySeen);
          headerDataCopy[fResponseBytesAlreadySeen] = '\0';
@@ -1915,15 +1944,19 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
          do {
             lineStart = nextLineStart;
             nextLineStart = getLine(lineStart);
-         } while (lineStart[0] == '\0' && nextLineStart != NULL); // ½ÃÀÛ ºÎºĞÀÇ ºó ÁÙÀ» °Ç³Ê¶İ´Ï´Ù.
+         } while (lineStart[0] == '\0' && nextLineStart != NULL); // ì‹œì‘ ë¶€ë¶„ì˜ ë¹ˆ ì¤„ì„ ê±´ë„ˆëœë‹ˆë‹¤.  
+         #pragma endregion
 
-         if (!parseResponseCode(lineStart, responseCode, responseStr)) {
-            // ÀÌ°ÍÀº RTSP ÀÀ´äÀÌ ¾Æ´Ñ °Í °°½À´Ï´Ù. ¾Æ¸¶µµ RTSP ¿äÃ»ÀÏ ¼öµµ ÀÖ°ÚÁÒ?
+
+         //RTSP ì‘ë‹µíŒŒì‹± ì‹œë„
+         if (!parseResponseCode(lineStart, responseCode, responseStr)) 
+         {
+            //RTSP ìš”ì²­íŒŒì‹±
             handleIncomingRequest();
-            break; // we're done with this data
+            break;
          }
 
-         #pragma region Çì´õÆÄ½Ì(CSeq, Content-Base, Session, Transport, Scale, WWW-Authenticate µî)
+         #pragma region í—¤ë”íŒŒì‹±(CSeq, Content-Base, Session, Transport, Scale, WWW-Authenticate ë“±)
 
          Boolean reachedEndOfHeaders;
          unsigned cseq = 0;
@@ -1931,16 +1964,17 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
 
          while (1)
          {
-            reachedEndOfHeaders = True; // ±âº»ÀûÀ¸·Î; ¾Æ·¡¿¡¼­ º¯°æµÉ ¼ö ÀÖÀ½
+            reachedEndOfHeaders = True; // ê¸°ë³¸ì ìœ¼ë¡œ; ì•„ë˜ì—ì„œ ë³€ê²½ë  ìˆ˜ ìˆìŒ
             lineStart = nextLineStart;
             if (lineStart == NULL) break;
 
             nextLineStart = getLine(lineStart);
-            if (lineStart[0] == '\0') break; // ÀÌ°ÍÀº ºó ÁÙÀÔ´Ï´Ù
+            if (lineStart[0] == '\0') break; // ì´ê²ƒì€ ë¹ˆ ì¤„ì…ë‹ˆë‹¤
             reachedEndOfHeaders = False;
 
             char const* headerParamsStr;
 
+            //CSeq íŒŒì‹±
             if (checkForHeader(lineStart, "CSeq:", 5, headerParamsStr))
             {
                if (sscanf(headerParamsStr, "%u", &cseq) != 1 || cseq <= 0)
@@ -1948,14 +1982,16 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
                   envir().setResultMsg("Bad \"CSeq:\" header: \"", lineStart, "\"");
                   break;
                }
-               // "cseq"¿¡ ´ëÇÑ ÇÚµé·¯ ÇÔ¼ö¸¦ Ã£½À´Ï´Ù.
+               
                RequestRecord* request;
+               #pragma region CSeqì— ëŒ€í•œ í•¸ë“¤ëŸ¬ í•¨ìˆ˜ë¥¼ ì°¾ê¸°
+
                while ((request = fRequestsAwaitingResponse.dequeue()) != NULL)
                {
                   if (request->cseq() < cseq)
                   {
-                     // CSeq Ä«¿îÅÍ°¡ Àı´ë ·¡ÇÎµÇÁö ¾Ê´Â´Ù°í °¡Á¤ÇÕ´Ï´Ù.
-                     // ÀÌ ÇÚµé·¯¿¡ ´ëÇÑ ÀÀ´äÀ» ¹ŞÁö ¸øÇß°í ¾ÕÀ¸·Îµµ ¹ŞÁö ¾ÊÀ» °ÍÀÌ¹Ç·Î »èÁ¦ÇÕ´Ï´Ù.
+                     // CSeq ì¹´ìš´í„°ê°€ ì ˆëŒ€ ë˜í•‘ë˜ì§€ ì•ŠëŠ”ë‹¤ê³  ê°€ì •í•©ë‹ˆë‹¤.
+                     // ì´ í•¸ë“¤ëŸ¬ì— ëŒ€í•œ ì‘ë‹µì„ ë°›ì§€ ëª»í–ˆê³  ì•ìœ¼ë¡œë„ ë°›ì§€ ì•Šì„ ê²ƒì´ë¯€ë¡œ ì‚­ì œí•©ë‹ˆë‹¤.
                      if (fVerbosityLevel >= 1 && strcmp(request->commandName(), "POST") != 0) {
                         envir() << "WARNING: The server did not respond to our \"" << request->commandName() << "\" request (CSeq: "
                            << request->cseq() << ").  The server appears to be buggy (perhaps not handling pipelined requests properly).\n";
@@ -1963,15 +1999,16 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
                      delete request;
                   }
                   else if (request->cseq() == cseq) {
-                     // ÀÌ°ÍÀÌ ¿ì¸®°¡ ¿øÇÏ´Â ÇÚµé·¯ÀÔ´Ï´Ù. ÇØ´ç ·¹ÄÚµå¸¦ »èÁ¦ÇÏµÇ, ³ªÁß¿¡ ÇÚµé·¯¸¦ È£ÃâÇÒ ¼ö ÀÖµµ·Ï ±â¾ïÇØ µÎ¼¼¿ä.
+                     // ì´ê²ƒì´ ìš°ë¦¬ê°€ ì›í•˜ëŠ” í•¸ë“¤ëŸ¬ì…ë‹ˆë‹¤. í•´ë‹¹ ë ˆì½”ë“œë¥¼ ì‚­ì œí•˜ë˜, ë‚˜ì¤‘ì— í•¸ë“¤ëŸ¬ë¥¼ í˜¸ì¶œí•  ìˆ˜ ìˆë„ë¡ ê¸°ì–µí•´ ë‘ì„¸ìš”.
                      foundRequest = request;
                      break;
                   }
                   else { // request->cseq() > cseq
-                     // ÀÌ ÀÀ´ä¿¡ ´ëÇÑ ÇÚµé·¯°¡ µî·ÏµÇÁö ¾Ê¾ÒÀ¸¹Ç·Î ¹«½ÃÇÕ´Ï´Ù.
+                     // ì´ ì‘ë‹µì— ëŒ€í•œ í•¸ë“¤ëŸ¬ê°€ ë“±ë¡ë˜ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ ë¬´ì‹œí•©ë‹ˆë‹¤.
                      break;
                   }
                }
+               #pragma endregion
             }
             else if (checkForHeader(lineStart, "Content-Length:", 15, headerParamsStr))
             {
@@ -2014,7 +2051,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             }
             else if (checkForHeader(lineStart, "WWW-Authenticate:", 17, headerParamsStr)) 
             {
-               //ÀÌ¹Ì "WWW-Authenticate:" Çì´õ¸¦ º» ÀûÀÌ ÀÖ´Ù¸é, »õ Çì´õ°¡ "Digest" ÀÎÁõÀ» ÁöÁ¤ÇÏ´Â °æ¿ì¿¡¸¸»õ Çì´õ·Î ¹Ù²ß´Ï´Ù.
+               //ì´ë¯¸ "WWW-Authenticate:" í—¤ë”ë¥¼ ë³¸ ì ì´ ìˆë‹¤ë©´, ìƒˆ í—¤ë”ê°€ "Digest" ì¸ì¦ì„ ì§€ì •í•˜ëŠ” ê²½ìš°ì—ë§Œìƒˆ í—¤ë”ë¡œ ë°”ê¿‰ë‹ˆë‹¤.
                if (wwwAuthenticateParamsStr == NULL || _strncasecmp(headerParamsStr, "Digest", 6) == 0)
                {
                   wwwAuthenticateParamsStr = headerParamsStr;
@@ -2025,7 +2062,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             }
             else if (checkForHeader(lineStart, "Allow:", 6, publicParamsStr))
             {
-               // Âü°í: "°ø°³:" ´ë½Å "Çã¿ë:"À» Çã¿ëÇÏ¹Ç·Î HTTP ¼­¹ö¿¡ ´ëÇÑ "¿É¼Ç" ¿äÃ»ÀÌ ÀÛµ¿ÇÕ´Ï´Ù.
+               // ì°¸ê³ : "ê³µê°œ:" ëŒ€ì‹  "í—ˆìš©:"ì„ í—ˆìš©í•˜ë¯€ë¡œ HTTP ì„œë²„ì— ëŒ€í•œ "ì˜µì…˜" ìš”ì²­ì´ ì‘ë™í•©ë‹ˆë‹¤.
             }
             else if (checkForHeader(lineStart, "Location:", 9, headerParamsStr))
             {
@@ -2033,13 +2070,13 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             }
             else if (checkForHeader(lineStart, "com.ses.streamID:", 17, headerParamsStr))
             {
-               // '±âº» URL'ÀÇ ³¡ºÎºĞÀ» ÀÌ Çì´õ ¸Å°³º¯¼ö °ªÀ¸·Î ¹Ù²ß´Ï´Ù.
+               // 'ê¸°ë³¸ URL'ì˜ ëë¶€ë¶„ì„ ì´ í—¤ë” ë§¤ê°œë³€ìˆ˜ ê°’ìœ¼ë¡œ ë°”ê¿‰ë‹ˆë‹¤.
                char* oldBaseURLTail = strrchr(fBaseURL, '/');
                if (oldBaseURLTail != NULL) {
                   unsigned newBaseURLLen
                      = (oldBaseURLTail - fBaseURL) + 8/* for "/stream=" */ + strlen(headerParamsStr);
                   char* newBaseURL = new char[newBaseURLLen + 1];
-                  // Âü°í: ÀÏºÎ ÄÄÆÄÀÏ·¯°¡ Áö¿øÇÏÁö ¾Ê±â ¶§¹®¿¡ "asprintf()"¸¦ »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.
+                  // ì°¸ê³ : ì¼ë¶€ ì»´íŒŒì¼ëŸ¬ê°€ ì§€ì›í•˜ì§€ ì•Šê¸° ë•Œë¬¸ì— "asprintf()"ë¥¼ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.
                   sprintf(newBaseURL, "%.*s/stream=%s",
                      (int)(oldBaseURLTail - fBaseURL), fBaseURL, headerParamsStr);
                   setBaseURL(newBaseURL);
@@ -2056,19 +2093,19 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
 
          if (foundRequest == NULL)
          {
-            // ÇØÅ·: ÀÀ´ä¿¡ "CSeq:" Çì´õ°¡ ¾ø½À´Ï´Ù. °¡Àå ÃÖ±Ù ¿äÃ»¿¡ ´ëÇÑ °ÍÀÌ¶ó°í °¡Á¤ÇÕ´Ï´Ù.
+            // í•´í‚¹: ì‘ë‹µì— "CSeq:" í—¤ë”ê°€ ì—†ìŠµë‹ˆë‹¤. ê°€ì¥ ìµœê·¼ ìš”ì²­ì— ëŒ€í•œ ê²ƒì´ë¼ê³  ê°€ì •í•©ë‹ˆë‹¤.
             foundRequest = fRequestsAwaitingResponse.dequeue();
          }
          #pragma endregion
 
-         #pragma region "Content-Length:" Çì´õ°¡ ÀÖ´Â °æ¿ì, ÁöÁ¤µÈ ¾çÀÇ µ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö È®ÀÎÇÏ¼¼¿ä. ¾øÀ¸¸é Ãß°¡ µ¥ÀÌÅÍ ÀĞ±â¸¦ ´ë±â
+         #pragma region "Content-Length:" í—¤ë”ê°€ ìˆëŠ” ê²½ìš°, ì§€ì •ëœ ì–‘ì˜ ë°ì´í„°ê°€ ìˆëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”. ì—†ìœ¼ë©´ ì¶”ê°€ ë°ì´í„° ì½ê¸°ë¥¼ ëŒ€ê¸°
 
          unsigned bodyOffset = nextLineStart == NULL ? fResponseBytesAlreadySeen : nextLineStart - headerDataCopy;
          bodyStart = &fResponseBuffer[bodyOffset];
          numBodyBytes = fResponseBytesAlreadySeen - bodyOffset;
          if (contentLength > numBodyBytes)
          {
-            // ´õ ¸¹Àº µ¥ÀÌÅÍ¸¦ ÀĞ¾î¾ß ÇÕ´Ï´Ù. ¸ÕÀú, ÃæºĞÇÑ °ø°£ÀÌ ÀÖ´ÂÁö È®ÀÎÇÏ¼¼¿ä.
+            // ë” ë§ì€ ë°ì´í„°ë¥¼ ì½ì–´ì•¼ í•©ë‹ˆë‹¤. ë¨¼ì €, ì¶©ë¶„í•œ ê³µê°„ì´ ìˆëŠ”ì§€ í™•ì¸í•˜ì„¸ìš”.
             unsigned numExtraBytesNeeded = contentLength - numBodyBytes;
             unsigned remainingBufferSize = responseBufferSize - fResponseBytesAlreadySeen;
             if (numExtraBytesNeeded > remainingBufferSize) {
@@ -2091,7 +2128,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
 
          #pragma endregion
 
-         // ÀÌÁ¦ ¿ÏÀüÇÑ ÀÀ´äÀÌ ÀÖ½À´Ï´Ù("Content-Length:" Çì´õ¿¡ ÁöÁ¤µÈ ¸ğµç ¹ÙÀÌÆ® Æ÷ÇÔ, ÀÖ´Â °æ¿ì).
+         // ì´ì œ ì™„ì „í•œ ì‘ë‹µì´ ìˆìŠµë‹ˆë‹¤("Content-Length:" í—¤ë”ì— ì§€ì •ëœ ëª¨ë“  ë°”ì´íŠ¸ í¬í•¨, ìˆëŠ” ê²½ìš°).
          char* responseEnd = bodyStart + contentLength;
          numExtraBytesAfterResponse = &fResponseBuffer[fResponseBytesAlreadySeen] - responseEnd;
 
@@ -2108,10 +2145,12 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
 
          if (foundRequest != NULL)
          {
+            #pragma region CSeqì— ëŒ€ì‘ë˜ëŠ” ì‘ë‹µì²˜ë¦¬(handleSETUPResponse, handlePLAYResponse ë“±)
+
             Boolean needToResendCommand = False; // by default...
             if (responseCode == 200)
             {
-               #pragma region ¼º°øÀÀ´ä(200 OK, Setup, Play, Teardown, Get_Parameter)ÀÇ Ã³¸®¼öÇà
+               #pragma region ì„±ê³µì‘ë‹µ(200 OK, Setup, Play, Teardown, Get_Parameter)ì˜ ì²˜ë¦¬ìˆ˜í–‰
 
                if (strcmp(foundRequest->commandName(), "SETUP") == 0)
                {
@@ -2131,26 +2170,26 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
                }
                #pragma endregion
             }
-            //"WWW-Authenticate:" Çì´õ¿¡¼­ fCurrentAuthenticator °´Ã¼ÆÄ½Ì -> Àç½ÃµµÇÏ·Á¸é True, ÀÎÁõ½ÇÆĞ¸é False ¹İÈ¯
+            //"WWW-Authenticate:" í—¤ë”ì—ì„œ fCurrentAuthenticator ê°ì²´íŒŒì‹± -> ì¬ì‹œë„í•˜ë ¤ë©´ True, ì¸ì¦ì‹¤íŒ¨ë©´ False ë°˜í™˜
             else if (responseCode == 401 && handleAuthenticationFailure(wwwAuthenticateParamsStr))
             {
-               #pragma region ÀÎÁõ¹æ½Ä¿¡(»ç¿ëÀÚÁ¤º¸, MD5, SHA-256µî) µû¶ó ÀçÀü¼Û
+               #pragma region ì¸ì¦ë°©ì‹ì—(ì‚¬ìš©ìì •ë³´, MD5, SHA-256ë“±) ë”°ë¼ ì¬ì „ì†¡
 
-               // "Authorization:" Çì´õ¿Í ÇÔ²² ¸í·ÉÀ» ´Ù½Ã º¸³»¾ß ÇÕ´Ï´Ù.
+               // "Authorization:" í—¤ë”ì™€ í•¨ê»˜ ëª…ë ¹ì„ ë‹¤ì‹œ ë³´ë‚´ì•¼ í•©ë‹ˆë‹¤.
                needToResendCommand = True;
 
                if (strcmp(foundRequest->commandName(), "GET") == 0)
                {
-                  // Âü°í: HTTP "GET" ¸í·É(RTSP-over-HTTP ÅÍ³Î¸µ¿ë)ÀÌ "401 Unauthorized"¸¦ ¹İÈ¯ÇÏ¸é, RTSP ¸í·É°ú ¸¶Âù°¡Áö·Î
-                  // "Authorization:" Çì´õ¿Í ÇÔ²² ÇØ´ç ¸í·ÉÀ» ´Ù½Ã Àü¼ÛÇÕ´Ï´Ù. ´Ü, ÀÌ °úÁ¤¿¡¼­´Â »õ·Î¿î TCP ¿¬°áÀ» »ç¿ëÇÕ´Ï´Ù.
-                  // ÀÏºÎ ¼­¹ö´Â "401 Unauthorized"¸¦ ¹İÈ¯ÇÑ ÈÄ ¿ø·¡ ¿¬°áÀ» ´İ±â ¶§¹®ÀÔ´Ï´Ù.
-                  resetTCPSockets(); // ÀçÀü¼ÛµÈ ¸í·É¿¡ ´ëÇÑ »õ ¿¬°áÀ» °­Á¦·Î ¿±´Ï´Ù.
+                  // ì°¸ê³ : HTTP "GET" ëª…ë ¹(RTSP-over-HTTP í„°ë„ë§ìš©)ì´ "401 Unauthorized"ë¥¼ ë°˜í™˜í•˜ë©´, RTSP ëª…ë ¹ê³¼ ë§ˆì°¬ê°€ì§€ë¡œ
+                  // "Authorization:" í—¤ë”ì™€ í•¨ê»˜ í•´ë‹¹ ëª…ë ¹ì„ ë‹¤ì‹œ ì „ì†¡í•©ë‹ˆë‹¤. ë‹¨, ì´ ê³¼ì •ì—ì„œëŠ” ìƒˆë¡œìš´ TCP ì—°ê²°ì„ ì‚¬ìš©í•©ë‹ˆë‹¤.
+                  // ì¼ë¶€ ì„œë²„ëŠ” "401 Unauthorized"ë¥¼ ë°˜í™˜í•œ í›„ ì›ë˜ ì—°ê²°ì„ ë‹«ê¸° ë•Œë¬¸ì…ë‹ˆë‹¤.
+                  resetTCPSockets(); // ì¬ì „ì†¡ëœ ëª…ë ¹ì— ëŒ€í•œ ìƒˆ ì—°ê²°ì„ ê°•ì œë¡œ ì—½ë‹ˆë‹¤.
                }
                #pragma endregion
             }
             else if (responseCode == 301 || responseCode == 302)
             {
-               resetTCPSockets(); // ´ÙÀ½¿¡ ´Ù¸¥ °÷¿¡ ¿¬°áÇØ¾ß ÇÏ±â ¶§¹®¿¡
+               resetTCPSockets(); // ë‹¤ìŒì— ë‹¤ë¥¸ ê³³ì— ì—°ê²°í•´ì•¼ í•˜ê¸° ë•Œë¬¸ì—
                needToResendCommand = True;
             }
 
@@ -2159,23 +2198,24 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
                resetResponseBuffer();
                (void)resendCommand(foundRequest);
                delete[] headerDataCopy;
-               return; // ÀÀ´ä ÇÚµé·¯¸¦ È£ÃâÇÏÁö ¾Ê°í ´Ù½Ã Àü¼ÛµÈ ¸í·É¿¡ ´ëÇÑ ÀÀ´äÀÌ ÀÌ¸¦ ¼öÇàÇÕ´Ï´Ù.
+               return; // ì‘ë‹µ í•¸ë“¤ëŸ¬ë¥¼ í˜¸ì¶œí•˜ì§€ ì•Šê³  ë‹¤ì‹œ ì „ì†¡ëœ ëª…ë ¹ì— ëŒ€í•œ ì‘ë‹µì´ ì´ë¥¼ ìˆ˜í–‰í•©ë‹ˆë‹¤.
             }
+            #pragma endregion
          }
 
          responseSuccess = True;
       } while (0);
 
-      #pragma region ÀÀ´ä¿¡ ´ëÇÑ Handler Äİ¹éÈ£Ãâ
+      #pragma region ì‘ë‹µì— ëŒ€í•œ Handler ì½œë°±í˜¸ì¶œ (foundRequest->handler())
 
-      // ÀÌ ÀÀ´ä¿¡ ´ëÇÑ ÇÚµé·¯ ÇÔ¼ö°¡ ÀÖÀ¸¸é È£ÃâÇÕ´Ï´Ù.
-      // ÇÏÁö¸¸ ¸ÕÀú, ÇÚµé·¯°¡ ÀÌº¥Æ® ·çÇÁ·Î ÀÌµ¿ÇÏ¿© Àç±ÍÀûÀ¸·Î È£ÃâµÉ °æ¿ì¸¦ ´ëºñÇÏ¿© ÀÀ´ä ¹öÆÛ¸¦ Àç¼³Á¤ÇÕ´Ï´Ù.
+      // ì´ ì‘ë‹µì— ëŒ€í•œ í•¸ë“¤ëŸ¬ í•¨ìˆ˜ê°€ ìˆìœ¼ë©´ í˜¸ì¶œí•©ë‹ˆë‹¤.
+      // í•˜ì§€ë§Œ ë¨¼ì €, í•¸ë“¤ëŸ¬ê°€ ì´ë²¤íŠ¸ ë£¨í”„ë¡œ ì´ë™í•˜ì—¬ ì¬ê·€ì ìœ¼ë¡œ í˜¸ì¶œë  ê²½ìš°ë¥¼ ëŒ€ë¹„í•˜ì—¬ ì‘ë‹µ ë²„í¼ë¥¼ ì¬ì„¤ì •í•©ë‹ˆë‹¤.
       if (numExtraBytesAfterResponse > 0)
       {
-         // Æ¯ÀÌÇÑ °æ¿ìÀÔ´Ï´Ù. ÀÏ¹İÀûÀ¸·Î ÆÄÀÌÇÁ¶óÀÎ ÀÀ´äÀ» ¹Ş¾Ò±â ¶§¹®ÀÔ´Ï´Ù. Ãß°¡ ¹ÙÀÌÆ®¸¦ ¹öÆÛÀÇ ¾ÕÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù.
+         // íŠ¹ì´í•œ ê²½ìš°ì…ë‹ˆë‹¤. ì¼ë°˜ì ìœ¼ë¡œ íŒŒì´í”„ë¼ì¸ ì‘ë‹µì„ ë°›ì•˜ê¸° ë•Œë¬¸ì…ë‹ˆë‹¤. ì¶”ê°€ ë°”ì´íŠ¸ë¥¼ ë²„í¼ì˜ ì•ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.
          char* responseEnd = &fResponseBuffer[fResponseBytesAlreadySeen - numExtraBytesAfterResponse];
 
-         // ÇÏÁö¸¸ ¸ÕÀú: "resultString"¿¡ ´ëÇØ ÇÊ¿äÇÒ °æ¿ì¸¦ ´ëºñÇØ ÀÀ´ä 'º»¹®'ÀÇ »çº»À» ÀúÀåÇÏ´Â ¹æ¹ıÀ» ¾Ë·Áµå¸®°Ú½À´Ï´Ù.
+         // í•˜ì§€ë§Œ ë¨¼ì €: "resultString"ì— ëŒ€í•´ í•„ìš”í•  ê²½ìš°ë¥¼ ëŒ€ë¹„í•´ ì‘ë‹µ 'ë³¸ë¬¸'ì˜ ì‚¬ë³¸ì„ ì €ì¥í•˜ëŠ” ë°©ë²•ì„ ì•Œë ¤ë“œë¦¬ê² ìŠµë‹ˆë‹¤.
          numBodyBytes -= numExtraBytesAfterResponse;
          if (numBodyBytes > 0) {
             char saved = *responseEnd;
@@ -2203,7 +2243,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             {
                resultCode = 0;
                resultString = numBodyBytes > 0 ? strDup(bodyStart) : strDup(publicParamsStr);
-               // Âü°í: "strDup(bodyStart)" È£ÃâÀº º»¹®ÀÌ ³»ºÎ '\0' ¹ÙÀÌÆ® ¾øÀÌ ÀÎÄÚµùµÇ¾ú´Ù°í °¡Á¤ÇÕ´Ï´Ù.
+               // ì°¸ê³ : "strDup(bodyStart)" í˜¸ì¶œì€ ë³¸ë¬¸ì´ ë‚´ë¶€ '\0' ë°”ì´íŠ¸ ì—†ì´ ì¸ì½”ë”©ë˜ì—ˆë‹¤ê³  ê°€ì •í•©ë‹ˆë‹¤.
             }
             else
             {
@@ -2214,7 +2254,7 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
             (*foundRequest->handler())(this, resultCode, resultString);
          }
          else {
-            // ÀÀ´äÀ» ±¸¹® ºĞ¼®ÇÏ´Â µ¿¾È ¿À·ù°¡ ¹ß»ıÇßÀ¸¹Ç·Î ¿À·ù¸¦ ³ªÅ¸³»´Â ÇÚµé·¯¸¦ È£ÃâÇÕ´Ï´Ù.
+            // ì‘ë‹µì„ êµ¬ë¬¸ ë¶„ì„í•˜ëŠ” ë™ì•ˆ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìœ¼ë¯€ë¡œ ì˜¤ë¥˜ë¥¼ ë‚˜íƒ€ë‚´ëŠ” í•¸ë“¤ëŸ¬ë¥¼ í˜¸ì¶œí•©ë‹ˆë‹¤.
             handleRequestError(foundRequest);
          }
       }
@@ -2226,10 +2266,10 @@ void RTSPClient::handleResponseBytes(int newBytesRead)
    } while (numExtraBytesAfterResponse > 0 && responseSuccess);
 }
 
-
+//RTSP ìš”ì²­ ë¬¸ìì—´ì—ì„œ cmdName, urlPreSuffix, urlSuffix, CSeq, Session, Content-Length í•­ëª©íŒŒì‹±
 void RTSPClient::handleIncomingRequest() 
 {
-   // ¿äÃ» ¹®ÀÚ¿­À» ¸í·É ÀÌ¸§°ú 'CSeq'·Î ±¸¹® ºĞ¼®ÇÑ ´ÙÀ½, ¸í·ÉÀ» 'Ã³¸®'ÇÕ´Ï´Ù(Áö¿øÇÏÁö ¾Ê´Â´Ù´Â ÀÀ´äÀ» ÅëÇØ).
+   // ìš”ì²­ ë¬¸ìì—´ì„ ëª…ë ¹ ì´ë¦„ê³¼ 'CSeq'ë¡œ êµ¬ë¬¸ ë¶„ì„í•œ ë‹¤ìŒ, ëª…ë ¹ì„ 'ì²˜ë¦¬'í•©ë‹ˆë‹¤(ì§€ì›í•˜ì§€ ì•ŠëŠ”ë‹¤ëŠ” ì‘ë‹µì„ í†µí•´).
    char cmdName[RTSP_PARAM_STRING_MAX];
    char urlPreSuffix[RTSP_PARAM_STRING_MAX];
    char urlSuffix[RTSP_PARAM_STRING_MAX];
@@ -2237,6 +2277,8 @@ void RTSPClient::handleIncomingRequest()
    char sessionId[RTSP_PARAM_STRING_MAX];
    unsigned contentLength;
    Boolean urlIsRTSPS;
+
+   //RTSP ìš”ì²­ ë¬¸ìì—´ì—ì„œ cmdName, urlPreSuffix, urlSuffix, CSeq, Session, Content-Length í•­ëª©íŒŒì‹±
    if (!parseRTSPRequestString(fResponseBuffer, fResponseBytesAlreadySeen,
       cmdName, sizeof cmdName,
       urlPreSuffix, sizeof urlPreSuffix,
@@ -2257,14 +2299,15 @@ void RTSPClient::handleIncomingRequest()
    }
 }
 
+//ë¬¸ìì—´(line)ì—ì„œ RTSP/%*s%u ë˜ëŠ” HTTP/%*s%u í˜•ì‹ì˜ ì‘ë‹µì½”ë“œ íŒŒì‹±
 Boolean RTSPClient::parseResponseCode(char const* line, unsigned& responseCode, char const*& responseString) 
 {
    if (sscanf(line, "RTSP/%*s%u", &responseCode) != 1 &&
       sscanf(line, "HTTP/%*s%u", &responseCode) != 1) return False;
-   // Note: We check for HTTP responses as well as RTSP responses, both in order to setup RTSP-over-HTTP tunneling,
-   // and so that we get back a meaningful error if the client tried to mistakenly send a RTSP command to a HTTP-only server.
+   // ì°¸ê³ : RTSP-over-HTTP í„°ë„ë§ì„ ì„¤ì •í•˜ê¸° ìœ„í•´ HTTP ì‘ë‹µê³¼ RTSP ì‘ë‹µì„ ëª¨ë‘ í™•ì¸í•©ë‹ˆë‹¤.
+   // í´ë¼ì´ì–¸íŠ¸ê°€ ì‹¤ìˆ˜ë¡œ HTTP ì „ìš© ì„œë²„ë¡œ RTSP ëª…ë ¹ì„ ì „ì†¡í•˜ë ¤ê³  ì‹œë„í•œ ê²½ìš° ì˜ë¯¸ ìˆëŠ” ì˜¤ë¥˜ë¥¼ ë°˜í™˜í•˜ê¸° ìœ„í•´ì„œì…ë‹ˆë‹¤.
 
-   // Use everything after the RTSP/* (or HTTP/*) as the response string:
+   // RTSP/*(ë˜ëŠ” HTTP/*) ë’¤ì˜ ëª¨ë“  ë‚´ìš©ì„ ì‘ë‹µ ë¬¸ìì—´ë¡œ ì‚¬ìš©í•©ë‹ˆë‹¤.
    responseString = line;
    while (responseString[0] != '\0' && responseString[0] != ' ' && responseString[0] != '\t') ++responseString;
    while (responseString[0] != '\0' && (responseString[0] == ' ' || responseString[0] == '\t')) ++responseString; // skip whitespace
@@ -2274,7 +2317,7 @@ Boolean RTSPClient::parseResponseCode(char const* line, unsigned& responseCode, 
 
 #pragma endregion
 
-#pragma region (ÀÌ¹Ì ¼³Á¤µÈ) ¿¬°áÀ» ÅëÇØ µ¥ÀÌÅÍ ¾²±â/ÀĞ±â:
+#pragma region (ì´ë¯¸ ì„¤ì •ëœ) ì—°ê²°ì„ í†µí•´ ë°ì´í„° ì“°ê¸°/ì½ê¸°:
 
 int RTSPClient::write(const char* data, unsigned count) {
    if (fOutputTLS->isNeeded) {
@@ -2299,7 +2342,7 @@ int RTSPClient::read(u_int8_t* buffer, unsigned bufferSize) {
 
 
 
-#pragma region RTSPClient::RequestRecord ±¸Çö
+#pragma region RTSPClient::RequestRecord êµ¬í˜„
  
 RTSPClient::RequestRecord::RequestRecord(unsigned cseq, char const* commandName, responseHandler* handler,
    MediaSession* session, MediaSubsession* subsession, u_int32_t booleanFlags,
@@ -2326,7 +2369,7 @@ RTSPClient::RequestRecord::~RequestRecord() {
 
 #pragma endregion
 
-#pragma region RTSPClient::RequestQueue ±¸Çö
+#pragma region RTSPClient::RequestQueue êµ¬í˜„
 
 RTSPClient::RequestQueue::RequestQueue()
    : fHead(NULL), fTail(NULL) {
@@ -2390,7 +2433,7 @@ void RTSPClient::RequestQueue::reset() {
 
 #pragma endregion
 
-#pragma region HandlerServerForREGISTERCommand ±¸Çö
+#pragma region HandlerServerForREGISTERCommand êµ¬í˜„
 
 #ifndef OMIT_REGISTER_HANDLING
 

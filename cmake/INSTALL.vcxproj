@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -125,7 +125,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="\cmake\CMakeFiles\63f7ad212c39944205cf0e2e9b145492\INSTALL_force.rule">
+    <CustomBuild Include="..\cmake\CMakeFiles\63f7ad212c39944205cf0e2e9b145492\INSTALL_force.rule">
       <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
@@ -189,13 +189,13 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="\cmake\ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\cmake\ZERO_CHECK.vcxproj">
       <Project>{6D9EC4A6-8871-33BC-9E84-71FAFAA9C5D8}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="\cmake\ALL_BUILD.vcxproj">
+    <ProjectReference Include="..\cmake\ALL_BUILD.vcxproj">
       <Project>{336F9F56-5FFA-363A-970C-A1A7165EB233}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>

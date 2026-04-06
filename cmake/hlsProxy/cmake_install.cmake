@@ -1,4 +1,4 @@
-# Install script for directory: D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/hlsProxy
+# Install script for directory: E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/hlsProxy
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

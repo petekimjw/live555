@@ -74,7 +74,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=/INCREMENTAL:NO
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //Value Computed by CMake.
-CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/pkgRedirects
+CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/CMakeFiles/pkgRedirects
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files/live555
@@ -243,13 +243,13 @@ SSL_EAY_LIBRARY_DEBUG:FILEPATH=SSL_EAY_LIBRARY_DEBUG-NOTFOUND
 SSL_EAY_RELEASE:FILEPATH=C:/Program Files/OpenSSL-Win64/lib/VC/x64/MD/libssl.lib
 
 //Value Computed by CMake
-live555_BINARY_DIR:STATIC=D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake
+live555_BINARY_DIR:STATIC=E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake
 
 //Value Computed by CMake
 live555_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-live555_SOURCE_DIR:STATIC=D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master
+live555_SOURCE_DIR:STATIC=E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master
 
 
 ########################
@@ -320,7 +320,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=x64
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master
+CMAKE_HOME_DIRECTORY:INTERNAL=E:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS

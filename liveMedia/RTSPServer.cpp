@@ -117,16 +117,15 @@ portNumBits RTSPServer::httpServerPortNum() const {
    return ntohs(fHTTPServerPort.num());
 }
 
-void RTSPServer::setTLSState(char const* certFileName, char const* privKeyFileName,
-   Boolean weServeSRTP, Boolean weEncryptSRTP) {
+void RTSPServer::setTLSState(char const* certFileName, char const* privKeyFileName, Boolean weServeSRTP, Boolean weEncryptSRTP) {
    setTLSFileNames(certFileName, privKeyFileName);
    fOurConnectionsUseTLS = True;
    fWeServeSRTP = weServeSRTP;
    fWeEncryptSRTP = weEncryptSRTP;
 
    if (fWeServeSRTP) disableStreamingRTPOverTCP();
-   // If you want to stream RTP-over-TCP using a secure TCP connection, then stream over TLS,
-   // but without SRTP (as SRTP would add extra overhead for no benefit).
+   // 보안 TCP 연결을 사용하여 RTP-over-TCP를 스트리밍하려면 TLS를 통해 스트리밍해야 합니다.
+   // 하지만 SRTP는 사용하지 마세요(SRTP는 이점 없이 오버헤드만 증가시키므로).
 }
 
 char const* RTSPServer::allowedCommandNames() {

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -220,11 +220,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="\testProgs\CMakeLists.txt">
+    <CustomBuild Include="..\..\testProgs\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -233,11 +233,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -246,11 +246,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -259,11 +259,11 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/testProgs/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule ../../testProgs/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master -BD:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake --check-stamp-file D:/sgkim/Dev_OpenSource/live555-master-melchi45/live555-master/cmake/testProgs/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -S..\.. -B../../cmake --check-stamp-file ../../cmake/testProgs/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -272,38 +272,38 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">..\..\cmake\testProgs\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="\testProgs\announceURL.hh" />
+    <ClInclude Include="..\..\testProgs\announceURL.hh" />
     <ClCompile Include="..\..\testProgs\announceURL.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="\cmake\ZERO_CHECK.vcxproj">
+    <ProjectReference Include="..\..\cmake\ZERO_CHECK.vcxproj">
       <Project>{6D9EC4A6-8871-33BC-9E84-71FAFAA9C5D8}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
+    <ProjectReference Include="..\..\cmake\BasicUsageEnvironment\BasicUsageEnvironment.vcxproj">
       <Project>{46858923-A1DA-3F63-BE0B-83D57EA8ACA2}</Project>
       <Name>BasicUsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
+    <ProjectReference Include="..\..\cmake\EpollTaskScheduler\EpollTaskScheduler.vcxproj">
       <Project>{BD201DC7-933F-329D-882D-2412597625ED}</Project>
       <Name>EpollTaskScheduler</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
+    <ProjectReference Include="..\..\cmake\UsageEnvironment\UsageEnvironment.vcxproj">
       <Project>{8020F01D-8185-3A90-8B4F-8EDABEAF7DB0}</Project>
       <Name>UsageEnvironment</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\groupsock\groupsock.vcxproj">
+    <ProjectReference Include="..\..\cmake\groupsock\groupsock.vcxproj">
       <Project>{BFF90A2A-78C3-324F-BEB8-1AFA330B8C9E}</Project>
       <Name>groupsock</Name>
     </ProjectReference>
-    <ProjectReference Include="\cmake\liveMedia\liveMedia.vcxproj">
+    <ProjectReference Include="..\..\cmake\liveMedia\liveMedia.vcxproj">
       <Project>{7843210A-1CD0-33B6-B4A8-60D268404A12}</Project>
       <Name>liveMedia</Name>
     </ProjectReference>

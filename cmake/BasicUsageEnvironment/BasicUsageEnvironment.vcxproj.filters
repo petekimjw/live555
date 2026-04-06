@@ -1,47 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\BasicHashTable.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\BasicHashTable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\BasicTaskScheduler.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\BasicTaskScheduler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\BasicTaskScheduler0.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\BasicTaskScheduler0.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\BasicUsageEnvironment.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\BasicUsageEnvironment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\BasicUsageEnvironment0.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\BasicUsageEnvironment0.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\DelayQueue.cpp">
+    <ClCompile Include="..\..\BasicUsageEnvironment\DelayQueue.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\BasicHashTable.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\BasicHashTable.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\BasicUsageEnvironment.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\BasicUsageEnvironment.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\BasicUsageEnvironment0.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\BasicUsageEnvironment0.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\BasicUsageEnvironment_version.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\BasicUsageEnvironment_version.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\DelayQueue.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\DelayQueue.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\include\HandlerSet.hh">
+    <ClInclude Include="..\..\BasicUsageEnvironment\include\HandlerSet.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="D:\sgkim\Dev_OpenSource\live555-master-melchi45\live555-master\BasicUsageEnvironment\CMakeLists.txt" />
+    <CustomBuild Include="..\..\BasicUsageEnvironment\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

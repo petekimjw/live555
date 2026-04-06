@@ -31,7 +31,7 @@ void shutdownStream(RTSPClient* rtspClient, int exitCode = 1);
 
 #pragma endregion
 
-#pragma region 메인
+#pragma region main함수
 
 // A function that outputs a string that identifies each stream (for debugging output).  Modify this if you wish:
 UsageEnvironment& operator<<(UsageEnvironment& env, const RTSPClient& rtspClient) {
@@ -250,13 +250,14 @@ Boolean DummySink::continuePlaying() {
 #pragma endregion
 
 
+Authenticator auth("user1", "pass1", false);
+//Authenticator auth("admin", "Pass0001!", false);
+
 #pragma region openURL, describe, setup, play 핸들러
 
 #define RTSP_CLIENT_VERBOSITY_LEVEL 1 // 기본적으로 각 "RTSPClient"에서 자세한 출력을 인쇄합니다.
 
 static unsigned rtspClientCount = 0; // 현재 사용 중인 스트림(즉, "RTSPClient")의 수를 계산합니다.
-
-Authenticator auth("user1", "pass1", false);
 
 //DESCRIBE 명령
 void openURL(UsageEnvironment& env, char const* progName, char const* rtspURL) 
@@ -319,45 +320,6 @@ void continueAfterDESCRIBE(RTSPClient* rtspClient, int resultCode, char* resultS
    // An unrecoverable error occurred with this stream.
    shutdownStream(rtspClient);
 }
-
-//void continueAfterDESCRIBE(RTSPClient* rtspClient, int resultCode, char* resultString) 
-//{
-//   do 
-//   {
-//      UsageEnvironment& env = rtspClient->envir();
-//      StreamClientState& scs = ((ourRTSPClient*)rtspClient)->scs;
-//
-//      if (resultCode != 0) //describe 실패
-//      {
-//         env << *rtspClient << "Failed to get a SDP description: " << resultString << "\n";
-//         delete[] resultString;
-//         break;
-//      }
-//
-//      char* const sdpDescription = resultString;
-//      env << *rtspClient << "Got a SDP description:\n" << sdpDescription << "\n";
-//
-//      //SDP 문자열 -> MediaSession 객체 생성
-//      scs.session = MediaSession::createNew(env, sdpDescription);
-//      delete[] sdpDescription;
-//      if (scs.session == NULL) {
-//         env << *rtspClient << "Failed to create a MediaSession object from the SDP description: " << env.getResultMsg() << "\n";
-//         break;
-//      }
-//      else if (!scs.session->hasSubsessions()) {
-//         env << *rtspClient << "This session has no media subsessions (i.e., no \"m=\" lines)\n";
-//         break;
-//      }
-//
-//      //하위세션(Subsession) 설정 -> MediaSubsession::initiate() 호출하여 하위세션마다 "SETUP" 명령 전송
-//      scs.iter = new MediaSubsessionIterator(*scs.session);
-//      setupNextSubsession(rtspClient);
-//      return;
-//   } while (0);
-//
-//   // An unrecoverable error occurred with this stream.
-//   shutdownStream(rtspClient);
-//}
 
 //하위세션(Subsession) 설정 -> MediaSubsession::initiate() 호출하여 하위세션마다 "SETUP" 명령 전송
 void setupNextSubsession(RTSPClient* rtspClient) 
