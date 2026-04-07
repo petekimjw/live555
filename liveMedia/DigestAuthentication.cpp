@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "SHA256.hh"
 
 // ---- SHA-256 구현(Windows CNG; VS2022 기본 제공) ----
 #ifdef _WIN32
@@ -36,7 +37,6 @@ static char const* our_SHA256Data(unsigned char const* input, unsigned inputLen,
    // (이번 요청 환경은 Windows 11 + VS2022)
    return strDup("0000000000000000000000000000000000000000000000000000000000000000"); // placeholder
 #else
-
    BCRYPT_ALG_HANDLE hAlg = NULL;
    BCRYPT_HASH_HANDLE hHash = NULL;
    NTSTATUS st = BCryptOpenAlgorithmProvider(&hAlg, BCRYPT_SHA256_ALGORITHM, NULL, 0);
@@ -61,185 +61,392 @@ static char const* our_SHA256Data(unsigned char const* input, unsigned inputLen,
    char* hex = resultBuffer;
    if (needAlloc) hex = new char[65];
    toHex(out.data(), out.size(), hex);
-
    return hex;
-
 #endif
 }
 
 #pragma endregion
 
 
-Authenticator::Authenticator() {
-  assign(NULL, NULL, NULL, NULL, False);
-  fUseSHA256 = False; // 기본: MD5
+Authenticator::Authenticator() : fRealm(NULL), fNonce(NULL), fUsername(NULL), fPassword(NULL),
+   fOpaque(NULL), fAlgorithm(NULL), fQop(NULL), fCnonce(NULL), fNonceCount(NULL),
+   fPasswordIsMD5(False), fHashType(-1), fCount(0) {
+   assign(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, False, -1);
+   fUseSHA256 = False; // 기본: MD5
 }
 
-Authenticator::Authenticator(char const* username, char const* password, Boolean passwordIsMD5) {
-  assign(NULL, NULL, username, password, passwordIsMD5);
-  fUseSHA256 = False; // 기본: MD5
+Authenticator::Authenticator(char const* username, char const* password, Boolean passwordIsMD5) :
+   fRealm(NULL), fNonce(NULL), fUsername(NULL), fPassword(NULL),
+   fOpaque(NULL), fAlgorithm(NULL), fQop(NULL), fCnonce(NULL), fNonceCount(NULL),
+   fPasswordIsMD5(False), fHashType(-1), fCount(0) {
+   assign(NULL, NULL, username, password, NULL, NULL, NULL, NULL, NULL, 0, passwordIsMD5, -1);
+   fUseSHA256 = False; // 기본: MD5
 }
 
 Authenticator::Authenticator(const Authenticator& orig) {
-  assign(orig.realm(), orig.nonce(), orig.username(), orig.password(), orig.fPasswordIsMD5);
-  fUseSHA256 = orig.fUseSHA256;
+   assign(orig.realm(), orig.nonce(), orig.username(), orig.password(),
+      orig.opaque(), orig.algorithm(), orig.qop(), orig.cnonce(),
+      orig.nc(), orig.count(), orig.fPasswordIsMD5, -1);
+   fUseSHA256 = orig.fUseSHA256;
 }
 
 Authenticator& Authenticator::operator=(const Authenticator& rightSide) {
-  if (&rightSide != this) {
-    reset();
-    assign(rightSide.realm(), rightSide.nonce(),
-	   rightSide.username(), rightSide.password(), rightSide.fPasswordIsMD5);
-    fUseSHA256 = rightSide.fUseSHA256;
-  }
+   if (&rightSide != this) {
+      reset();
+      assign(rightSide.realm(), rightSide.nonce(),
+         rightSide.username(), rightSide.password(),
+         rightSide.opaque(), rightSide.algorithm(), rightSide.qop(),
+         rightSide.cnonce(), rightSide.nc(), /*rightSide.count()*/count(), rightSide.fPasswordIsMD5,
+         rightSide.typeOfHash());
+      fUseSHA256 = rightSide.fUseSHA256;
+   }
 
-  return *this;
+   return *this;
 }
 
 Boolean Authenticator::operator<(const Authenticator* rightSide) {
-  // Returns True if "rightSide" is 'newer' than us:
-  if (rightSide != NULL && rightSide != this &&
+   // Returns True if "rightSide" is 'newer' than us:
+   if (rightSide != NULL && rightSide != this &&
       (rightSide->realm() != NULL || rightSide->nonce() != NULL ||
-       username() == NULL || password() == NULL ||
-       strcmp(rightSide->username(), username()) != 0 ||
-       strcmp(rightSide->password(), password()) != 0)) {
-    return True;
-  }
+         username() == NULL || password() == NULL ||
+         strcmp(rightSide->username(), username()) != 0 ||
+         strcmp(rightSide->password(), password()) != 0)) {
+      return True;
+   }
 
-  return False;
+   return False;
 }
 
 Authenticator::~Authenticator() {
-  reset();
+   reset();
 }
 
 void Authenticator::reset() {
-  resetRealmAndNonce();
-  resetUsernameAndPassword();
+   resetRealmAndNonce();
+   resetUsernameAndPassword();
+   resetOpaqueAndAlgorithmAndQop();
+   resetCnonceAndNonceCount();
+   resetHashType();
 }
 
 void Authenticator::setRealmAndNonce(char const* realm, char const* nonce) {
-  resetRealmAndNonce();
-  assignRealmAndNonce(realm, nonce);
+   resetRealmAndNonce();
+   assignRealmAndNonce(realm, nonce);
 }
 
 void Authenticator::setRealmAndRandomNonce(char const* realm) {
-  resetRealmAndNonce();
+   resetRealmAndNonce();
 
-  // Construct data to seed the random nonce:
-  struct {
-    struct timeval timestamp;
-    unsigned counter;
-  } seedData;
-  gettimeofday(&seedData.timestamp, NULL);
-  static unsigned counter = 0;
-  seedData.counter = ++counter;
+   char nonceBuf[65];
+   sha256_random(32, nonceBuf);
 
-  // Use MD5 to compute a 'random' nonce from this seed data:
-  char nonceBuf[33];
-  our_MD5Data((unsigned char*)(&seedData), sizeof seedData, nonceBuf);
-
-  assignRealmAndNonce(realm, nonceBuf);
+   assignRealmAndNonce(realm, nonceBuf);
 }
 
 void Authenticator::setUsernameAndPassword(char const* username, char const* password, Boolean passwordIsMD5) 
 {
-  resetUsernameAndPassword();
-  assignUsernameAndPassword(username, password, passwordIsMD5);
+   resetUsernameAndPassword();
+   assignUsernameAndPassword(username, password, passwordIsMD5);
 }
 
-// 기본 동작:
-//   response = H( HA1 : nonce : HA2 )
-//   HA1 = H( username : realm : password )  (또는 fPasswordIsMD5==True면 이미 HA1)
-//   HA2 = H( cmd : url )
-// 여기서 H는 MD5(기본) 또는 SHA-256(fUseSHA256=True) 입니다.
+void Authenticator::setHashType(int hashType) {
+   resetHashType();
+   assignHashType(hashType);
+}
+
+void Authenticator::setOpaqueAndAlgorithmAndQop(char const* opaque, char const* algorithm, char const* qop) {
+   resetOpaqueAndAlgorithmAndQop();
+   assignOpaqueAndAlgorithmAndQop(opaque, algorithm, qop);
+
+   // Use MD5 to compute a 'random' nonce from this seed data:
+   char nonceBuf[17];
+   sha256_random(8, nonceBuf);
+
+   char nc[9];
+   sprintf(nc, "%08x", fCount);
+
+   assignCnonceAndNonceCount(nonceBuf, nc);
+}
+
+
+
+// Digest 인증 계산 공식 (RFC 7616 기반, qop="auth" 또는 "auth-int" 지원):
+// response = H( HA1 : nonce : HA2 ) 또는
+// response = H( HA1 : nonce : nc : cnonce : qop : HA2 ) <- qop 있는 경우
+//   HA1 = H( username : realm : password ) 또는 fPasswordIsMD5==True면 이미 HA1
+//   HA2 = H( cmd : url ) 또는
+//   HA2 = H( cmd : url : entity ) <- qop="auth-int" 인 경우
+// 여기서 H는 MD5(기본) 또는 SHA-256(fUseSHA256=True) 해시 스트링입니다.
 char const* Authenticator::computeDigestResponse(char const* cmd, char const* url) const 
 {
-   const bool useSHA256 = (fUseSHA256 == True);
-   const unsigned hashHexLen = useSHA256 ? 64 : 32;
-
-   // ---- HA1 ----
-   // fPasswordIsMD5==True 는 "이미 HA1이 들어왔다"로 해석 (SHA-256에도 동일 적용)
-   char* ha1Dyn = NULL;
-   char ha1Buf[65]; // 최대 64hex + NUL
-   if (fPasswordIsMD5)
+   if (fAlgorithm != NULL) //Digest 인증
    {
-      // 주어진 password()가 HA1이라고 가정
-      strncpy(ha1Buf, password(), hashHexLen);
-      ha1Buf[hashHexLen] = '\0';
-   }
-   else
-   {
-      const unsigned ha1DataLen = (unsigned)(strlen(username()) + 1 + strlen(realm()) + 1 + strlen(password()));
-      unsigned char* ha1Data = new unsigned char[ha1DataLen + 1];
-      sprintf((char*)ha1Data, "%s:%s:%s", username(), realm(), password());
+      if (strcmp(fAlgorithm, "SHA-256") == 0) 
+      {
+         //HA1 = H( username : realm : password )  (또는 fPasswordIsMD5==True면 이미 HA1)
+         char ha1Buf[65];
+         char entityhex[65];
+         if (fPasswordIsMD5) 
+         {
+            strncpy(ha1Buf, password(), 64); 
+            ha1Buf[64] = '\0'; // just in case
+         } 
+         else 
+         {
+            unsigned const ha1DataLen = strlen(username()) + 1 + strlen(realm()) + 1 + strlen(password());
+            unsigned char* ha1Data = new unsigned char[ha1DataLen + 1];
+            sprintf((char*)ha1Data, "%s:%s:%s", username(), realm(), password());
+            char const* ha1temp = sha256_hash((char*)ha1Data);
+            sprintf((char*)ha1Buf, "%s", ha1temp);
+            free((char*)ha1temp);
+            delete[] ha1Data;
+         }
 
-      if (useSHA256)
-         our_SHA256Data(ha1Data, ha1DataLen, ha1Buf);
-      else
+         //qop="auth-int" 인 경우 H2 = H( cmd : url : entity )
+         //아닌 경우 H2 = H( cmd : url )
+         unsigned ha2DataLen = 0;
+         unsigned char* ha2Data = NULL;
+         if (fQop != NULL && strcmp(fQop, "auth-int") == 0)
+         {
+            size_t n = sizeof(entityhex) / sizeof(entityhex[0]);
+            ha2DataLen = strlen(cmd) + 1 + strlen(url) + 1 + n;
+            ha2Data = new unsigned char[ha2DataLen + 1];
+            sprintf((char*)ha2Data, "%s:%s:%s", cmd, url, entityhex);
+         }
+         else 
+         {
+            ha2DataLen = strlen(cmd) + 1 + strlen(url);
+            ha2Data = new unsigned char[ha2DataLen + 1];
+            sprintf((char*)ha2Data, "%s:%s", cmd, url);
+         }
+
+         char ha2Buf[65];
+         char const* ha2temp = sha256_hash((char*)ha2Data);
+         sprintf((char*)ha2Buf, "%s", ha2temp);
+         free((char*)ha2temp);
+         delete[] ha2Data;
+
+         //qop="auth" 인 경우 response = H( HA1 : nonce : nc : cnonce : qop : HA2 )
+         //아닌 경우: response = H( HA1 : nonce : HA2 )
+         unsigned digestDataLen = 0;
+         unsigned char* digestData = NULL;
+         if (fQop != NULL && strcmp(fQop, "auth") == 0 && fNonceCount != NULL && fCnonce != NULL) 
+         {
+            digestDataLen = 64 + 1 + strlen(nonce()) + 1 + strlen(nc()) + 1 + strlen(cnonce()) + 1 + strlen(qop()) + 1 + 64;
+            digestData = new unsigned char[digestDataLen + 1];
+            sprintf((char*)digestData, "%s:%s:%s:%s:%s:%s", ha1Buf, nonce(), nc(), cnonce(), qop(), ha2Buf);
+         }
+         else 
+         {
+            digestDataLen = 64 + 1 + strlen(nonce()) + 1 + 64;
+            digestData = new unsigned char[digestDataLen + 1];
+            sprintf((char*)digestData, "%s:%s:%s", ha1Buf, nonce(), ha2Buf);
+         }
+
+         char const* result = sha256_hash((char*)digestData);
+         delete[] digestData;
+         return result;
+      }
+      else if (strcmp(fAlgorithm, "MD5") == 0) 
+      {
+         //HA1 = H( username : realm : password )  (또는 fPasswordIsMD5==True면 이미 HA1)
+         char ha1Buf[33];
+         char entityhex[33];
+         if (fPasswordIsMD5) {
+            strncpy(ha1Buf, password(), 32);
+            ha1Buf[32] = '\0'; // just in case
+         }
+         else 
+         {
+            unsigned const ha1DataLen = strlen(username()) + 1 + strlen(realm()) + 1 + strlen(password());
+            unsigned char* ha1Data = new unsigned char[ha1DataLen + 1];
+            sprintf((char*)ha1Data, "%s:%s:%s", username(), realm(), password());
+            our_MD5Data(ha1Data, ha1DataLen, ha1Buf);
+            delete[] ha1Data;
+         }
+
+         //H2 = H( cmd : url )
+         unsigned ha2DataLen = 0;
+         unsigned char* ha2Data = NULL;
+         if (strcmp(fQop, "auth-int") == 0)
+         {
+            size_t n = sizeof(entityhex) / sizeof(entityhex[0]);
+            ha2DataLen = strlen(cmd) + 1 + strlen(url) + 1 + n;
+            ha2Data = new unsigned char[ha2DataLen + 1];
+            sprintf((char*)ha2Data, "%s:%s:%s", cmd, url, entityhex);
+         }
+         else 
+         {
+            ha2DataLen = strlen(cmd) + 1 + strlen(url);
+            ha2Data = new unsigned char[ha2DataLen + 1];
+            sprintf((char*)ha2Data, "%s:%s", cmd, url);
+         }
+
+         char ha2Buf[33];
+         our_MD5Data(ha2Data, ha2DataLen, ha2Buf);
+         delete[] ha2Data;
+
+         //qop="auth" 인 경우 response = H( HA1 : nonce : nc : cnonce : qop : HA2 )
+         //아닌 경우: response = H( HA1 : nonce : HA2 )
+         unsigned digestDataLen = 0;
+         unsigned char* digestData = NULL;
+         if (strcmp(fQop, "auth") == 0) 
+         {
+            digestDataLen = 32 + 1 + strlen(nonce()) + 1 + strlen(nc()) + 1 + strlen(cnonce()) + 1 + strlen(qop()) + 1 + 32;
+            digestData = new unsigned char[digestDataLen + 1];
+            sprintf((char*)digestData, "%s:%s:%s:%s:%s:%s", ha1Buf, nonce(), nc(), cnonce(), qop(), ha2Buf);
+         }
+         else 
+         {
+            digestDataLen = 32 + 1 + strlen(nonce()) + 1 + 32;
+            digestData = new unsigned char[digestDataLen + 1];
+            sprintf((char*)digestData, "%s:%s:%s", ha1Buf, nonce(), ha2Buf);
+         }
+
+         char const* result = our_MD5Data(digestData, digestDataLen, NULL);
+         delete[] digestData;
+         return result;
+      }
+   } 
+   else //Basic 인증
+   {
+      //HA1 = H( username : realm : password )  (또는 fPasswordIsMD5==True면 이미 HA1)
+      char ha1Buf[33];
+      if (fPasswordIsMD5) 
+      {
+         strncpy(ha1Buf, password(), 32);
+         ha1Buf[32] = '\0'; // just in case
+      } 
+      else 
+      {
+         unsigned const ha1DataLen = strlen(username()) + 1 + strlen(realm()) + 1 + strlen(password());
+         unsigned char* ha1Data = new unsigned char[ha1DataLen+1];
+         sprintf((char*)ha1Data, "%s:%s:%s", username(), realm(), password());
          our_MD5Data(ha1Data, ha1DataLen, ha1Buf);
+         delete[] ha1Data;
+      }
 
-      delete[] ha1Data;
-   }
-
-   // ---- HA2 ----
-   const unsigned ha2DataLen = (unsigned)(strlen(cmd) + 1 + strlen(url));
-   unsigned char* ha2Data = new unsigned char[ha2DataLen + 1];
-   sprintf((char*)ha2Data, "%s:%s", cmd, url);
-   char ha2Buf[65];
-   if (useSHA256)
-      our_SHA256Data(ha2Data, ha2DataLen, ha2Buf);
-   else
+      //H2 = H( cmd : url )
+      unsigned const ha2DataLen = strlen(cmd) + 1 + strlen(url);
+      unsigned char* ha2Data = new unsigned char[ha2DataLen+1];
+      sprintf((char*)ha2Data, "%s:%s", cmd, url);
+      char ha2Buf[33];
       our_MD5Data(ha2Data, ha2DataLen, ha2Buf);
-   delete[] ha2Data;
+      delete[] ha2Data;
 
-   // ---- response ----
-   const unsigned digestDataLen = hashHexLen + 1 + (unsigned)strlen(nonce()) + 1 + hashHexLen;
-   unsigned char* digestData = new unsigned char[digestDataLen + 1];
-   sprintf((char*)digestData, "%s:%s:%s", ha1Buf, nonce(), ha2Buf);
-
-   char const* result = NULL;
-   if (useSHA256)
-      result = our_SHA256Data(digestData, digestDataLen, NULL); // new[] 반환
-   else
-      result = our_MD5Data(digestData, digestDataLen, NULL);    // new[] 반환
-
-   delete[] digestData;
-   return result;
+      //response = H( HA1 : nonce : HA2 )
+      unsigned const digestDataLen = 32 + 1 + strlen(nonce()) + 1 + 32;
+      unsigned char* digestData = new unsigned char[digestDataLen+1];
+      sprintf((char*)digestData, "%s:%s:%s", ha1Buf, nonce(), ha2Buf);
+      char const* result = our_MD5Data(digestData, digestDataLen, NULL);
+      delete[] digestData;
+      return result;
+   }
+   return NULL;
 }
 
-void Authenticator::reclaimDigestResponse(char const* responseStr) const 
-{
-  delete[](char*)responseStr;
+
+
+void Authenticator::reclaimDigestResponse(char const* responseStr) const {
+   delete[](char*)responseStr;
 }
 
 void Authenticator::resetRealmAndNonce() {
-  delete[] fRealm; fRealm = NULL;
-  delete[] fNonce; fNonce = NULL;
+   delete[] fRealm; fRealm = NULL;
+   delete[] fNonce; fNonce = NULL;
 }
 
 void Authenticator::resetUsernameAndPassword() {
-  delete[] fUsername; fUsername = NULL;
-  delete[] fPassword; fPassword = NULL;
-  fPasswordIsMD5 = False;
+   delete[] fUsername; fUsername = NULL;
+   delete[] fPassword; fPassword = NULL;
+   fPasswordIsMD5 = False;
 }
 
+void Authenticator::resetOpaqueAndAlgorithmAndQop() {
+   if (fOpaque) { delete[] fOpaque; fOpaque = NULL; }
+   if (fAlgorithm) { delete[] fAlgorithm; fAlgorithm = NULL; }
+   if (fQop) { delete[] fQop; fQop = NULL; }
+}
+
+void Authenticator::resetCnonceAndNonceCount() {
+   if (fCnonce) {delete[] fCnonce; fCnonce = NULL; }
+   if (fNonceCount) { delete[] fNonceCount; fNonceCount = NULL; }
+   fCount = 0;
+}
+
+void Authenticator::resetHashType() {
+   fHashType = -1;
+}
+
+
+
 void Authenticator::assignRealmAndNonce(char const* realm, char const* nonce) {
-  fRealm = strDup(realm);
-  fNonce = strDup(nonce);
+   fRealm = strDup(realm);
+   fNonce = strDup(nonce);
 }
 
 void Authenticator::assignUsernameAndPassword(char const* username, char const* password, Boolean passwordIsMD5) {
-  if (username == NULL) username = "";
-  if (password == NULL) password = "";
+   if (username == NULL) username = "";
+   if (password == NULL) password = "";
 
-  fUsername = strDup(username);
-  fPassword = strDup(password);
-  fPasswordIsMD5 = passwordIsMD5;
+   fUsername = strDup(username);
+   fPassword = strDup(password);
+   fPasswordIsMD5 = passwordIsMD5;
 }
 
 void Authenticator::assign(char const* realm, char const* nonce,
-			   char const* username, char const* password, Boolean passwordIsMD5) {
-  assignRealmAndNonce(realm, nonce);
-  assignUsernameAndPassword(username, password, passwordIsMD5);
+   char const* username, char const* password, Boolean passwordIsMD5) {
+   assignRealmAndNonce(realm, nonce);
+   assignUsernameAndPassword(username, password, passwordIsMD5);
+}
+
+
+
+void Authenticator::assignOpaqueAndAlgorithmAndQop(char const* opaque, char const* algorithm, char const* qop) {
+   resetOpaqueAndAlgorithmAndQop();
+   fOpaque = strDup(opaque);
+   fAlgorithm = strDup(algorithm);
+   fQop = strDup(qop);
+}
+
+void Authenticator::assignCnonceAndNonceCount(char const* cnonce, char const* nc) {
+   resetCnonceAndNonceCount();
+   fCnonce = strDup(cnonce);
+   fNonceCount = strDup(nc);
+   if (nc)
+      assignCount(strtol(nc, NULL, 16));
+}
+
+void Authenticator::assignCount(unsigned const count) {
+   fCount = count;
+}
+
+void Authenticator::assignHashType(int hashType) {
+   fHashType = hashType;
+}
+
+void Authenticator::assign(char const* realm, char const* nonce,
+   char const* username, char const* password, char const* opaque, char const* algorithm,
+   char const* qop, char const* cnonce, char const* nc, unsigned const count, Boolean passwordIsMD5, int hashType) {
+   assignRealmAndNonce(realm, nonce);
+   assignOpaqueAndAlgorithmAndQop(opaque, algorithm, qop);
+   assignUsernameAndPassword(username, password, passwordIsMD5);
+   assignCnonceAndNonceCount(NULL, NULL);
+   assignCount(count);
+   assignHashType(hashType);
+}
+
+void Authenticator::setCnonceAndNonceCount(char const* cnonce, char const* nc) {
+   resetCnonceAndNonceCount();
+   assignCnonceAndNonceCount(cnonce, nc);
+}
+
+void Authenticator::updateCount() {
+   char nonceBuf[17];
+   sha256_random(8, nonceBuf);
+
+   char nc[9];
+   sprintf(nc, "%08x", ++fCount);
+
+   assignCnonceAndNonceCount(nonceBuf, nc);
 }
